@@ -1,0 +1,2903 @@
+\documentclass{easychair}
+\newcommand{\I}{\emph{I}\xspace}
+\newcommand{\You}{\emph{You}\xspace}
+\newcommand{\My}{\emph{My}\xspace}
+\newcommand{\Myself}{\emph{Myself}\xspace}
+\newcommand{\Me}{\emph{Me}\xspace}
+\newcommand{\Your}{\emph{Your}\xspace}
+
+
+
+\newcommand{\DS}{\mathbf{DS}}
+\newcommand{\dDS}{\mathbf{dDS}}
+\newcommand{\DG}{\mathbf{DG}}
+
+\newcommand{\At}{\mathsf{At}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\newcommand\eg{\hbox{\textit{e.g.}}}
+\newcommand\ie{\hbox{\textit{i.e.}}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\cf}{{\em cf.}}
+
+\newcommand{\seq}{\Rightarrow}
+\newcommand{\rs}[3]{#1;#2\seq #3}
+\newcommand{\rc}{\mathcal{R}}
+
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\IM}{\mathcal{I}}
+\newcommand{\A}{\mathsf{A}}
+\newcommand{\R}{\mathsf{R}}
+\newcommand{\V}{\mathsf{V}}
+\newcommand{\g}{\mathsf{g}}
+\newcommand{\ag}{\mathsf{a}}
+\renewcommand{\b}{\mathsf{b}}
+\renewcommand{\c}{\mathsf{c}}
+\newcommand{\f}{\mathsf{f}}
+
+\renewcommand{\qed}{\hfill$\blacksquare$}
+
+\newtheorem{example}{Example}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\renewenvironment{proof}{\noindent\textit{Proof:}\quad}{\qed}
+
+\newcommand{\pnlP}{\langle \bigdoublewedge+ \rangle }
+\newcommand{\pnlN}{\langle\bigdoublewedge-\rangle}
+\newcommand{\pnlPN}{\langle\bigdoublewedge\pm\rangle}
+\newcommand{\pnlOP}{\langle\oplus\rangle}
+\newcommand{\pnlON}{\langle\ominus\rangle}
+\newcommand{\dplus}{\meddiamondplus}
+\newcommand{\dminus}{\meddiamondminus}
+\newcommand{\bplus}{\boxplus}
+\newcommand{\bminus}{\boxminus}
+\newcommand{\dplusminus}{\Diamond^{\pm}}
+
+
+\newcommand{\pP}{\wedge\hspace{-0.25cm}\wedge\!\!+ }
+\newcommand{\pN}{\wedge\hspace{-0.25cm}\wedge\!\!-}
+\newcommand{\pPN}{\wedge\hspace{-0.25cm}\wedge\!\!\pm}
+
+\DeclareMathOperator*{\bigdoublewedge}{\wedge\mkern-15mu\wedge}
+
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfO}{\mathbf{O}}
+\newcommand{\Rinv}{R_{\leftrightarrow}}
+
+\newcommand{\ccpnlmodels}{\mathfrak{M}_{\textit{ccPNL}}}
+\newcommand{\pnlmodels}{\mathfrak{M}_{\textit{PNL}}}
+\newcommand{\namedmodels}{\mathfrak{M}_{\textit{N}}}
+
+\newcommand{\PNL}{\textbf{PNL}}
+\newcommand{\ccPNL}{\textbf{ccPNL}}
+\newcommand{\cc}{\textbf{cc}}
+\newcommand{\dPNL}{\textbf{dPNL}}
+
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}
+ 
+
+
+
+
+\newcommand\proofsystem[1]{\mbox{\slshape #1}\xspace}
+\newcommand\LK   {\proofsystem{LK}}
+\newcommand\LKT  {\proofsystem{LKT}}
+\newcommand\LKQ  {\proofsystem{LKQ}}
+\newcommand\LCF  {\proofsystem{LCF}}
+\newcommand\LKF  {\proofsystem{LKF}}
+\newcommand\aLKF {\hbox{\proofsystem{LKF}\kern-2pt$^a$}\xspace}
+\newcommand\LKU  {\proofsystem{LKU}}
+\newcommand\LJ   {\proofsystem{LJ}}
+\newcommand\LJT  {\proofsystem{LJT}}
+\newcommand\LJQ  {\proofsystem{LJQ}}
+\newcommand\LJF  {\proofsystem{LJF}}
+\newcommand\aLJF {\hbox{\proofsystem{LJF}\kern-2pt$^a$}\xspace}
+\newcommand\LKpos{\proofsystem{LKpos}}
+\newcommand\LKneg{\proofsystem{LKneg}}
+\newcommand\negclass[2]{\mathcal{N}_{#1}^{#2}}
+\newcommand\posclass[2]{\mathcal{P}_{#1}^{#2}}
+
+
+
+
+
+
+
+
+
+\newcommand{\async}[2]{\seq#1\mathbin{\Uparrow}   #2}
+\newcommand{\sync }[2]{\seq#1\mathbin{\Downarrow} #2}
+\newcommand{\Async}[3]{#1\async{#2}{#3}}  \newcommand{\Sync }[3]{#1\sync{#2}{#3}}  
+
+\newcommand{\impl}{\supset}
+
+
+\newcommand{\knand}{ \jnand }
+\newcommand{\knor}{\vee^{-}}
+\newcommand{\kpand}{\jpand}
+\newcommand{\kpor}{\veep }
+\newcommand{\unp}[1]{#1^{\circ}}
+\newcommand{\del}[1]{[#1]^{l/r}}
+\newcommand{\delm}[2]{[#1]^{l/r}_{#2}}
+\newcommand{\delp}[1]{[#1]^{r}}
+\newcommand{\deln}[1]{[#1]^{l}}
+\newcommand{\delpm}[2]{[#1]^{r}_{#2}}
+\newcommand{\delnm}[2]{[#1]^{l}_{#2}}
+\newcommand{\axioms}{\mathcal{T}}
+
+
+\newcommand{\ksome}{\jsome }
+\newcommand{\kall}{\jall}
+\newcommand{\kpfalse}{\pfalse}
+\newcommand{\kptrue}{\ptrue}
+\newcommand{\knfalse}{\nfalse}
+\newcommand{\kntrue}{\ntrue}
+\newcommand{\kstore}{\mathsf{S}}
+\newcommand{\kdecide}{\mathsf{D}}
+\newcommand{\krelease}{\mathsf{R}}
+\newcommand{\kinit}{\mathsf{I}}
+\newcommand{\knandu}[2]{#1 \knand #2}
+\newcommand{\knoru}[2]{#1 \knor #2}
+\newcommand{\kpandu}[2]{#1 \kpand #2}
+\newcommand{\kporu}[2]{#1 \kpor #2}
+\newcommand{\ksomeu}[1]{\ksome #1}
+\newcommand{\kallu}[1]{\kall #1}
+
+
+\newcommand{\knandc}{\knand_c}
+\newcommand{\knorc}{\knor_c}
+\newcommand{\kpande}{\kpand_e}
+\newcommand{\kpore}{\kpor_e}
+\newcommand{\ksomee}{\ksome_e}
+\newcommand{\kallc}{\kall_c}
+\newcommand{\kptruee}{\kptrue_e}
+\newcommand{\knfalsec}{\knfalse_c}
+\newcommand{\kstorec}{\kstore_c}
+\newcommand{\kdecidee}{\kdecide_e}
+\newcommand{\kreleasee}{\krelease_e}
+\newcommand{\kinite}{\kinit_e}
+
+\newcommand{\knandcu}[4]{\knandc(#1,#2,#3,#4)} \newcommand{\knorcu}[3]{\knorc(#1,#2,#3)} \newcommand{\kpandeu}[4]{\kpande(#1,#2,#3,#4)} \newcommand{\kporeu}[4]{\kpore(#1,#2,#3,#4)} \newcommand{\ksomeeu}[4]{\ksomee(#1,#2,#3,#4)} \newcommand{\kallcu}[3]{\kallc(#1,#2,#3)} \newcommand{\kptrueeu}[1]{\kptruee(#1)}
+\newcommand{\knfalsecu}[2]{\knfalsec(#1,#2)}
+\newcommand{\kstorecu}[4]{\kstorec(#1,#2,#3,#4)} \newcommand{\kdecideeu}[3]{\kdecidee(#1,#2,#3)} \newcommand{\kreleaseeu}[3]{\kreleasee(#1,#2,#3)} \newcommand{\kiniteu}[3]{\kinite(#1,#2,#3)} 
+
+
+
+\newcommand{\veenldotsveen}{\veen\kern-5pt\ldots\kern-2pt\veen}
+\newcommand{\CNXT}{\Upsilon}
+
+\newcommand{\Rscr}{{\cal R}} 
+
+\newcommand{\kUnf}[4]{#1 \mathbin\Uparrow #2 \seq  #3 \mathbin\Uparrow #4}
+\newcommand{\kUnfG}[2]{\Gamma \mathbin\Uparrow #1 \seq  #2 \mathbin\Uparrow \Delta}
+\newcommand{\kUnfamb}[3]{#1 \mathbin\Uparrow #2 \seq  #3 \Theta' \Uparrow \Delta}
+\newcommand{\kUnfGamb}[1]{\Gamma\mathbin\Uparrow #1\seq \Theta' \Uparrow \Delta}
+\newcommand{\kLf}[3]{#1 \Downarrow #2 \seq #3}
+\newcommand{\kRf}[3]{#1 \seq #2 \Downarrow #3}
+\newcommand{\kLfG}[1]{\kLf{\Gamma}{#1}{\Delta}}
+\newcommand{\kRfG}[1]{\kRf{\Gamma}{#1}{\Delta}}
+
+\newcommand{\isemp}[1]{\ifthenelse{\isempty{#1}}{\cdot}{#1}}
+
+\newcommand{\jUnf}[4]{\isemp{#1}\mathbin{\Uparrow}\isemp{#2}\seq
+                      \isemp{#3}\mathbin{\Uparrow}\isemp{#4}}
+
+\newcommand{\jUnfamb}[3]{#1 \mathbin\Uparrow #2 \seq  #3 \Rscr}\newcommand{\jUnfG}[2]{\jUnf{\Gamma}{\isemp{#1}}{\isemp{#2}}{{\cdot}}}\newcommand{\jUnfGamb}[1]{\Gamma\mathbin\Uparrow #1\seq \Rscr}\newcommand{\jLf}[3]{\isemp{#1}\Downarrow\isemp{#2}\seq\isemp{#3}}\newcommand{\jLCf}[3]{#1,\Cx{\Downarrow{#2}}\seq\isemp{#3}}\newcommand{\jLfG}[1]{\jLf{\Gamma}{#1}{R}}\newcommand{\jRf}[2]{#1 \seq #2 \Downarrow}\newcommand{\jRCf}[3]{#1 \seq \Cx{#2 \Downarrow},#3}\newcommand{\jRfG}[1]{\jRf{\Gamma}{#1}}\newcommand{\jC}[2]{{\blue {#1 \colon}} #2} 
+
+\newcommand{\jarr}{\supset}
+\newcommand{\jor}{\vee}
+\newcommand{\jpand}{\wedge^{\scriptscriptstyle +}}
+\newcommand{\jnand}{\wedge^{\scriptscriptstyle -}}
+\newcommand{\jsome}{\exists}
+\newcommand{\jall}{\forall}
+\newcommand{\jtrue}{\hbox{\sl t}}
+\newcommand{\jfalse}{\hbox{\sl f}}
+\newcommand{\iimp}{\supset}
+
+
+\newcommand{\jinit}{\mathbb{I}}
+\newcommand{\jrelease}{\mathbb{R}}
+\newcommand{\jdecide}{\mathbb{D}}
+\newcommand{\jstore}{\mathbb{S}}
+\newcommand{\jinitl}{\jinit^l}
+\newcommand{\jreleasel}{\jrelease^l}
+\newcommand{\jdecidel}{\jdecide^l}
+\newcommand{\jstorel}{\jstore^l}
+
+\newcommand{\jinitr}{\jinit^r}
+\newcommand{\jreleaser}{\jrelease^r}
+\newcommand{\jdecider}{\jdecide^r}
+\newcommand{\jstorer}{\jstore^r}
+\newcommand{\jarru}[2]{#1 \jarr #2}
+\newcommand{\joru}[2]{#1 \jor #2}
+\newcommand{\jpandu}[2]{#1 \jpand #2}
+\newcommand{\jnandu}[2]{#1 \jnand #2}
+\newcommand{\jsomeu}[1]{\jsome #1}
+\newcommand{\jallu}[1]{\jall  #1}
+
+\newcommand{\jarrc}{\jarr_c}
+\newcommand{\jarre}{\jarr_e}
+\newcommand{\jorc}{\jor_c}
+\newcommand{\jore}{\jor_e}
+\newcommand{\jpandc}{\jpand_c}
+\newcommand{\jpande}{\jpand_e}
+\newcommand{\jnandc}{\jnand_c}
+\newcommand{\jnande}{\jnand_e}
+\newcommand{\jsomec}{\jsome_c}
+\newcommand{\jsomee}{\jsome_e}
+\newcommand{\jallc}{\jall_c}
+\newcommand{\jalle}{\jall_e}
+
+\newcommand{\jtruec}{\jtrue_c}
+\newcommand{\jtruee}{\jtrue_e}
+\newcommand{\jfalsec}{\jfalse_c}
+\newcommand{\jinitle}{\jinitl_e}
+\newcommand{\jreleasele}{\jreleasel_e}
+\newcommand{\jdecidele}{\jdecidel_e}
+\newcommand{\jstorelc}{\jstorel_c}
+
+\newcommand{\jinitre}{\jinitr_e}
+\newcommand{\jreleasere}{\jreleaser_e}
+\newcommand{\jdecidere}{\jdecider_e}
+\newcommand{\jstorerc}{\jstorer_c}
+
+\newcommand{\jarrcu}[3]{\jarrc(#1,#2,#3)}
+\newcommand{\jarreu}[4]{\jarre(#1,#2,#3,#4)}
+\newcommand{\jorcu}[4]{\jorc(#1,#2,#3,#4)}
+\newcommand{\joreu}[4]{\jore(#1,#2,#3,#4)}
+\newcommand{\jpandcu}[3]{\jpandc(#1,#2,#3)}
+\newcommand{\jpandeu}[4]{\jpande(#1,#2,#3,#4)}
+\newcommand{\jnandcu}[4]{\jnandc(#1,#2,#3,#4)}
+\newcommand{\jnandeu}[4]{\jnande(#1,#2,#3,#4)}
+\newcommand{\jsomecu}[3]{\jsomec(#1,#2,#3)}
+\newcommand{\jsomeeu}[4]{\jsomee(#1,#2,#3,#4)}
+\newcommand{\jallcu}[3]{\jallc(#1,#2,#3)}
+\newcommand{\jalleu}[4]{\jalle(#1,#2,#3,#4)}
+
+\newcommand{\jtruecu}[2]{\jtruec(#1,#2)}
+\newcommand{\jtrueeu}[1]{\jtruee(#1)}
+\newcommand{\jfalsecu}[1]{\jfalsec(#1)}
+\newcommand{\jinitleu}[1]{\jinitle(#1)}
+\newcommand{\jreleaseleu}[3]{\jreleasele(#1,#2,#3)}
+\newcommand{\jdecideleu}[3]{\jdecidele(#1,#2,#3)}
+\newcommand{\jstorelcu}[4]{\jstorelc(#1,#2,#3,#4)}
+
+\newcommand{\jinitreu}[2]{\jinitre(#1,#2)}
+\newcommand{\jreleasereu}[3]{\jreleasere(#1,#2,#3)}
+\newcommand{\jdecidereu}[2]{\jdecidere(#1,#2)}
+\newcommand{\jstorercu}[3]{\jstorerc(#1,#2,#3)}
+
+
+
+\newcommand{\jeArr}[3]{\supset_e (#1,#2,#3)}
+\newcommand{\jeOr}[3]{\vee_e (#1,#2,#3)}
+\newcommand{\jeAndP}[3]{\wedgep_e (#1,#2,#3)}
+\newcommand{\jeDelayP}[2]{\posdop_e (#1,#2)}
+\newcommand{\jeAndN}[3]{\wedgen_e (#1,#2,#3)}
+\newcommand{\jeDelayN}[2]{\negdop_e (#1,#2)}
+\newcommand{\jeTrueP}[1]{\ptrue_e (#1)}
+\newcommand{\jeSome}[3]{\exists_e(#1,#2,#3)}
+\newcommand{\jeAll}[3]{\forall_e(#1,#2,#3)}
+
+\newcommand{\jcArr}[2]{\supset_c(#1,#2)}
+\newcommand{\jcOr}[3]{\vee_c (#1,#2,#3)}
+\newcommand{\jcFalse}[1]{\pfalse_c (#1)}
+\newcommand{\jcAndP}[2]{\wedgep_c(#1,#2)}
+\newcommand{\jcDelayP}[2]{\posdop_c(#1,#2)}
+\newcommand{\jcAndN}[3]{\wedgen_c(#1,#2,#3)}
+\newcommand{\jcDelayN}[2]{\negdop_c(#1,#2)}
+\newcommand{\jcTrueN}[1]{\ntrue_c(#1)}
+\newcommand{\jcTrueP}[2]{\ptrue_c(#1,#2)}
+\newcommand{\jcSome}[2]{\exists_c(#1,#2)}
+\newcommand{\jcAll}[2]{\forall_c(#1,#2)}
+\newcommand{\jeDecL}[3]{\hbox{\sl DecideL}_e(#1,#2,#3)}
+\newcommand{\jeDecR}[2]{\hbox{\sl DecideR}_e(#1,#2)}
+\newcommand{\jeRelL}[2]{\hbox{\sl ReleaseL}_e(#1,#2)}
+\newcommand{\jeRelR}[2]{\hbox{\sl ReleaseR}_e(#1,#2)}
+\newcommand{\jcStoreL}[3]{\hbox{\sl StoreL}_c(#1,#2,#3)}
+\newcommand{\jcStoreR}[2]{\hbox{\sl StoreR}_c(#1,#2)}
+\newcommand{\jeInitL}[1]{\hbox{\sl InitialL}_e(#1)}
+\newcommand{\jeInitR}[2]{\hbox{\sl InitialR}_e(#1,#2)}
+\newcommand{\jeCut}[4]{\hbox{\sl Cut}_e(#1,#2,#3,#4)}
+
+\newcommand{\cert}{{\tt cert}\xspace}
+
+
+
+\newcommand{\true }{t\/}
+\newcommand{\false}{f\/}
+
+\newcommand{\ntrue}{t^-}
+\newcommand{\ptrue}{t^+}
+\newcommand{\nfalse}{f^-}
+\newcommand{\pfalse}{f^+}
+\newcommand{\wedgep}{\wedge^{\!+}}
+\newcommand{\wedgepn}{\wedge^{\!\pm}}
+\newcommand{\wedgen}{\wedge^{\!-}}
+\newcommand{\veep}{\vee^{\!+}}
+\newcommand{\veepn}{\vee^{\!\pm}}
+\newcommand{\veen}{\vee^{\!-}}
+\newcommand{\implp}{\impl^{\!+}}
+\newcommand{\impln}{\impl^{\!-}}
+
+\newcommand{\andClerk}[3]{{\wedge_c}(#1,#2,#3)}
+\newcommand{\falseClerk}[2]{f_c(#1,#2)}
+\newcommand{\orClerk}[2]{{\vee_c}(#1,#2)}
+\newcommand{\allClerk}[2]{\forall_c(#1,#2)}
+\newcommand{\storeClerk}[3]{\hbox{\sl store}_c(#1,#2,#3)}
+
+\newcommand{\trueExpert }[1]{{\true_e}(#1)}
+\newcommand{\andExpert}[3]{{\wedge_e}(#1,#2,#3)}
+\newcommand{\andExpertLJF}[6]{{\wedge_e}(#1,#2,#3,#4,#5,#6)}
+\newcommand{\orExpert  }[3]{{\vee_e}(#1,#2,#3)}
+\newcommand{\someExpert}[3]{\exists_e(#1,#2,#3)}
+\newcommand{\initExpert}[2]{\hbox{\sl init}_e(#1,#2)}
+\newcommand{\cutExpert}[4]{\hbox{\sl cut}_e(#1,#2,#3,#4)}
+\newcommand{\decideExpert}[3]{\hbox{\sl decide}_e(#1,#2,#3)}
+\newcommand{\releaseExpert}[2]{\hbox{\sl release}_e(#1,#2)}
+
+
+
+
+\newcommand{\eseq}[3]{#1;#2\seq #3}
+\newcommand{\seqneg}[2]{\seq #1 ; #2}
+\newcommand{\seqpos}[3]{\seq #1 ; #2 ; #3}
+\newcommand{\Ncal}{{\cal N}}
+\newcommand{\seqnega}[3]{\blue{#1} \seq #2 ; #3}
+\newcommand{\seqposa}[4]{\blue{#1} \seq #2 ; #3 ; #4}
+
+\newcommand{\mkpos}[1]{\partial\kern -1pt_{\scriptscriptstyle +}\kern -1pt(#1)}
+\newcommand{\mkneg}[1]{\partial\kern -1pt_{\scriptscriptstyle -}\kern -1pt(#1)}
+
+\newcommand{\tup}[1]{\langle #1\rangle}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\args }[2]{(\hbox{\tt args}~#1~#2)}
+\newcommand{\lc   }[2]{(\hbox{\tt lc}~#1~#2)}
+\newcommand{\apply}[2]{(\hbox{\tt apply}~#1~#2)}
+\newcommand{\lidx }[1]{(\hbox{\tt idx}~#1)}
+\newcommand{\mapping}[3]{[\![#1\mathbin{|}#2]\!]_{#3}}
+
+\newcommand{\delayop}{\ensuremath{\partial}}
+\newcommand{\negdop}{\delayop}
+\newcommand{\posdop}{\rotatebox[origin=c]{180}{\delayop}}
+\newcommand{\negdd}[1]{\delayop_{\scriptscriptstyle -}(#1)}
+\newcommand{\posdd}[1]{\delayop_{\scriptscriptstyle +}(#1)}
+\newcommand{\delpf}{\delayop_{\scriptscriptstyle +}}\newcommand{\delnf}{\delayop_{\scriptscriptstyle -}}
+
+\newcommand{\delpfr}{\delayop_{\scriptscriptstyle +}^{\kern 1pt r}}\newcommand{\delpfl}{\delayop_{\scriptscriptstyle +}^{\kern 2pt l}}\newcommand{\delnfr}{\delayop_{\scriptscriptstyle -}^{\kern 1pt r}}\newcommand{\delnfl}{\delayop_{\scriptscriptstyle -}^{\kern 2pt l}}
+
+\newcommand{\tr}[2]{\lbrack #1 \rbrack_{#2}}
+\newcommand{\trL}[2]{\lfloor #1 \rfloor_{#2}}
+\newcommand{\trR}[2]{\lceil #1 \rceil_{#2}}
+\newcommand{\str}[2]{ST_{#2}(#1)}
+\newcommand{\nnf}[1]{#1^\circ}
+\newcommand{\trlab}[1]{\lbrack #1 \rbrack}
+\newcommand{\trlabL}[1]{\lfloor #1 \rfloor}
+\newcommand{\trlabR}[1]{\lceil #1 \rceil}
+\newcommand{\trseq}[1]{\lbrack #1 \rbrack}
+\newcommand{\trplus}[1]{\lbrack #1 \rbrack^{+}}
+\newcommand{\rel}{R}
+\newcommand{\wld}{W}
+\newcommand{\val}{V}
+\newcommand{\m}{\mathcal{M}}
+\newcommand{\modelb}{\models_{\mathcal{B}}}
+\newcommand{\prop}{\mathcal{P}}
+\newcommand{\fl}{\mathcal{F}}
+\newcommand{\relfo}{R}
+\newcommand{\refl}{refl}
+\newcommand{\trans}{trans}
+\newcommand{\symm}{symm}
+\newcommand{\eucl}{eucl}
+\newcommand{\ser}{ser}
+\newcommand{\dir}{dir}
+\newcommand{\conn}{conn}
+\newcommand{\init}{init}
+\newcommand{\initR}{\init_{R}}
+\newcommand{\lwedge}{L\wedge}
+\newcommand{\rwedge}{R\wedge}
+\newcommand{\lvee}{L\vee}
+\newcommand{\rvee}{R\vee}
+\newcommand{\lbox}{L\square}
+\newcommand{\rbox}{R\square}
+\newcommand{\ldiamond}{L\lozenge}
+\newcommand{\rdiamond}{R\lozenge}
+\newcommand{\limpl}{L{\impl}}
+\newcommand{\rimpl}{R{\impl}}
+\newcommand{\lbot}{L\bot}
+\newcommand{\rtop}{R\top}
+\newcommand{\logick}{K}
+\newcommand{\logicik}{IK}
+\newcommand{\logicr}{R}
+\newcommand\labk  {\proofsystem{G3K}}
+\newcommand\labkN  {\proofsystem{G3K}}
+\newcommand\labkV  {\proofsystem{S(K)}}
+\newcommand\labkF  {\proofsystem{LMF}}
+\newcommand\labkstarF  {\proofsystem{G3K^*F}}
+\newcommand\labr  {\proofsystem{R}}
+\newcommand{\fix}[2]{{\bf FIX}\footnote{{\bf #1:} #2}}
+\newcommand{\initf}{init}\newcommand{\storef}{store}\newcommand{\releasef}{release}\newcommand{\decidef}{decide}\newcommand{\wedgenf}{\wedgen}\newcommand{\veenf}{\veen}\newcommand{\wedgepf}{\wedgep}\newcommand{\veepf}{\veep}\newcommand{\boxf}{\square}\newcommand{\diamondf}{\lozenge}\newcommand{\implf}{{\impl}}\newcommand{\ntruef}{{\ntrue}}\newcommand{\nfalsef}{{\nfalse}}\newcommand{\ptruef}{{\ptrue}}\newcommand{\forallf}{\forall}\newcommand{\existsf}{\exists}
+
+\newcommand{\bigwedgep}{\bigwedge^{+}}
+\newcommand{\bigwedgen}{\bigwedge^{-}}
+\newcommand{\bigveep}{\bigvee^{+}}
+\newcommand{\bigveen}{\bigvee^{-}}
+
+\newcommand{\initk}{init_K}
+\newcommand{\initrk}{init_{\rel K}}
+\newcommand{\cutk}{cut_K}
+\newcommand{\storek}{store_K}
+\newcommand{\releasek}{release_K}
+\newcommand{\decidek}{decide_K}
+\newcommand{\wedgenk}{\wedgen_K}
+\newcommand{\veenk}{\veen_K}
+\newcommand{\wedgepk}{\wedgep_K}
+\newcommand{\veepk}{\veep_K}
+\newcommand{\boxk}{\square_K}
+\newcommand{\diamondk}{\lozenge_K}
+\newcommand{\implk}{{\impl}_K}
+\newcommand{\ntruek}{{\ntrue}_K}
+\newcommand{\nfalsek}{{\nfalse}_K}
+\newcommand{\ptruek}{{\ptrue}_K}
+\newcommand{\forallk}{\forall_K}
+\newcommand{\existsk}{\exists_K}
+\newcommand{\delpk}{\delayop^+_K}
+\newcommand{\delnk}{\delayop^-_K}
+
+\newcommand{\axiom}{G}
+\newcommand{\fv}[1]{FV(#1)}
+
+\newcommand{\grs}{GRS}
+\newcommand{\fgrs}{FGRS}
+\newcommand{\ursl}{URS_{L}}
+\newcommand{\ursr}{URS_{R}}
+
+\newcommand{\GThreeC}{G3c}
+\newcommand{\GThreeIM}{G3im}
+
+\newcommand{\mpi}{\mathsf{mp}}
+
+\newcommand{\sepp}{\mathrel\mid} \newcommand{\coloneq}{\mathrel{::=}}
+
+\newcommand{\DM}[1]{{\color[rgb]{0.23, 0.74, 0.23} 
+                     \smallskip\par\noindent\textbf{DM: #1}}\smallskip}
+\newcommand{\EP}[1]{\smallskip\par\noindent\red{#1}\smallskip}
+\newcommand{\bias}[1]{\delta(#1)}
+\newcommand{\biasn}[1]{\delta^-\kern -1pt(#1)}
+\newcommand{\biasp}[1]{\delta^+\kern -1pt(#1)}
+
+\newcommand{\adj}[2]{\hbox{\sl adj}~#1~#2}
+\newcommand{\pth}[2]{\hbox{\sl path}~#1~#2}
+
+\newcommand{\dcutf }{\hbox{\textsl{dcut}}_f \xspace}
+
+\newtheorem{goal}{Goal}
+
+
+
+
+
+\newcommand*\mdelim[3]{\mathopen{}\left#1#3\right#2\mathclose{}}
+
+\makeatletter
+\newcommand*{\cxs}{\@ifnextchar\i{\cxs@two}{\@ifnextchar\bgroup{\cxs@one}{}}}
+\newcommand*{\cxs@one}[1]{\def\cxs@{#1}\mdelim{\lbrace}{\rbrace}{\ifx\cxs@\empty\mkern 3mu\else #1\fi}\cxs@one@decor }
+\newcommand*{\cxs@two}[3]{\def\cxs@{#3}\mdelim{\lbrace\strut^{#2}}{\rbrace}{\ifx\cxs@\empty\mkern 3mu\else #3\fi}\cxs@one@decor }
+\def\cxs@one@decor{\@ifnextchar\dots{\@firstoftwo{\dotsm\cxs@one@decor}}{\cxs}}
+
+
+\def\cx@delete@right#1*{{#1}^{\star}\cx@continuation}
+\def\cx@delete@always#1{{#1}^{\ast}\cx@continuation}
+
+\def\cx@delete@star#1*{\@ifnextchar*{\cx@delete@right{#1}}{\cx@delete@always{#1}}}
+
+\newcommand*{\@makecontextual}[2]{
+	\newcommand*{#1}{\@ifnextchar*{\cx@delete@star{#2}}{#2\cx@continuation}}}
+\newcommand*{\cx@continuation}[1][]{_{#1}\cxs}
+
+\@makecontextual{\Ex}{}
+
+\@makecontextual{\Cx}{\mathcal{C}}
+\@makecontextual{\Dx}{\Delta}
+\@makecontextual{\Lx}{\Lambda}
+\@makecontextual{\Px}{\Pi}
+\@makecontextual{\Lxpr}{\Lambda'}
+\@makecontextual{\Rx}{\Gamma}
+\@makecontextual{\RxP}{\Gamma^{P}}
+\@makecontextual{\Rxs}{\Gamma^*}
+\@makecontextual{\Rxpr}{\Gamma'}
+\@makecontextual{\Dxb}{\Delta^{\rt{\bot}}}
+\@makecontextual{\Dxs}{\Delta^*}
+\@makecontextual{\Rxb}{\Gamma^{\rt{\bot}}}
+\@makecontextual{\Lxb}{\Lambda^{\rt{\bot}}}
+\@makecontextual{\Dxn}{\lf\Delta}
+\@makecontextual{\Dxt}{\rt\Delta}
+\@makecontextual{\Dxp}{\ct\Delta}
+\@makecontextual{\Rxp}{\Pi^{+}}
+\@makecontextual{\Rxm}{\Pi^{-}}
+\@makecontextual{\Dxm}{\Delta^{-}}
+\@makecontextual{\Ox}{\Omega}
+
+
+\newcommand*{\BR}{\@ifnextchar\i{\br@two}{\@ifnextchar\bgroup{\br@one}{}}}
+\newcommand*{\br@one}[1]{\def\br@{#1}\mdelim{\lbrack}{\rbrack}{\ifx\br@\empty\mkern 3mu\else #1\fi}}
+\newcommand*{\br@two}[3]{\def\br@{#3}\mdelim{\lbrack\strut^{#2}}{\rbrack}{\ifx\br@\empty\mkern 3mu\else #3\fi}}
+
+\newcommand*{\@makeoperator}[2]{
+	\newcommand*{#1}{\mathrm{#2}\mdelim{(}{)}
+	}
+}
+\@makeoperator{\fm}{et}
+
+\makeatother
+
+ \usepackage[utf8]{inputenc}
+\usepackage{pmboxdraw}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+\usepackage{amsmath,amssymb,trimclip,adjustbox}
+\usepackage{stackengine,amssymb,graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{xspace}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{modalops}[2020/12/20]
+
+\RequirePackage{mathtools,xspace}
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+
+\DeclareMathSymbol{\rightfishhook}{\mathrel}{symbolsC}{"4A}
+\DeclareMathSymbol{\leftfishhook}{\mathrel}{symbolsC}{"4B}
+\DeclareMathSymbol{\leftrightfishhook}{\mathrel}{symbolsC}{"4C}
+
+\DeclareMathSymbol{\boxrightarrow}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\boxleftarrow}{\mathrel}{symbolsC}{"81}
+\DeclareMathSymbol{\boxdotrightarrow}{\mathrel}{symbolsC}{"82}
+\DeclareMathSymbol{\boxdotleftarrow}{\mathrel}{symbolsC}{"83}
+\newcommand{\boxleftrightarrow}{\mathrlap{\boxleftarrow}\mspace{8.75mu}\boxrightarrow}
+\newcommand{\boxdotleftrightarrow}{\mathrlap{\boxdotleftarrow}\mspace{8.75mu}\boxdotrightarrow}
+
+\DeclareMathSymbol{\diamondrightarrow}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\diamondleftarrow}{\mathrel}{symbolsC}{"85}
+\DeclareMathSymbol{\diamonddotrightarrow}{\mathrel}{symbolsC}{"86}
+\DeclareMathSymbol{\diamonddotleftarrow}{\mathrel}{symbolsC}{"87}
+\newcommand{\diamondleftrightarrow}{\mathrlap{\diamondleftarrow}\mspace{6.5mu}\diamondrightarrow}
+\newcommand{\diamonddotleftrightarrow}{\mathrlap{\diamonddotleftarrow}\mspace{6.5mu}\diamonddotrightarrow}
+
+\DeclareMathSymbol{\boxRightarrow}{\mathrel}{symbolsC}{"88}
+\DeclareMathSymbol{\boxLeftarrow}{\mathrel}{symbolsC}{"89}
+\DeclareMathSymbol{\boxdotRightarrow}{\mathrel}{symbolsC}{"8A}
+\DeclareMathSymbol{\boxdotLeftarrow}{\mathrel}{symbolsC}{"8B}
+\newcommand{\boxLeftrightarrow}{\mathrlap{\boxLeftarrow}\mspace{8.75mu}\boxRightarrow}
+\newcommand{\boxdotLeftrightarrow}{\mathrlap{\boxdotLeftarrow}\mspace{8.75mu}\boxdotRightarrow}
+
+\DeclareMathSymbol{\diamondRightarrow}{\mathrel}{symbolsC}{"8C}
+\DeclareMathSymbol{\diamondLeftarrow}{\mathrel}{symbolsC}{"8D}
+\DeclareMathSymbol{\diamonddotRightarrow}{\mathrel}{symbolsC}{"8E}
+\DeclareMathSymbol{\diamonddotLeftarrow}{\mathrel}{symbolsC}{"8F}
+\newcommand{\diamondLeftrightarrow}{\mathrlap{\diamondLeftarrow}\mspace{6.5mu}\diamondRightarrow}
+\newcommand{\diamonddotLeftrightarrow}{\mathrlap{\diamonddotLeftarrow}\mspace{6.5mu}\diamonddotRightarrow}
+
+\DeclareMathSymbol{\circlerightarrow}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\circleleftarrow}{\mathrel}{symbolsC}{"92}
+\DeclareMathSymbol{\circledotrightarrow}{\mathrel}{symbolsC}{"93}
+\DeclareMathSymbol{\circledotleftarrow}{\mathrel}{symbolsC}{"94}
+\newcommand{\circleleftrightarrow}{\mathrlap{\circleleftarrow}\mspace{7.25mu}\circlerightarrow}
+\newcommand{\circledotleftrightarrow}{\mathrlap{\circledotleftarrow}\mspace{7.25mu}\circledotrightarrow}
+
+\DeclareFontFamily{U}  {MnSymbolC}{}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+    <-6>  MnSymbolC5
+   <6-7>  MnSymbolC6
+   <7-8>  MnSymbolC7
+   <8-9>  MnSymbolC8
+   <9-10> MnSymbolC9
+  <10-12> MnSymbolC10
+  <12->   MnSymbolC12}{}
+
+\DeclareFontShape{U}{MnSymbolC}{b}{n}{
+    <-6>  MnSymbolC-Bold5
+   <6-7>  MnSymbolC-Bold6
+   <7-8>  MnSymbolC-Bold7
+   <8-9>  MnSymbolC-Bold8
+   <9-10> MnSymbolC-Bold9
+  <10-12> MnSymbolC-Bold10
+  <12->   MnSymbolC-Bold12}{}
+
+\DeclareSymbolFont{MnSyC}         {U}  {MnSymbolC}{m}{n}
+\SetSymbolFont{MnSyC}       {bold}{U}  {MnSymbolC}{b}{n}
+
+\DeclareMathSymbol{\medtriangleright}{\mathrel}{MnSyC}{80}
+\DeclareMathSymbol{\medtriangleup}{\mathrel}{MnSyC}{81}
+\DeclareMathSymbol{\medtriangleleft}{\mathrel}{MnSyC}{82}
+\DeclareMathSymbol{\medtriangledown}{\mathrel}{MnSyC}{83}
+\DeclareMathSymbol{\medtrianglerightfilled}{\mathrel}{MnSyC}{200}
+\DeclareMathSymbol{\medtriangleupfilled}{\mathrel}{MnSyC}{201}
+\DeclareMathSymbol{\medtriangleleftfilled}{\mathrel}{MnSyC}{202}
+\DeclareMathSymbol{\medtriangledownfilled}{\mathrel}{MnSyC}{203}
+
+
+\DeclareMathSymbol{\medcircle}{\mathrel}{MnSyC}{90}
+\DeclareMathSymbol{\medcircleminus}{\mathrel}{MnSyC}{92}
+\DeclareMathSymbol{\medcirclevert}{\mathrel}{MnSyC}{93}
+\DeclareMathSymbol{\medcircleplus}{\mathrel}{MnSyC}{96}
+\DeclareMathSymbol{\medcircletimes}{\mathrel}{MnSyC}{97}
+\DeclareMathSymbol{\medcircledot}{\mathrel}{MnSyC}{98}
+\DeclareMathSymbol{\bullet}{\mathrel}{MnSyC}{89}
+\newcommand{\medcirclefilled}{\text{\raisebox{-0.2ex}{\scalebox{1.5}{\ensuremath{\bullet}\xspace}}}}
+
+\DeclareMathSymbol{\medsquare}{\mathrel}{MnSyC}{106}
+\DeclareMathSymbol{\medsquareminus}{\mathrel}{MnSyC}{112}
+\DeclareMathSymbol{\medsquarevert}{\mathrel}{MnSyC}{113}
+\DeclareMathSymbol{\medsquareplus}{\mathrel}{MnSyC}{116}
+\DeclareMathSymbol{\medsquaretimes}{\mathrel}{MnSyC}{117}
+\DeclareMathSymbol{\medsquaredot}{\mathrel}{MnSyC}{118}
+\DeclareMathSymbol{\medsquarefilled}{\mathrel}{MnSyC}{204}
+
+\DeclareMathSymbol{\meddiamond}{\mathrel}{MnSyC}{110}
+\DeclareMathSymbol{\meddiamondminus}{\mathrel}{MnSyC}{120}
+\DeclareMathSymbol{\meddiamondvert}{\mathrel}{MnSyC}{121}
+\DeclareMathSymbol{\meddiamondplus}{\mathrel}{MnSyC}{124}
+\DeclareMathSymbol{\meddiamondtimes}{\mathrel}{MnSyC}{125}
+\DeclareMathSymbol{\meddiamonddot}{\mathrel}{MnSyC}{126}
+\DeclareMathSymbol{\diamondfilled}{\mathrel}{MnSyC}{109}
+\newcommand{\meddiamondfilled}{\text{\raisebox{-0.2ex}{\scalebox{1.5}{\ensuremath{\diamondfilled}\xspace}}}}
+
+\DeclareMathSymbol{\medstar}{\mathrel}{MnSyC}{130}
+\DeclareMathSymbol{\medpentagram}{\mathrel}{MnSyC}{132}
+\DeclareMathSymbol{\filledlargestar}{\mathord}{MnSyC}{205}
+\newcommand{\medstarfilled}{\text{\scalebox{0.7}{\ensuremath{\filledlargestar}}}}
+\DeclareMathSymbol{\medstarofdavid}{\mathord}{MnSyC}{207}
+
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+
+\DeclareMathSymbol{\bigvarstar}{2}{mathb}{'17}
+
+\newcommand{\modalop}[1]{\mathop{#1}\nolimits} \newcommand{\modalbin}[1]{\mathbin{#1}}
+
+\newcommand{\boxmodal}[1]{\modalop{\text{\raisebox{-0.1ex}{\scalebox{1.3}{\ensuremath{#1}}}}}} \newcommand{\nec}{\boxmodal{\medsquare}}
+\newcommand{\necd}{\boxmodal{\medsquaredot}}
+\newcommand{\necf}{\boxmodal{\medsquarefilled}}
+\newcommand{\necm}{\boxmodal{\medsquareminus}}
+\newcommand{\necv}{\boxmodal{\medsquarevert}}
+\newcommand{\necp}{\boxmodal{\medsquareplus}}
+\newcommand{\necx}{\boxmodal{\medsquaretimes}}
+
+\newcommand{\diamodal}[1]{\modalop{\text{\scalebox{1.1}{\ensuremath{#1}}}}}
+\newcommand{\pos}{\diamodal{\meddiamond}}
+\newcommand{\posd}{\diamodal{\meddiamonddot}}
+\newcommand{\posf}{\diamodal{\meddiamondfilled}}
+\newcommand{\posm}{\diamodal{\meddiamondminus}}
+\newcommand{\posv}{\diamodal{\meddiamondvert}}
+\newcommand{\posp}{\diamodal{\meddiamondplus}}
+\newcommand{\posx}{\diamodal{\meddiamondtimes}}
+
+\newcommand{\necif}{\modalbin{\boxrightarrow}}
+\newcommand{\necfi}{\modalbin{\boxleftarrow}}
+\newcommand{\neciff}{\modalbin{\boxleftrightarrow}}
+\newcommand{\necIf}{\modalbin{\boxRightarrow}}
+\newcommand{\necFi}{\modalbin{\boxLeftarrow}}
+\newcommand{\necIff}{\modalbin{\boxLeftrightarrow}}
+
+\newcommand{\necdif}{\modalbin{\boxdotrightarrow}}
+\newcommand{\necdfi}{\modalbin{\boxdotleftarrow}}
+\newcommand{\necdiff}{\modalbin{\boxdotleftrightarrow}}
+\newcommand{\necdIf}{\modalbin{\boxdotRightarrow}}
+\newcommand{\necdFi}{\modalbin{\boxdotLeftarrow}}
+\newcommand{\necdIff}{\modalbin{\boxdotLeftrightarrow}}
+
+\newcommand{\posif}{\modalbin{\diamondrightarrow}}
+\newcommand{\posfi}{\modalbin{\diamondleftarrow}}
+\newcommand{\posiff}{\modalbin{\diamondleftrightarrow}}
+\newcommand{\posIf}{\modalbin{\diamondRightarrow}}
+\newcommand{\posFi}{\modalbin{\diamondLeftarrow}}
+\newcommand{\posIff}{\modalbin{\diamondLeftrightarrow}}
+
+\newcommand{\posdif}{\modalbin{\diamonddotrightarrow}}
+\newcommand{\posdfi}{\modalbin{\diamonddotleftarrow}}
+\newcommand{\posdiff}{\modalbin{\diamonddotleftrightarrow}}
+\newcommand{\posdIf}{\modalbin{\diamonddotRightarrow}}
+\newcommand{\posdFi}{\modalbin{\diamonddotLeftarrow}}
+\newcommand{\posdIff}{\modalbin{\diamonddotLeftrightarrow}}
+
+\newcommand{\deoif}{\modalbin{\circlerightarrow}}
+\newcommand{\deofi}{\modalbin{\circleleftarrow}}
+\newcommand{\deoiff}{\modalbin{\circleleftrightarrow}}
+
+\newcommand{\deodif}{\modalbin{\circledotrightarrow}}
+\newcommand{\deodfi}{\modalbin{\circledotleftarrow}}
+\newcommand{\deodiff}{\modalbin{\circledotleftrightarrow}}
+
+\let\strictif\relax
+\let\strictfi\relax
+\let\strictiff\relax
+\newcommand{\strictif}{\modalbin{\rightfishhook}}
+\newcommand{\strictfi}{\modalbin{\leftfishhook}}
+\newcommand{\strictiff}{\modalbin{\leftrightfishhook}}
+
+\newcommand{\deon}[1]{\modalop{#1}}
+\newcommand{\ought}{\deon{O}}
+\newcommand{\may}{\deon{M}}
+\newcommand{\permit}{\deon{P}}
+
+\newcommand{\circmodal}[1]{\modalop{\text{\raisebox{-0.05ex}{\scalebox{1.2}{\ensuremath{#1}}}}}}
+\newcommand{\deo}{\circmodal{\medcircle}}
+\newcommand{\deod}{\circmodal{\medcircledot}}
+\newcommand{\deof}{\circmodal{\medcirclefilled}}
+\newcommand{\deom}{\circmodal{\medcircleminus}}
+\newcommand{\deov}{\circmodal{\medcirclevert}}
+\newcommand{\deop}{\circmodal{\medcircleplus}}
+\newcommand{\deox}{\circmodal{\medcircletimes}}
+
+\let\smallstar\star
+\let\star\relax
+\newcommand{\star}{\modalop{\medstar}}
+\newcommand{\starf}{\modalop{\text{\raisebox{0.15ex}{\medstarfilled}}}}
+\newcommand{\stard}{\modalop{\text{\raisebox{0.15ex}{\scalebox{0.7}{\ensuremath{\medstarofdavid}}}}}}
+\let\medstarvar\bigvarstar \newcommand{\starv}{\modalop{\ensuremath{\medstarvar}}}
+\newcommand{\starp}{\modalop{\medpentagram}}
+
+\newcommand{\triupmodal}[1]{\modalop{\text{\raisebox{-0.2ex}{\scalebox{1.2}{\ensuremath{#1}}}}}}
+\newcommand{\tri}{\triupmodal{\medtriangleup}}
+\newcommand{\trif}{\triupmodal{\medtriangleupfilled}}
+
+\newcommand{\tridownmodal}[1]{\modalop{\text{\raisebox{0.15ex}{\scalebox{1.2}{\ensuremath{#1}}}}}}
+\newcommand{\trid}{\tridownmodal{\medtriangledown}}
+\newcommand{\tridf}{\tridownmodal{\medtriangledownfilled}}
+
+\newcommand{\trileftmodal}[1]{\modalop{\text{\raisebox{-0.05ex}{\scalebox{1.2}{\ensuremath{#1}}}}}}
+\newcommand{\tril}{\trileftmodal{\medtriangleleft}}
+\newcommand{\trilf}{\trileftmodal{\medtriangleleftfilled}}
+
+\newcommand{\trirightmodal}[1]{\modalop{\text{\raisebox{-0.05ex}{\scalebox{1.2}{\ensuremath{#1}}}}}}
+\newcommand{\trir}{\trirightmodal{\medtriangleright}}
+\newcommand{\trirf}{\trirightmodal{\medtrianglerightfilled}}\usepackage{xifthen}
+
+\usepackage{multicol}
+\usepackage{longtable}
+
+\usepackage{ebproof}	
+
+\usepackage{proof}
+
+\usepackage{comment} \usepackage{tabularx}
+
+\usepackage{cancel}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\usepackage{stackengine}
+
+\usepackage{cleveref}
+ \usepackage{tikz}
+\usetikzlibrary{positioning, quotes}
+\DeclareUnicodeCharacter{2714}{\textcolor{teal}{$\checkmark$}}
+\DeclareUnicodeCharacter{274C}{\textcolor{red}{$\times$}}
+
+\DeclareUnicodeCharacter{25C6}{$\dplus$}
+\DeclareUnicodeCharacter{25C7}{$\dminus$}
+\DeclareUnicodeCharacter{2228}{$\vee$}
+\DeclareUnicodeCharacter{2227}{$\wedge$}
+
+\title{Reasoning About Group Polarization:\\
+From Semantic Games to Sequent Systems}
+
+
+\author{
+Robert Freiman\inst{1}\thanks{Research supported by FWF project P 18563.}
+\and
+    Carlos Olarte\inst{2}\thanks{Carlos Olarte’s contribution to this work is partially supported by the SGR project
+PROMUEVA (BPIN 2021000100160) supervised by Minciencias}
+\and
+   Elaine Pimentel\inst{3}\thanks{Pimentel has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Sk\l odowska-Curie grant agreement Number 101007627.}
+\and
+    Christian G.\ Ferm\"uller\inst{1}\footnotemark[1]
+}
+
+
+\institute{
+  TU-Wien\\
+  \email{\{robert,chrisf\}@logic.at}
+\and
+     LIPN, CNRS UMR 7030, Universit\'{e} Sorbonne Paris Nord, Villetaneuse, France \\
+   \email{olarte@lipn.univ-paris13.fr}\\
+\and
+   Computer Science Department UCL, UK\\
+   \email{e.pimentel@ucl.ac.uk}
+ }
+
+
+
+\authorrunning{Freiman, Olarte, Pimentel and Ferm\"uller}
+
+\titlerunning{Reasoning About Group Polarization}
+
+\begin{document}
+
+\maketitle 
+
+\begin{abstract}
+    Group polarization, the phenomenon where individuals  become more
+extreme after interacting, has been gaining attention, especially with the rise of
+social media  shaping people's opinions. Recent
+interest has emerged in formal reasoning about group polarization using logical
+systems. In this paper we consider the modal logic PNL that captures the notion
+of agents agreeing or disagreeing on a given topic. Our contribution is to
+endow PNL with more effective formal reasoning techniques,  instead of
+reasoning about group polarization using  Hilbert axiomatic systems. First, we
+introduce a semantic game for (hybrid) extensions of PNL,  which supports a
+dynamic form of reasoning about concrete network models. We show how this
+semantic game leads to a provability game by systemically exploring the truth
+in all models. This leads to the first  cut-free  sequent systems
+for some variants of PNL. Using polarization of formulas, the proposed calculi
+can be modularly adapted to consider different frame properties of the
+underlying model. 
+
+ \end{abstract}
+
+
+
+\section{Introduction}\label{sec:intro} Group polarization -- where the
+opinions or beliefs of individuals within a group become more extreme or
+polarized after interacting with each other -- is rapidly gaining attraction,
+especially with the advent of social media platforms that have played a key role
+in the polarization of social, political, and democratic processes. This
+phenomenon is mainly studied in psychology
+\cite{myers1976group,isenberg1986group} and political philosophy
+\cite{sunstein1999law,sunstein2007group}. More recently, logicians have taken
+up the challenge of formal reasoning about group polarization. To this
+end, the modal logic \PNL~has been introduced in
+\cite{DBLP:journals/jolli/XiongA20}, which refers to Kripke frames with two
+types of disjoint and symmetric reachability relations. The individuals in a
+social network are identified with worlds of the frame, and they
+are related either as ``friends'' (positive) or as ``enemies''
+(negative), but not both at the same time. These relationships can
+be understood in different ways: Instead of genuine friendship or enduring
+enmity, they may simply signify agreement or disagreement on a particular
+issue. Polarization can actually be studied in a neutral, network
+theory framework. Within the heading of balance theory, the necessary and
+sufficient conditions for network stability corresponding to a fully polarized
+social network are investigated. For instance, the \emph{local balance} condition that prohibits triangles
+of nodes with two positive and one negative connection can be associated with
+the formation of clusters of pairwise positively connected nodes that are
+negatively connected to all nodes outside the cluster (see \Cref{ex:balance}). 
+
+We take inspiration from a work by Pedersen, Smets, and {\AA}gnotes
+\cite{DBLP:journals/logcom/PedersenSA21}, where \PNL~is extended in
+various ways to axiomatically characterize modally undefinable frame
+properties, including the disjointness of the two relations and collective
+connectedness. The main challenge is the axiomatization of the balance
+property, which requires an undecidable extension of \PNL~with nominals,
+ dynamic and hybrid operators. Our approach to logical reasoning about group
+polarization is also based on \PNL~but focuses on a different aspect
+of formal reasoning about the corresponding models. In a first step, we introduce a
+semantic game for (hybrid) extensions of \PNL.  The game characterizes
+the truth in a given network model by the interaction of two antagonistic
+players trying to verify or falsify a given formula. This provides an
+alternative to the standard definition of an evaluation function which supports
+a dynamic form of reasoning about concrete network models.
+
+We argue that effective formal reasoning with the relevant logics requires more
+than (just) Hilbert-style axiom systems. Rather, the automated search for
+proofs calls for Gentzen-style systems that respect (a variant of) the
+subformula property. In proof-theoretic terms, we are looking for a cut-free
+sequent system. Hence, our second step is to turn the semantic game over single
+models into a provability game, characterizing logical validity. To this end,
+we define disjunctive states for a game that is not restricted to a single
+model, but systematically explores the truth in all models. This method of
+transforming semantic games into proof games has been successfully applied to
+various many-valued logics
+\cite{DBLP:journals/sLogica/FermullerM09,DBLP:journals/lu/FermullerLP22} and
+recently also to hybrid logic \cite{DBLP:conf/wollic/Freiman21}. Here, it leads
+to the first Gentzen-style systems for variants of \PNL. Our system
+modularly adapts to different frame properties by faithfully capturing the rules for \emph{elementary} games 
+(game states  consisting of atomic formulas). 
+
+We finish the paper by showing how the
+global adding and local link change  modalities from
+\cite{DBLP:journals/logcom/PedersenSA21} can be defined in our framework.
+The reader can find in \cite{tool} a 
+prototypical implementation of the proposed games 
+using rewriting logic (RL) and Maude \cite{DBLP:journals/jlp/Meseguer12,DBLP:journals/jlap/DuranEEMMRT20}.
+This repository contains also some other examples.
+
+
+ 
+\section{A Game Semantics for PNL}
+\label{sec:pnl}
+
+
+
+In this section, we revisit the positive and negative relations logic
+\cite{DBLP:journals/jolli/XiongA20,DBLP:journals/logcom/PedersenSA21} with
+nominals (\PNL) and its standard Kripke semantics, proposing a novel semantic
+game  for \PNL~that we prove to be adequate. Paving the way for the provability
+game introduced in Section \ref{sec:dis-game}, we also propose an alternative
+presentation of \PNL~that internalizes the nominals.
+ 
+
+\subsection{Kripke semantics for \PNL}\label{sec:pnl-k}
+Let $\A=\{\ag,\b,\ldots\}$ be a non-empty set of agents,
+$\At=\{p,q,\ldots\}$ be a countable set of propositional variables, and $N=\{i,j,\ldots\}$ be a countable set of \emph{nominals}. The language of \PNL~is generated by the following grammar:
+$$\phi ::= p  \mid R^+(i,j)\mid R^-(i,j) \mid \neg \phi \mid \phi \wedge \phi \mid \phi \vee \phi \mid \dplus \phi \mid \dminus \phi\mid [A]\phi$$
+where $p\in \At$, and $i,j\in N$. 
+The propositional connectives $\top$, $\bot$, $\to$, and the (dual)
+ modalities $\bplus$ and $\bminus$ can be obtained in the usual way. 
+
+
+ Formulas of the form $p$, $R^+(i,j)$, or $R^-(i,j)$ are called \emph{elementary}.
+The proposition $R^+(i,j)$ states that $i$ is a \emph{friend} of (or, more generally, \emph{agrees} with)
+ $j$, and proposition $R^-(i,j)$ states that agent $i$ is an \emph{enemy} of (or \emph{disagrees} with) $j$. 
+The formula $\dplus \phi$ (resp. $\dminus \phi$) states that $\phi$ holds for  a friend (resp.\ an enemy). The global
+modality $[A]\phi$ states that $\phi$ holds for all the agents. 
+We use $R^\pm$ to denote either $R^+$ or $R^-$, and 
+ $\dplusminus$ to denote either $\dplus$ or $\dminus$. 
+
+
+
+
+
+A model $\mathbb{M}$ is a tuple $\langle \A,\R^+,\R^-,\V,\g\rangle$ where $\A$
+is a set (of agents), $\g:N\rightarrow \A$ is called \emph{denotation
+function}, $\R^+,\R^-\subseteq \A\times \A$, and $\V:\At\rightarrow
+\mathcal{P}(\A)$. A model is a \PNL-model if 
+$\R^+$ is reflexive,  and 
+$\R^+$ and $\R^-$ are both symmetric and 
+non-overlapping, i.e.,  for all $\ag,\b\in \A$, $(\ag,\b)\notin \R^+$ or $(\ag,\b)\notin \R^-$. 
+We say that a model $\M$ is \emph{collectively connected}, or a \cc-\PNL-model,
+if,  additionally,  for all $\ag,\b\in \A$,   $(\ag,\b)\in \R^+$ or $(\ag,\b)\in \R^-$.
+The class of all \PNL~models (\cc-\PNL-models) is denoted by  $\pnlmodels$ ($\ccpnlmodels$).
+
+The semantics of \PNL~is as follows:
+
+\noindent$
+    \small
+\begin{array}{lll l lll}
+    \mathbb{M},\ag \Vdash p &\text{ iff } \ag\in \V(p) \\
+    \mathbb{M},\ag \Vdash R^+(i,j) &\text{ iff } (\g(i),\g(j))\in \R^+ & \quad & 
+    \mathbb{M},\ag \Vdash R^-(i,j) &\text{ iff } (\g(i),\g(j))\in \R^-\\
+    \mathbb{M},\ag \Vdash \neg \phi &\text{ iff } \mathbb{M},\ag \not \Vdash \phi\\
+    \mathbb{M},\ag \Vdash \phi \wedge \psi &\text{ iff } \mathbb{M},\ag \Vdash \phi \text{ and } \mathbb{M},\ag \Vdash \psi &\quad&
+    \mathbb{M},\ag \Vdash \phi \vee \psi &\text{ iff } \mathbb{M},\ag \Vdash \phi \text{ or } \mathbb{M},\ag \Vdash \psi\\
+\mathbb{M},\ag \Vdash \dplus\phi & \multicolumn{6}{l}{\text{ iff there is } \b\in \A \text{ such that } (\ag,\b)\in \R^+ \text{ and } \mathbb{M},\b \Vdash \phi}\\
+    \mathbb{M},\ag \Vdash \dminus\phi &\multicolumn{6}{l}{\text{ iff there is } \b\in \A \text{ such that } (\ag,\b)\in \R^- \text{ and } \mathbb{M},\b \Vdash \phi}\\
+    \mathbb{M},\ag \Vdash [A]\phi &\multicolumn{6}{l}{\text{ iff } \mathbb{M},\b \Vdash \phi \text{ for all } \b\in \A}
+\end{array}
+$
+
+
+
+A formula $\phi$ is true over $\mathbb{M}$, written $\mathbb{M}\Vdash \phi$ iff
+$\mathbb{M},\ag\Vdash \phi$, for all agent $\ag\in\A$. For a set of formulas
+$\Phi$, we write $\mathbb{M}\models \Phi$ iff $\mathbb{M}\Vdash \Phi$ for all $\phi
+\in \Phi$. A formula $\phi$ is ((\cc-)\PNL-) valid iff $\mathbb{M}\Vdash\phi$ for every
+((\cc-)\PNL)-model $\mathbb{M}$. For a class of models $\mathfrak{M}$, we write
+$\Phi\models_{\mathfrak{M}} \phi$ iff $\mathbb{M}\Vdash \phi$ for every model
+$\mathbb{M}\in \mathfrak{M}$ with $\mathbb{M}\models \Phi$. 
+
+
+\begin{comment}
+We define the following formulas
+\begin{align*}
+    \mu &= \forall i,j.(\neg R^+(i,j)\vee\neg R^-(i,j))\\
+    \sigma^+ &= \forall i,j.(R^+(i,j)\rightarrow R^+(j,i))\\
+    \sigma^- &= \forall i,j.(R^-(i,j)\rightarrow R^-(j,i))\\
+    \rho^+ &= \forall i.R^+(i,i)
+\end{align*}
+
+\begin{lemma}
+For every set of formulas $T\cup \{\phi\}$, we have
+$$T\models_{\mathfrak{PNL}}\phi \iff T,\mu,\sigma^+,\sigma^-,\rho^+\models \phi.$$
+\end{lemma}
+\end{comment}
+
+A model is called \emph{named} if its denotation function is onto, i.e., every
+agent has a name. Let $\namedmodels$ be the class of named models. The following result is immediate. 
+
+\begin{lemma}
+Let $\Phi\cup\{\phi\}$ be a finite set of formulas. Then
+$\Phi\Vdash_{\pnlmodels}\phi \iff \Phi\Vdash_{\pnlmodels\cap \namedmodels}\phi$ and $\Phi\Vdash_{\ccpnlmodels}\phi \iff \Phi\Vdash_{\ccpnlmodels\cap \namedmodels}\phi$
+\end{lemma}
+
+Using this lemma, we give an alternative presentation of the semantics 
+where we explicitly test, using elementary formulas,  the existence of 
+$R^{\pm}$-successors.
+Let $\ag=\g(i)$. Then, we define: 
+
+\noindent$
+\small\begin{array}{lll}
+    \mathbb{M},\ag \Vdash \dplus\phi &\text{ iff there is } j\in N \text{ such that } \mathbb{M},\g(j)\Vdash R^+(i,j) \text{ and }  \mathbb{M},\g(j)\Vdash \phi\\
+    \mathbb{M},\ag \Vdash \dminus\phi &\text{ iff there is } j\in N \text{ such that } \mathbb{M},\g(j)\Vdash R^-(i,j)\text{ and }  \mathbb{M},\g(j)\Vdash \phi \\
+    \mathbb{M}\Vdash [A]\phi &\text{ iff } \mathbb{M},\g(j)\Vdash \phi, \text{ for all } j\in N, 
+\end{array}
+$
+
+
+\begin{remark}\label{rem:surjg}
+At a later point, we need the following observation: if $\g$ is surjective, even
+if restricted to $N'\subseteq N$, then  $N$ in the above truth conditions
+can equivalently be replaced by $N'$. \end{remark}
+
+ 
+
+\subsection{Semantic Game}\label{sec:game-semantics}
+The proposed \emph{semantic game} is played over a \PNL-model $\M=(\A,\R,\V,\g)$ by two
+players, \Me and \You, who argue about the truth of a formula $\phi$ at an
+agent $\ag$. At each stage of the game, one player acts as \emph{proponent}, while the
+other acts as \emph{opponent} of the claim that  $\phi$ is true at 
+$\ag$. We represent the situation where \I am the proponent (and \You are the
+opponent) by the \emph{game state} $\mathbf{P}, \ag:\phi$, and the situation
+where \I am the opponent (and \You are the proponent) by $\mathbf{O},
+\ag:\phi$. We call a game state \emph{elementary} if its involved formula is
+elementary. For a game state $g$, we denote the game starting at $g$ over the
+model $\M$ by $\mathbf{G}_\M(g)$.
+
+The game proceeds by reducing the involved formula $\phi$ to an elementary formula. The following rules of the game describe the possible choices of the players depending on the current game state,
+when playing a game over the model $\M$.
+
+\begin{definition}
+    Let $\M$ be a \PNL-model. The semantic game is defined by the following rules. 
+
+\begin{description}
+\item[$(\mathbf{P}_\wedge)$] At $\mathbf{P}, \ag: \phi_1\wedge \phi_2$, \You
+    choose between  $\mathbf{P},\ag:\phi_1$ and 
+    $\mathbf{P},\ag:\phi_2$ to continue the game. 
+\item[$(\mathbf{O}_\wedge)$] \vspace{-2mm}At $\mathbf{O}, \ag:
+    \phi_1\wedge \phi_2$, \I choose between $\mathbf{O},\ag:\phi_1$
+    and $\mathbf{O},\ag:\phi_2$ to continue the game. 
+
+\item[$(\mathbf{P}_\vee)$] At $\mathbf{P}, \ag: \phi_1\vee \phi_2$, \I choose between $\mathbf{P},\ag:\phi_1$ and $\mathbf{P},\ag:\phi_2$ to continue the game
+\item[$(\mathbf{O}_\vee)$] \vspace{-2mm}At $\mathbf{O}, \ag: \phi_1\vee \phi_2$, \You choose between $\mathbf{O},\ag:\phi_1$ and $\mathbf{O},\ag:\phi_2$ to continue the game.
+
+\item[$(\mathbf{P}_\neg)$] At $\mathbf{P}, \ag: \neg \phi$, the game continues with $\mathbf{O}, \ag: \phi$.
+\item[$(\mathbf{O}_\neg)$] \vspace{-2mm}At $\mathbf{O}, \ag: \neg \phi$, the game continues with $\mathbf{P},\ag: \phi$.
+
+\item[$(\mathbf{P}_{\Diamond^\pm})$] At $\mathbf{P}, \ag: \Diamond^\pm \phi$, \You win if there are no $\R^\pm$-successors of $\ag$. Otherwise, \I choose an $\R^\pm$-successor $\b$ and the game continues with $\mathbf{P},\b:\phi$.
+\item[$(\mathbf{O}_{\Diamond^\pm})$] \vspace{-2mm} At $\mathbf{O},\ag: \Diamond^\pm \phi$, \I win if there are no $\R^\pm$-successors of $\ag$. Otherwise, \You choose an $\R^\pm$-successor $\b$ and the game continues with $\mathbf{O},\b:\phi$.
+
+
+
+\item[$(\mathbf{P}_{[A]})$] At $\mathbf{P},\ag :  [A]\phi$, \You choose an agent $\b$ and the game continues with $\mathbf{P},\b:\phi$.
+\item[$(\mathbf{O}_{[A]})$] \vspace{-2mm}At $\mathbf{O},\ag :  [A]\phi$, \I choose an agent $\b$ and the game continues with $\mathbf{O},\b:\phi$.
+
+\item[$(\mathbf{P}_{el})$] Let $\phi_{e}$ be an elementary formula. \I win and \You lose at $\mathbf{P},\ag:\phi_{e}$ iff $~\mathbb{M},\ag \models \phi_{e}$. Otherwise, \You win and \I lose.
+\item[$(\mathbf{O}_{el})$] \vspace{-2mm}At $\mathbf{O},\ag : \phi_{e}$, \I win and \You lose iff $\mathbb{M},\ag\not \models \phi_{e}$. Otherwise, \You win and \I lose.
+\end{description}
+\end{definition}
+
+In general, every two-person, zero-sum, win-lose game is usually represented by
+a \emph{game tree}, i.e., a labeled tree whose nodes are game states. In our
+case, the root of the game tree representing the game
+$\mathbf{G}_\mathbb{M}(g)$ is $g$. The children of each node in the game tree
+are exactly the possible choices of the corresponding player. For instance, if
+$h=\mathbf{P}, \ag: \phi_1\wedge \phi_2$ appears in the game tree, then its
+children are $\mathbf{P},\ag:\phi_1$ and $\mathbf{P},\ag:\phi_2$. Each node in
+the tree is labeled either ``I'', or ``Y'', depending on which player is to
+move in the corresponding game state.\footnote{For technical reasons, we label
+the nodes corresponding to $\mathbf{P}, \ag: \neg \phi$ and $\mathbf{O}, \ag:
+\neg \phi$ with ``I'', even though there is no choice involved in these game
+states.} For instance, the node corresponding to the game state $h$ above is
+``Y'', since it is \Your choice in $\mathbf{P}:\phi_1\wedge \phi_2$. The leaves
+of the tree receive the label of the winning player. 
+ A \emph{run} of the game is a maximal path through the game tree.
+
+ \begin{example}\label{ex:balance}
+    Consider the  following axiom for local balance \cite{DBLP:journals/jolli/XiongA20,DBLP:journals/logcom/PedersenSA21}:
+    \begin{equation}\tag{4B}
+        ((\dplus\dplus p \vee \dminus\dminus p)\to \dplus p) \wedge
+        ((\dplus \dminus p \vee \dminus\dplus p)\to \dminus p) \qquad
+    \end{equation}
+    $4B$ captures the idea that 
+``the enemy of my enemy is my friend'',  ``the friend
+of my enemy is my enemy'',  and ``the friend of my friend is my friend''
+\footnote{A collectively connected network where $[A]4B$ holds is a polarized network, 
+where agents can be divided into two opposing groups \cite{balance}.
+Notions such a weak-balance \cite{weak-balance} can be also formalized in \PNL~\cite{DBLP:journals/logcom/PedersenSA21}.}.
+    $\I$ have a winning strategy for the game $\bfP,\ag : 4B$
+    on $\bbM_1$ 
+    while $\You$ have a winning strategy for the same game on $\bbM_2$ where: 
+
+    \begin{tabularx}{.6\textwidth}{ X X X X X }
+        $\bbM_1=$ & \parbox[c]{\hsize}{\includegraphics{./img/fig2}} & \qquad &
+        $\bbM_2=$ & \parbox[c]{\hsize}{\includegraphics{./img/fig1}} 
+    \end{tabularx}
+
+    For $\bbM_1$, in the first conjunct, \I pick ($\bfP_\vee$)
+    $\dplus p$ and then $\b$ in ($\bfP_{\dplus}$); for the second conjunct,
+    \I pick the first disjunction in $F=(\dplus \dminus p \vee \dminus\dplus p)\to \dminus p)$
+    where, in any of \Your choices ($\bfP_{\neg}$ followed by $\bfO_{\vee}$ and 
+    $\bfO_{\Diamond^{\pm}}$), \I  win all the elementary states. 
+    For $\bbM_2$, \I do not have a winning strategy 
+    for the  second conjunct: \I can neither win $\dminus p$ (no $\R^{-}$ successor), 
+    nor the first disjunct in  $F$ above since, after $\bfP_{\neg}$, 
+    \You choose  ($\bfO_{\vee}$) 
+    $\dplus\dminus p$ and select $\c$ and then $\b$ ($\bfO_{\Diamond^{\pm}}$)
+    where $p$ holds and \You win. See the complete game in our tool \cite{tool} and \Cref{ap:examples}.
+\end{example}
+
+The following proposition follows from the fact that every rule
+in the game decomposes the involved formula in subformulas. 
+\begin{proposition}\label{prop:finiteheight}
+For all models $\M$ and game states $g$, the game tree of $\mathbf{G}_\M(g)$ is of finite height.
+\end{proposition}
+
+\noindent An immediate consequence of this fact is that every semantic game $\mathbf{G}_\M(g)$ is \emph{determined}, i.e., exactly one of the two players has a winning strategy.
+
+
+
+
+
+
+\subsection{Strategies and adequacy}\label{sec:adequacy}
+Now we are ready to define winning strategies and prove the main result of this section:
+the adequacy of the proposed game semantics with respect to the Kripke semantics for \PNL.
+
+\begin{definition}
+    A \emph{strategy} for \Me in the game $\mathbf{G}_\M(g)$ is a subtree $\sigma$ of the associated game tree such that: 
+ \textbf{(1)} $g\in \sigma$,
+ \textbf{(2)} if $h\in \sigma$ is a node labeled ``Y'', then all children of $h$ are in $\sigma$,
+ \textbf{(3)} if $h\in \sigma$ is a node labeled ``I'', then exactly one child of $h$ is in $\sigma$.
+The strategy $\sigma$ is called \emph{winning} if all leaves in the tree $\sigma$ are labeled ``I''. (Winning) strategies for \You are defined dually.
+\end{definition}
+
+Note that every combination of strategies from \Me and \You defines a unique run of the game. Alternatively, we can define a strategy $\sigma$ for \Me to be winning iff the run resulting from $\sigma$ and a strategy for \You ends in a winning game state for \Me.
+
+We can now show the adequacy of the semantic game, \ie, that the existence of winning strategies for Me in a game and truth in a model coincide (proof in Appendix~\ref{app:proofs}).
+\begin{theorem}\label{th:adequacy}
+Let $\M$ be a \PNL-model, $\ag$ an agent, and $\phi$ a formula.
+\begin{enumerate}
+\item \I have a winning strategy for $\mathbf{G}_\M(\mathbf{P}, \ag: \phi)$ iff $\M,\ag \models \phi$. 
+\item \You have a winning strategy for $\mathbf{G}_{\M}(\mathbf{P}, \ag: \phi)$ iff $\M,\ag\not \models \phi$.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Internalizing nominals}\label{sec:intern}
+
+Remember that in a named model $\M$, every agent $\ag$ has a name $i$, i.e. there exists $i\in N$ s.t. $\g(i)=\ag$. Therefore, for $\mathbf{Q} \in \{\mathbf{P},\mathbf{O}\}$, it is unambiguous if we write $\mathbf{Q}, i:\phi$ for the game state $\mathbf{Q},\ag : \phi$. The fact that $\mathbb{M} \models R^{\pm}(i,j)$ iff $(\g(i),\g(j))\in \R^{\pm}$ gives us the following equivalent formulations of the rules for $\dplus$, $\dminus$ and $[A]$:
+
+\begin{description}
+    \item[$(\mathbf{P}_{\Diamond^\pm})$] At $\mathbf{P}, i: \Diamond^\pm \phi$, \I choose a nominal $j$, and \You decide whether the game ends in the state $\mathbf{P},\_:R^\pm(i,j)$ or continues with $\mathbf{P},j: \phi$.\footnote{The outcome of the game state $\mathbf{Q},k:R^{\pm}(i,j)$ is independent of $k$ (it only depends on the underlying model $\M$). Hence, we write 
+        $\mathbf{P},\_:R^\pm(i,j)$ instead of $\mathbf{P},k:R^\pm(i,j)$.\label{foot:R}}
+\item[$(\mathbf{O}_{\Diamond^\pm})$] \vspace{-2mm} At $\mathbf{O},i: \Diamond^\pm \phi$, \You choose  $j$, and \I choose between $\mathbf{O},\_:R^\pm(i,j)$ and $\mathbf{O},j:\phi$.
+\item[$(\mathbf{P}_{[A]})$] At $\mathbf{P},i: [A]\phi$, \You choose a nominal $j$ and the game continues with $\mathbf{P},j:\phi$.
+\item[$(\mathbf{O}_{[A]})$] \vspace{-2mm} At $\mathbf{O},i: [A]\phi$, \I choose a nominal $j$, and the game continues with $\mathbf{O},j: \phi$.
+\end{description}
+
+ Following Remark~\ref{rem:surjg}, we can restrict branching over a subset $N'$
+ of nominals if $g$'s restriction to  $N'$ is surjective. For future reference,
+ let us formulate this observation precisely. We denote the game over
+ $\mathbb{M}$ starting at the game state $g$, where branching is over
+ $N'\subseteq N$ by $\mathbf{G}^{N'}_\M(g)$. We call a model $N'$-named if
+ $\g:N'\rightarrow \A$ is surjective. We say that two games $\mathbf{G}_1$ and
+ $\mathbf{G}_2$ are \emph{strategically equivalent}, notation $\mathbf{G}_1\cong
+ \mathbf{G}_2$, iff \I have a winning strategy in both games or in none of the
+ two. We have the following:
+
+\begin{proposition}
+    \label{prop:surjg}
+Let $\M$ be $N'$-named, let $g=\mathbf{Q},\ag:\phi$ for some $\mathbf{Q}\in
+\{\mathbf{P},\mathbf{O}\}$, some agent $\ag$ and formula $\phi$, and let
+$\ag=\g(i)$. Then $\mathbf{G}_\M(\mathbf{Q},\ag:\phi)\cong
+\mathbf{G}^{N'}_\M(\mathbf{Q},i:\phi)$. 
+\end{proposition}
+
+ 
+
+\section{The Disjunctive Game}\label{sec:dis-game}
+
+In this section, we lift the semantic game to two different \emph{disjunctive
+games}, one for \PNL-validity and one for \cc-\PNL-validity, which differ only in
+their respective winning conditions. We prove that the obtained games are
+adequate and can thus be regarded as \emph{provability games} for their
+corresponding logics. The main crucial fact is that the rules of the semantic
+game are independent of the underlying model, except for elementary game
+states. Using this fact, and
+identifying certain conditions on winning strategies, this disjunctive game
+will be the foundation for the sequent calculi proposed in Section \ref{sec:proofs}. 
+
+\subsection{Playing on all models}\label{sec:dgame}
+The disjunctive game
+$\mathbf{DG}(\mathbf{P},i:\phi)$ can be thought of as \Me and \You playing all
+semantic games $\mathbf{G}(\mathbf{P},i:\phi)$ over all \PNL-models $\M$
+simultaneously. We point out that  the rules of the semantic game do not depend on the structure
+of $\M$ but merely on $\phi$. Truth degrees are only needed at the atomic level
+to determine who wins the particular run of the game. This allows us to require
+players to play ``blindly'', i.e., without explicitly referencing  a model $\M$.
+Clearly, if \I have a winning strategy in such a game, then \I can win in
+$\mathbf{G}_\M(\mathbf{P},i:\phi)$, for every $\M$, making this strategy an
+adequate witness of logical validity. 
+
+Defining such a validity game is not straightforward, since the simplest case of disjunction
+is already problematic.  Let us consider 
+the game $\mathbf{P},i: p \vee \neg p$.
+Clearly, \I have a winning strategy in the semantic game over every model.
+However, there is no uniform way of making a good choice in the first turn: No
+matter whether \I choose $\mathbf{P},i: p$ or $\mathbf{P},i: \neg p$, there are
+still models where \You win the game eventually. To compensate for this, we
+allow \emph{Myself} to create ``backup copies'' and \emph{duplicate} game
+states. Formally, disjunctive game states are finite multisets of the game states
+defined in Section \ref{sec:game-semantics}. We prefer to write $g_1 \bigvee ... \bigvee g_n$ for
+the disjunctive game state $\{g_1,...,g_n\}$, but keep the convenient notation
+$g\in D$ if $g$ is in the  multiset $D$. We write $D_1 \bigvee D_2$ for the
+multiset sum $D_1+D_2$ and $D\bigvee g$ for $D+\{g\}$. A disjunctive state is
+called \emph{elementary} if all its game states are elementary.
+We use $\mathbf{DG}(D)$ to denote the disjunctive game starting at $D$,
+and we define the \cc-disjunctive game $\mathbf{DG}^\cc(D)$ which is played
+over all $\cc$-$\PNL$-models. It differs from $\mathbf{DG}(D)$ only in its
+winning conditions (see below).
+
+In our running example, \I duplicate the game state in the first round and the
+game continues with the \emph{disjunctive state} $\mathbf{P},i: p \vee \neg
+p\bigvee \mathbf{P},i: p \vee \neg p$. Now \I move to $\mathbf{P},i: p$ in the
+first subgame and to $\mathbf{P},i:\neg p$ in the second. After a role switch
+in the second subgame, the final state is $\mathbf{P},i: p \bigvee
+\mathbf{O},i: p$, where \I win regardless of the underlying model.
+
+The following \emph{winning condition} reflects the fact that \My strategy for
+the disjunctive game $\mathbf{DG}(\mathbf{P},i:p \vee \neg p)$ was successful.
+\begin{definition}\label{def:win}
+Let $D^{el}$ denote the disjunctive state consisting of the elementary game
+states of $D$. \I win and \You lose at $D$ if for every \PNL-model there is
+a game state in $D^{el}$ where \I win the corresponding semantic game. In the \cc-disjunctive game, \I win and \You lose if for every \cc-\PNL-model there is
+a game state in $D^{el}$ where \I win the corresponding semantic game.
+\end{definition}
+
+In the disjunctive game, \I additionally take the
+role of a \emph{scheduler}, deciding which game  is to be played next. We
+signal the chosen game state by underlining it as in $\underline{g}$.
+ 
+\begin{definition}[Disjunctive game]\label{def:dg}
+The rules of the disjunctive game are: 
+\begin{description}
+\item[(Dupl)] If no state in $D$ is underlined,
+\I can choose a non-elementary $g\in D$ and the game continues with $D\bigvee g$.
+\item[(Sched)] If no state in $D=D'\bigvee g$ is underlined,
+and $g$ is non-elementary, 
+    \I can choose to continue the game  with $D'\bigvee \underline{g}$.
+\item[(Move)] If $D=D'\bigvee \underline{g}$ then the player who is to move in
+    the semantic game $\mathbf{G}(g)$ at $g$ makes a legal move to the game
+    state $g'$ and the game continues with $D' \bigvee g'$. For example, if $g$
+    is $\mathbf{P},i:\phi_1 \wedge \phi_2$, then \You choose a $k\in \{1,2\}$
+    and the game continues with $D'\bigvee \mathbf{P},i:\phi_k$. 
+\item[(End)]
+    The game ends if there are no non-elementary game states left in $D$, or if
+    no game state is underlined and \I win according to
+    Definition~\ref{def:win}. Otherwise, \I must move according to
+    \textbf{(Dupl)} or \textbf{(Sched)}.
+
+\end{description}
+
+\noindent Infinite runs, and runs that end in elementary disjunctive states where \I do not win according to Definition~\ref{def:win}, are winning for \You and losing for \Me.  \textbf{(Dupl)} is referred to as the \emph{duplication rule} and \textbf{(Sched)} as the \emph{scheduling}, or \emph{underlining rule}.
+\end{definition}
+\noindent It follows from the Gale-Stewart Theorem that every disjunctive game $\mathbf{DG}(D)$ and every \cc-disjunctive game $\mathbf{DG}^\cc(D)$ is determined.
+
+\subsection{Adequacy and best strategies}\label{sec:adq-D}
+Now we state the main result of this section, whose proof 
+is split into two propositions:  The left-to-right direction in Proposition \ref{disjY} and 
+ the right-to-left direction in Proposition \ref{prop:adq-D}.
+
+\begin{theorem}
+\label{thm:adeq} \I have a winning strategy in $\mathbf{DG}(D)$ (in $\mathbf{DG}^\cc(D)$) iff for every (\cc-) \PNL-model $\mathbb{M}$, there is some $g\in D$ such that \I have a winning strategy in $\mathbf{G}_\mathbb{M}(g)$.
+\end{theorem}
+
+\begin{corollary}
+The formula $\phi$ is (\cc-) \PNL-valid iff \I have a winning strategy in $\mathbf{DG}(\mathbf{P},i:[A]\phi)$ (in $\mathbf{DG}^\cc(\mathbf{P},i:[A]\phi)$).
+\end{corollary}
+
+\begin{proposition}\label{disjY}
+Let $\M$ be a (\cc-) \PNL-model. If \I have a winning strategy in $\mathbf{DG}(D)$ (in $(\mathbf{DG}^\cc(D)$), then there is some $g\in D$ such that \I have a winning strategy in $\mathbf{G}_\M(g)$.
+\end{proposition}
+
+\begin{proof}
+Let $\sigma$ be \My winning strategy in $\mathbf{DG}(D)$. We show the following claim by bottom-up tree induction on $\sigma$: For every $H\in \sigma$ there is some $g\in H$ and a winning strategy $\sigma_H$ for \Me in $\mathbf{G}_\M(g)$. The case for the root, $H=D$, gives the desired result.
+
+If $H$ is a leaf, then, since $\sigma$ is winning, there is an elementary $h\in H$ such that \I win the semantic game at $h$ over $\M$. In this case, $\sigma_H$ consists of the single leaf $h$.
+
+If \You move in $H$, then it must be of the form $H'\bigvee \underline{h}$,
+where $h$ is labeled ``Y'' in the semantic game. By  definition of strategy,
+all successors of $H$ must be in $\sigma$, and they are of the form $H'\bigvee
+h'$, where $h'$ ranges over all possible game states immediately after \Your
+choice at $h$. By inductive hypothesis, for every $h'$,
+$\sigma_{H'\bigvee h'}$ is a winning strategy for some $g\in H' \bigvee h'$. If
+for some $h'$, $\sigma_{H'\bigvee h'}$ is a winning strategy for some $g\in
+H'$, then we can set $\sigma_H=\sigma_{H'\bigvee h'}$. Otherwise, all
+$\sigma_{H'\bigvee h'}$ is a winning strategy for $h'$. Hence, we can connect
+the roots of all these trees to the new common root $h$ to obtain a winning
+strategy for \Me in $\mathbf{G}_\M(h)$.
+
+If \I move in $H$ according to the rules 
+\textbf{(Dupl)} or \textbf{(Sched)}, then the resulting disjunctive state is still $H$ (except maybe some game state could be underlined). Hence, the claim follows from the inductive hypothesis.
+
+If \I move in $H$ according to \textbf{(Move)}, then $H=H'\bigvee
+\underline{h}$, and the unique child of $H$ in $\sigma$ is $H'\bigvee h'$,
+where $h'$ is a possible game state after \My move in the semantic game at $h$.
+By the inductive hypothesis, $\sigma_{H'\bigvee h'}$ is a winning strategy for
+\Me in $\mathbf{G}_M(g)$, for some $g\in H'\bigvee h'$. If $g\in H'$, we
+proceed as above. If $g=h'$, then we can append the root of $\sigma_{H' \bigvee
+h'}$ to $h$ to obtain a winning strategy for \Me in $\mathbf{G}_\M(h)$.
+\end{proof}
+
+\paragraph{My best way to play.}
+We will now describe a strategy $\sigma$ for \Me for the game
+$\mathbf{DG}(D_0)$. This strategy is -- in a way -- the optimal way to play the
+disjunctive game. Intuitively $\sigma$ exploits all of \My possible choices
+without sacrificing \My winning chances. Consequently, $\sigma$ is winning iff
+\I can win the game at all\footnote{We will not prove this claim, but it
+follows from Proposition~\ref{disjY} by classical reasoning.}.
+
+Let us fix an enumeration of pairs $(g,h)$ of game states of the semantic game such that every pair appears in this enumeration infinitely often. Let us denote by $\#(g,h)$ the number of the pair $(g,h)$ under this enumeration. Throughout the game, let us keep track of the number of execution steps $n$ of $\sigma$. At $D_0$, $n=0$. The strategy $\sigma$ is as follows:
+
+\begin{enumerate}
+    \item[(C1)] If in the current disjunctive state $D$, $D^{el}$ is winning, \I end the game.
+    \item[(C2)] Otherwise, let $n=\#(g,h)$. If $D=D'\bigvee g$, according to the label of  $g$ we have: 
+    \\
+    \noindent(a)  ``Y'' (otherwise, skip), then underline $g$ and \You make \Your move. \\
+    \noindent (b)  ``I'' and $h$ is a child of $g$ in the evaluation game (otherwise, skip), then duplicate $g$, schedule a copy of $g$, and go to $h$ in that copy, i.e., the new disjunctive state is $D'\bigvee g \bigvee h$.
+\item[(C3)] Increase $n$ by 1 and go to 1.
+\end{enumerate}
+
+To put it into words: until the game reaches a winning disjunctive state, \My
+strategy is to play in a way such that \I always duplicate a state, and then play
+by exhausting all possible moves in that state. 
+
+Let $\pi$ be the run of the game
+$\mathbf{DG}(D_0)$ resulting from \You playing according to \Your winning
+strategy and \Me playing \My best way $\sigma$. We say that a game state $g$
+\emph{appears along} $\pi$, and write $g\in \pi$, if it occurs in a disjunctive
+state in $\pi$. We say that $g$ \emph{disappears}, if $g\in \pi_n$ and for some
+$m> n$, $g\notin \pi_m$. The following holds (proof in Appendix~\ref{app:proofs}).
+
+\begin{lemma}\label{lem:closure}
+Let $\pi$ be as above. Then:\\
+1) Let $g\in \pi$ be a non-elementary game state labelled ``Y'' in the semantic game. Then at least one successor of $g$ appears along $\pi$.\\
+2) Let $g\in \pi$ be a non-elementary game state labeled ``I'' in the semantic game. Then all successors of $g$ appear along $\pi$.
+\end{lemma}
+
+
+
+We can now show that $\pi$ gives rise to a model $\M_\pi$ with the property that \You have a winning strategy for every $g$ appearing along $\pi$. 
+
+\begin{definition}\label{emepsilon}
+Let $\mathcal{E}$ be a  set of elementary game states. Let $\M_\mathcal{E}$ be the following named model:
+\begin{itemize}
+\item Agents $\A$: an agent $\ag_i$  for each nominal $i$ appearing in $\mathcal{E}$.
+\item Accessibility relations: $\R^-_\mathcal{E}$ is the least symmetric relation such that $\ag_i\R_\mathcal{E}^- \ag_j$ whenever (i)\textsuperscript{+} $\mathbf{O}, \_: R^- (i,j)$ is in $\mathcal{E}$. $\R^+_\mathcal{E}$ is the least reflexive symmetric relation such that (i)\textsuperscript{-} $\ag_i\R_\mathcal{E}^+ \ag_j$ whenever $\mathbf{O}, \_: R^+ (i,j)$ is in $\mathcal{E}$.
+\item Valuation function $\V_\mathcal{E}$: $ \ag_i \in \V_\mathcal{E}(p)$ iff the state $\mathbf{O}, i: p$ is in $\mathcal{E}$.
+\item Assignment $\g_\mathcal{E}$: $\g_\mathcal{E}(i)=\ag_i$.
+\end{itemize}
+The model $\M_\mathcal{E}^\cc$ is as $\M_\mathcal{E}$, except  $\R^+$ also has (ii)\textsuperscript{+} $\ag_i\R^+\ag_j$ if $\mathbf{P},\_:R^-(i,j)\in \mathcal{E}$ or if (iii)\textsuperscript{+} no $\mathbf{Q},\_:R^\pm(i,j)$ for $\mathbf{Q}\in \{\mathbf{P},\mathbf{O}\}$ is in $\mathcal{E}$, and is closed under reflexivity and symmetry, and $\R^-$ also has (ii)\textsuperscript{-} $\ag_iR^-\ag_j$ if $\mathbf{P},\_:R^+(i,j)\in \mathcal{E}$ and is closed under symmetry.
+\end{definition}
+
+The degree $\delta(\phi)$ of a formula $\phi$ to be 0 if $\phi$ is elementary,
+$\delta(\phi_1 \star \phi_2) = \max\{\delta(\phi_1), \delta(\phi_2)\} + 1$ for
+$\star$ a binary and $\delta(\triangle \psi) = \delta(\triangle \psi) + 1$ for
+$\triangle$ a unary operator. We extend $\delta$ to game states by setting
+$\delta(\mathbf{Q}, i : \phi ) = \delta(\phi)$ for $\mathbf{Q} \in \{\mathbf{P}, \mathbf{O}\}$. 
+
+
+\begin{lemma}\label{lemmamodel}
+Let $\M_\pi$ be the model $\M_\mathcal{E}$ $(\M_\mathcal{E}^\cc$) from the above definition, where $\mathcal{E}$ is the set of all elementary game states appearing along $\pi$. This model is a (\cc-) \PNL~model. Furthermore, if $g$ appears along $\pi$, then \You have a winning strategy for $\mathbf{G}_{\M_\pi}(g)$.
+\end{lemma}
+
+\begin{proof}
+To prove that $\M_\mathcal{E}$ is a \PNL-model it remains to show that it is non-overlapping. Towards a contradiction, assume that $(\ag_i,\ag_j)\in \R_\pi^+\cap \R_\pi^-$. By definition, both $\mathbf{O},\_:R^+(i,j)$ and $\mathbf{O},\_:R^-(i,j)$ appear\footnote{Since the relations are symmetric, we can identify $R^\pm(i,j)$ with $R^\pm(j,i)$.} along $\pi$. Since the elementary states of $\pi$
+are accumulative, there is a disjunctive state $D$ in $\pi$ containing both of these states. But then \I could have won the game in $D$, since in every \PNL-model at least one of $R^+(i,j)$ and $R^-(i,j)$ must be false. This is a contradiction to the assumption that $\pi$ results from \You playing \Your winning strategy.
+
+We show that $\M_\mathcal{E}^\cc$ is a \cc-\PNL model. First, we note that this model is collectively connected, since, $(iii)^+$ is equivalent to $\neg((i)^+\vee (ii)^+\vee (i)^-\vee (ii)^-)$. Also, the model remains non-overlapping. Suppose, we had $(\ag_i,\ag_j)\in \R^+\cap \R^-$.  According to the definition of $\R^+$ and $\R^-$ all possible scenarios how this could happen lead to contradiction:
+
+\begin{itemize}
+    \item   $(i)^+$ and $(i)^-$: At some point, both states appear in a disjunctive state in $D$. But \I would have won the game at $D$, since there is no non-overlapping model where both $R^+(i,j)$ and $R^-(i,j)$ are true.
+    \item $(i)^+$ and $(ii)^-$: \I win the game in a disjunctive state, where both $\mathbf{O},\_:R^+(i,j),\mathbf{P},\_:R^+(i,j)\in \mathcal{E}$ states occur.
+    \item $(ii)^-$ and $(i)^-$: Similar to the case above.
+    \item $(ii)^-$ and $(ii)^-$: \I would have won in a state containing $\mathbf{P},\_:R^+(i,j)$ and $\mathbf{P},\_:R^-(i,j)$, since there is no collectively connected models where both $R^+(i,j)$ and $R^-(i,j)$ are false.
+    \item $(iii)^+$, excludes $(i)^-$ and $(ii)^-$, hence $(\ag_i,\ag_j)\notin \R^-$.
+\end{itemize}
+
+We prove the second claim by induction on the degree of $g$. The elementary cases
+where $g$ is of the form $\mathbf{O}, i: \phi$ follow directly from the
+definition of $\M_\pi$. Assume $g= \mathbf{P}, i: p$ appears along $\pi$, but
+$\M_\pi,\ag_i\Vdash p$. The latter implies that 
+$\mathbf{O}, i: p$ appears along $\pi$. Reasoning as above, there is a disjunctive state $D$ in $\pi$ containing both $\mathbf{P}, i: p$ and $\mathbf{O}, i: p$, which means that $D$ would be winning for \Me. The case for $\mathbf{P}, \_: R^\pm(i,j)$ is similar.
+
+For the inductive step, let $g\in \pi$ be non-elementary with the label ``Y''.
+By Lemma~\ref{lem:closure}, some child $h$ of $g$ appears along $\pi$. By the
+inductive hypothesis, there is a winning strategy $\mu_{h}$ for \You for
+$\mathbf{G}_{\M_\pi}(h)$. Hence, appending the root of $\mu_h$ to $g$ gives a
+winning strategy for \You in $\mu_g$ in $\mathbf{G}_{\M_\pi}(g)$.
+If $g$ is non-elementary with label ``I'', then, by Lemma~\ref{lem:closure},
+all children $h$ of $g$ appear along $\pi$. For each $h$ there is a winning
+strategy for \You in $\mathbf{G}_{\M_\pi}(h)$. Thus, appending the rots of all
+$\mu_h$ to the new common root $g$ gives a winning strategy for \You in
+$\mathbf{G}_{\M_{\pi}}(g)$. 
+\end{proof}
+
+\begin{proposition}\label{prop:adq-D}
+    Assume that 
+ for every model $\mathbb{M}$, there is some $g\in D$ such that \I have a winning strategy in $\mathbf{G}_\mathbb{M}(g)$.
+ Then, 
+ \I have a winning strategy in $\mathbf{DG}(D)$.
+\end{proposition}
+\begin{proof}
+Suppose \I do not have a winning strategy in $\mathbf{DG}(D)$.
+By the Gale-Stewart Theorem, \You have a winning strategy in this game. Let \Me
+play according to the strategy $\sigma$ from above, and let $\pi$ be the through $\mathbf{DG}(D)$ resulting from \You playing \Your winning strategy and \Me playing $\sigma$. Let $\M_\pi$ be the model from
+Definition~\ref{emepsilon}. By Lemma~\ref{lem:closure} and
+Lemma~\ref{lemmamodel}, \You have a winning strategy for $\mathbf{G}_{\M_\pi}(g)$ for all $g\in D$. 
+\end{proof}
+
+ 
+
+\section{From strategies to Proofs}\label{sec:proofs}
+Theorems~\ref{th:adequacy} and \ref{thm:adeq} imply that winning strategies for \Me in the disjunctive game correspond to validity. 
+In this section, we will extend this result to proof systems. 
+This will be done by introducing a sequent calculus $\DS$ (\S
+\ref{sec:seq-system}), where proofs correspond to \My winning strategies in the
+disjunctive game. Before that, we will demonstrate that winning strategies, although
+by definition infinite, can be finitized (\S \ref{sect:opt}). 
+
+\subsection{\Your optimal choices\label{sect:opt}}
+In this section we show how to modify the disjunctive game so that it becomes
+finitely branching in ``Y''-nodes. This  will help us to conveniently
+formulate the disjunctive game as a calculus. Infinite branching occurs only in
+the case of the rules $\bfP_{[A]}$ and $\bfO_{\Diamond^\pm}$ where branching is
+parametrized by the nominals. We will show that in these situations, there is
+an optimal choice for \You, so \I can expect \You to play according to this
+choice.
+
+First, we need to define substitutions formally. For a sequence $x$ of finite or infinite length, let $x_n$ denote its $n$-th element (if defined),  and let $\mathrm{range}(x)=\{x_i:i\in \mathbb{N}\}$. Let $\phi$ be a formula and $a$ and $b$ two sequences of nominals of the same length, where every nominal occurs only once in each sequence. We define 
+$\phi[a/b]$ as the formula obtained by simultaneously substituting for every number $n$ all occurrences of $a_n$ in $\phi$ with $b_n$. For example, let $a = \langle i, j \rangle$, $b = \langle k, l \rangle$ and $\phi = R^+(i,j) \vee R^-(j,l)$. Then $\phi[a/b] = R^+(k,l)\vee R^-(l,l)$.  As another example let $a = \langle i_1, i_2, ... \rangle$ and $b = \langle i_2, i_3, ... \rangle$. Then $R^+(i_1,i_2)[a/b] = R^+(i_2,i_3)$, because substitution happens simultaneously. We extend the notion of substitution to game states: for a game state $g=\mathbf{Q}, i: \phi$ of the evaluation game and two sequences of nominals $a,b$, we define the substitution $g[a/b]$ as $\mathbf{Q}, i[a/b]:\phi[a/b]$. Similarly, we extend this definition to histories, strategies, and disjunctive states. 
+
+\begin{proposition}\label{prop:bestchoice}
+    Let $j$  be a nominal different from $i$ not occurring in $D$ nor in $\phi$. Then:
+\begin{enumerate}
+    \item \You have a winning strategy in $\mathbf{DG}(D \bigvee \mathbf{P},i: [A]\phi)$ iff \You have a winning strategy in $\mathbf{DG}(D \bigvee \mathbf{P},j: \phi)$.
+    \item \You have a winning strategy in $\mathbf{DG}(D \bigvee \mathbf{O},i:\Diamond^\pm \phi)$ iff \You have winning strategies in both $\mathbf{DG}(D \bigvee \mathbf{P},\_: R^\pm(i,j))$ and $\mathbf{DG}(D \bigvee \mathbf{O},j:\phi)$.
+\end{enumerate}
+\end{proposition}
+
+This result implies that \My winning strategies in the disjunctive game can be
+finitely represented: in every disjunctive state whose children branch over the
+nominals, it is enough to consider a single child only, given by a \emph{fresh} nominal $j$
+not appearing in that disjunctive state. 
+
+ The rest of the subsection is devoted to proving
+ Proposition~\ref{prop:bestchoice}. The proof is split 
+ into a series of lemmas (with proofs in the Appendix~\ref{app:proofs}. For two games $\mathbf{G}_1$ and
+ $\mathbf{G}_2$, let us write $\mathbf{G}_1\cong \mathbf{G}_2$ if they are
+ \emph{strategically equivalent}, i.e., \You have a winning strategy in
+ $\mathbf{G}_1$ iff \You  have a winning strategy in $\mathbf{G}_2$.
+
+
+\begin{lemma}\label{lem:techicalnom}
+Let $\mathbb{M}_1=(\A,\R^+,\R^-,\V,\g_1)$ and $\mathbb{M}_2=(\A,\R^+,\R^-,\V,\g_2)$ be named and $\g_2(i[b/a])=\g_1(i)$ for all nominals $i$. Then for all game states $g$, $\mathbf{G}_{\mathbf{M}_1}(g)\cong \mathbf{G}_{\mathbb{M}_2}(g[b/a])$.
+\end{lemma}
+
+
+\begin{lemma}\label{lem:samename}
+If $\g(k) = \g(l)$, then $\mathbf{G}_\mathbb{M}(g)\cong\mathbf{G}_\mathbb{M}(g[k/l])$.
+\end{lemma}
+
+
+
+For a model $\mathbb{M}$, and two sequences of nominals $a,b$, let $\mathbb{M}[a/b]$ be the same as $\mathbb{M}$, except for the denotation function: $\g_{[a/b]}(i) = \g(i[a/b])$.
+
+\begin{lemma}\label{lem:substsurj}
+Let $\mathbb{M}$ be named and $a,b$ two sequences of nominals with $\mathrm{range}(a)\subseteq\mathrm{range}(b)$. Then $\mathbb{M}_{[a/b]}$ is $N[b/a]$-named. Furthermore, $\mathbf{G}_\mathbb{M}(g)\cong \mathbf{G}_{\mathbb{M}[a/b]}(g[b/a])$.
+\end{lemma}
+
+
+
+We are now ready to prove Proposition~\ref{prop:bestchoice}.
+
+\begin{proof}[Proof of Proposition~\ref{prop:bestchoice}]
+We will show 2. The direction from right to left is clear, so let us assume \You have a winning strategy in $\mathbf{DG}(D \bigvee \mathbf{O},i:\dplus \phi)$ with $j$ as in the assumption. By Theorem~\ref{thm:adeq}, there is a named model $\mathbb{M}$ such that \You have winning strategies in $\mathbf{G}_\mathbb{M}(g)$ for all $g\in  D$ and in $\mathbf{O}, i: \dplus \phi$. The latter implies that \You have winning strategies in $\mathbf{G}_\mathbb{M}(\mathbf{O}, \_:  R^\pm(i,k))$ and $\mathbf{G}_\mathbb{M}(\mathbf{O}, k: \phi)$ for some nominal $k$. 
+
+Let $j_1, j_2, ...$ be a sequence of nominals not occurring in $D$ or $F$ and different from $k$, $j$, and $i$. Let $a = \langle j,j_1, j_2,...\rangle$ and $b = \langle k,j,j_1,j_2,...\rangle$. We have that $\mathrm{range}(a)\subseteq \mathrm{range}(b)$, therefore Lemma~\ref{lem:substsurj} applies.  We have the following chain of equivalences:
+\begin{align*}
+    &\hspace{5mm}\mathbf{G}_\mathbb{M}(\mathbf{O},k: \phi) \\
+    &\cong \mathbf{G}_{\mathbb{M}[a/b]}(\mathbf{O},k[b/a]:\phi[b/a]) &&\text{by Lemma~\ref{lem:substsurj}}\\
+    &= \mathbf{G}_{\mathbb{M}[a/b]}(\mathbf{O},j:\phi[k/j]) &&\text{by conditions on } i,j,k\\
+    &= \mathbf{G}_{\mathbb{M}[a/b]}(\mathbf{O},j[k/j]:\phi[k/j])\\
+    &\cong \mathbf{G}_{\mathbb{M}[a/b]}(\mathbf{O},j: \phi) &&\text{by Lemma~\ref{lem:samename}}\\&&&\text{and }\g_{[a/b]}(j)=\g_{[a/b]}(k)
+\end{align*}
+A similar argument shows that $\mathbf{G}_\mathbb{M}(\mathbf{O},\_: R^\pm(i,k))\cong \mathbf{G}_{\mathbb{M}[a/b]}(\mathbf{O},\_: R^\pm(i,j))$. By this equivalence and the assumption, \You have winning strategies in $\mathbf{O},\_:R^\pm(i,j)$ and $\mathbf{O},j:\phi$ over $\mathbb{M}[a/b]$.
+
+Similarly, we obtain a winning strategy for \You for $g\in D$ by using the equivalence
+\[
+\mathbf{G}_\mathbb{M}(g)\cong 
+\mathbf{G}_{\mathbb{M}[a/b]}(g[b/a]) \cong 
+\mathbf{G}_{\mathbb{M}[a/b]}(g[k/j])\cong 
+\mathbf{G}_{\mathbb{M}[a/b]}(g),
+\]
+the same lemmas as before and the fact that no nominals from $a$ appear in $g$. Since \You have winning strategies for the semantic games for every $g\in D$ and $\mathbf{O},\_:R^\pm(i,j)$ over $\M[a/b]$, \You have a winning strategy in $\mathbf{DG}(D\bigvee \mathbf{O},\_:R^\pm(i,j))$, by Proposition~\ref{thm:adeq} and the determinacy of the game. Similarly, we conclude that \You  have a winning strategy in $\mathbf{DG}(D\bigvee \mathbf{O},j:\phi)$.
+\end{proof}
+
+
+ 
+
+\subsection{The proof system $\DS$}\label{sec:seq-system}
+
+Now we detail how to formally transform (provability) games into (sequent) proof systems. 
+
+
+
+
+{\em Labeled nominal formulas} are either \emph{labeled formulas} of
+the form $i:\phi$ or \emph{relational atoms} of the form $R(i,j)$,
+where $i$ and $j$ are nominals and $\phi$ is a \PNL~formula.\footnote{Observe that here we are abusing the notation, identifying $k:R(i,j)$ with $R(i,j)$. Recall from \Cref{foot:R} that the truth value of  these atoms depend only on the underlying model.} \emph{Labeled sequents} have the form $\Gamma \seq \Delta$, where
+$\Gamma,\Delta$ are multisets containing labeled nominal formulas.
+
+Starting with sequents, every disjunctive state of the form
+\[
+\mathbf{O},i_1: \phi_1\bigvee \ldots \bigvee \mathbf{O},i_n: \phi_n\bigvee\mathbf{P},j_1: \psi_1 \bigvee \ldots \bigvee \mathbf{P},j_m: \psi_m
+\]
+ can be rewritten as the labeled sequent $\Gamma \seq \Delta$ where
+\[
+\Gamma =\{i_1: \phi_1, \ldots, i_n: \phi_n\}\mbox{ and } \Delta =\{j_1: \psi_i,\ldots,j_m: \psi_m\}
+\] 
+In what follows, we will not distinguish between disjunctive states and their corresponding labeled sequent. For example,
+the disjunctive game state
+$\mathbf{O},i:(\dplus\dplus p \vee \dminus\dminus p)\bigvee\mathbf{P},i: \dplus p$
+will be identified with the sequent  
+$i:(\dplus\dplus p \vee \dminus\dminus p)\seq i: \dplus p$.
+
+Regarding inference rules, they should be tailored in such a way that {\em
+proofs} in the sequent system match exactly \My\  {\em winning strategies} in
+the disjunctive game. This means that the user of the proof system takes the
+role of \Me, scheduling game states and choosing moves in \I-states. 
+Moreover, {\em provability} in the sequent system should correspond to {\em
+validity} in the semantic game. For that,  it is necessary to establish the
+formal relationship between elementary game states and logical axioms.
+
+
+\begin{lemma}\label{lemma:init}
+    Let $\Gamma\seq \Delta$ be composed of elementary game states only. \I win the disjunctive game in $\Gamma \seq \Delta$ iff one of the following holds\footnote{\label{foot:sym}Since relations are symmetric, we will identify $R^\pm(i,j)$ with  $R^\pm(j,i)$.} 
+\begin{itemize}
+\item[i.] $R^-(i,i)\in\Gamma$ or $R^+(i,i)\in\Delta$ for some $i$;
+\item[ii.] $\{R^+(i,j),R^-(i,j)\}\subseteq\Gamma$ for some $i\not=j$;
+\item[iii.] $\Gamma\cap\Delta\not=\emptyset$.
+\end{itemize}
+In the case of collectively connected models, additionally, 
+\begin{itemize}
+\item[iv.]  $\{R^+(i,j),R^-(i,j)\}\subseteq\Delta$ for some $i\not=j$  \end{itemize}
+\end{lemma}
+\begin{proof}
+By definition of the disjunctive game, it is immediate that \I win the game if (iii) holds. Moreover,
+\I clearly win the game if either (i) or (ii) hold, since only $R^+$ is
+reflexive and since the relations are non-overlapping. Finally, if the model is collectively connected, \I clearly win the game if (iv) holds.
+
+Suppose that (i), (ii), and (iii) do not hold. Then the model $\M_{\Gamma \Rightarrow \Delta}$ from Definition~\ref{emepsilon} does the job. If additionally, (iv) do not hold, we choose the model $\M_{\Gamma \Rightarrow \Delta}^\cc$.
+
+$R^+$ is reflexive and $R^\pm$ is symmetric. We can see that both models are non-overlapping and $\M^\cc_{\Gamma \Rightarrow \Delta}$ is collectively connected by proceeding almost exactly as in Lemma~\ref{lemmamodel}.
+\end{proof}
+
+\begin{comment}
+Observe that the models are 
+\begin{itemize}
+\item [-] non overlapping: if $(\g(i),\g(j))\in \R^{\pm}$, thus by definition if $R^\pm(i,j)\in \Gamma$, then by 
+$\neg$(ii) $R^\mp(i,j)\notin \Gamma$, hence $(\g(i),\g(j))\notin \R^{\mp}$.
+\item[-] $\R^-$"-irreflexivity: $\neg$(i) implies that $(\g(i),\g(i))\notin \R^{-}$;
+\item[-] in the case of collectively connectedness, we complete $\mathbb{M}$ as follows: for all $R^\pm(i,j)\in\Delta$, 
+add $(\g(i),\g(j))\in \R^{\mp}$; and for all remaining nominals $k,l$ appearing in $\Gamma\seq\Delta$ such that $R^\pm(k,l)\notin \Gamma,\Delta$, add $(\g(k),\g(l))\in \R^{+}$. Observe that $\neg(iii)$ plus 
+ $\neg$(iv) guarantee the non-overlapping. 
+\end{itemize}
+In both cases, the defined models are such that  \You win in $g$ over $\M$, whenever $g\in D$.
+\end{comment}
+
+Figure~\ref{fig:calculus} presents the labeled sequent systems $\DS$ and $\DS^\cc$, with the standard initial axiom and structural/propositional  rules. The modal  rules and the relational rules $sym$ and  $ref\pm$  are the sequent correspondents to the natural deduction modal rules originally presented by Vigan\`{o} in~\cite{Vigano:2000}, adapted to multi-relational modal logics. 
+
+It is routine to show that the rules $no$ and $cc$ in Figure~\ref{fig:calculus} correspond to the non-overlapping and  collectively connected axioms, respectively
+\[
+\forall i,j. \neg(R^+(i,j)\wedge R^-(i,j)) \quad\mbox{and}\quad \forall i,j. R^+(i,j)\vee R^-(i,j)
+\]
+We present a detailed proof of the correctness of those rules w.r.t. these axioms in Appendix~\ref{app:focusing}.
+
+
+
+The following result, proved in Appendix~\ref{app:proofs}, entails a normal form on proofs in $\DS$, since any proof-search procedure can be restricted so to start with applications of logical rules followed by relational rules and the initial axiom.
+
+\begin{lemma}\label{lemma:norm} 
+The following weakening rules are admissible in $\DS$
+\[
+\infer[L_w]{\Gamma,i:\phi\seq\Delta}{\Gamma\seq\Delta} \qquad \infer[R_w]{\Gamma\seq\Delta,i:\phi}{\Gamma\seq\Delta}
+\]
+Moreover, in a bottom-up reading of derivations, the relational rules permutes up w.r.t. any other logical rule in $\DS$.
+\end{lemma}
+
+The following result immediately implies that the disjunctive game $\mathbf{DG}$ is adequate with respect to the calculus $\DS$.
+
+\begin{theorem}\label{thm:adequacy-sequent}
+\I have a winning strategy in the disjunctive game $\mathbf{DG}(\Gamma\seq\Delta)$ (in $\mathbf{DG}^\cc(\Gamma \Rightarrow \Delta)$) iff $\Gamma\seq\Delta$ is provable in $\DS$ (in $\DS^\cc$). 
+\end{theorem}
+\begin{proof} The proof is by case analysis in the rules of the disjunctive game/last rule applied in the proof, and it is based in the following correspondence: 
+\begin{description}
+\item[(Dupl)] Duplication in the game corresponds to left and right contraction rules.
+\item[(Sched)] Scheduling game moves over non-elementary formulas corresponds to choosing propositional or modal rules to be applied.
+Observe that Lemma~\ref{lemma:norm} guarantees that propositional and modal rules in $\DS$ can always be chosen before dealing with the elementary case.
+\item[(Move)] Applying the rule chosen in {\bf (Sched)} corresponds to applying the respective sequent rule in $\DS$.  Note that \I should be prepared to any movement from \You. Hence, branching in  \Your possible moves corresponds to branching in a sequent rule. On the other hand, infinite branching is handled as 
+    explained in \Cref{sect:opt}.
+\item[(End)] Due to Lemma~\ref{lemma:init}, winning states are completely captured by the axioms.
+\end{description}
+\end{proof}
+
+Let us write $\models_\PNL \Gamma \Rightarrow \Delta$ iff for every \PNL-model there is some $i:\gamma \in \Gamma$ such that $\M,\g(i)\not\vdash \gamma$, or there is some $i:\delta \in \Delta$ such that $\M,\g(i)\models \delta$. Similarly, we define $\models_{\cc\PNL} \Gamma \Rightarrow \Delta$. We have the following consequence of Theorems~\ref{th:adequacy},~\ref{thm:adeq}, and~\ref{thm:adequacy-sequent}: 
+
+\begin{corollary}
+Let $\Gamma,\Delta$ be multisets of labeled formulas. Then $\models_\PNL\Gamma \Rightarrow \Delta$ ($\models_{\cc\PNL} \Gamma \Rightarrow \Delta$) iff there is a proof of $\Gamma \Rightarrow \Delta$ in $\DS$ (in $\DS^\cc$). In particular, $\phi$ is (\cc-) \PNL-valid iff there is a proof of $\Rightarrow \phi$ in $\DS$ (in $\DS^\cc$).
+\end{corollary}
+
+\begin{figure}[ht]
+    \begin{center}
+\resizebox{.87\textwidth}{!}{
+\begin{minipage}[t]{\textwidth}
+	\headline{\sc Axiom and Structural Rules}
+	
+	\medskip
+
+    \begin{center}
+ \begin{prooftree}
+        \hypo {}
+        \infer1 [$init$]{\Gamma, i: \phi_{el} \Rightarrow  \Delta, i: \phi_{el}}
+        \end{prooftree}
+\qquad
+ \begin{prooftree}
+        \hypo {\Gamma, i:  \phi, i: \phi \Rightarrow  \Delta}
+        \infer1 [$(L_c)$]{\Gamma, i: \phi \Rightarrow  \Delta}
+        \end{prooftree}        
+		\qquad
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow  i: \phi,i: \phi,\Delta}
+        \infer1 [$(R_c)$]{\Gamma \Rightarrow  i: \phi, \Delta}
+        \end{prooftree}
+    \end{center}
+        
+\headline{\sc Propositional Rules}
+\begin{center}
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow i: \phi, \Delta}
+        \infer1 [\((L_\neg)\)]{\Gamma, i: \neg \phi \Rightarrow \Delta}
+        \end{prooftree}
+  \qquad
+  \begin{prooftree}
+        \hypo {\Gamma, i:  \phi \Rightarrow \Delta}
+        \infer1[\((R_\neg)\)]{\Gamma \Rightarrow i: \neg  \phi, \Delta}
+        \end{prooftree}
+
+\bigskip
+
+        \begin{prooftree}
+        \hypo {\Gamma, i: \phi \Rightarrow \Delta}
+        \hypo{\Gamma, i: \psi \Rightarrow \Delta}
+        \infer2 [\((L_\vee)\)]{\Gamma, i: \phi \vee  \psi \Rightarrow \Delta}
+        \end{prooftree}
+        \qquad
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow i:  \phi, \Delta}
+        \infer1[\((R_\vee^1)\)]{\Gamma \Rightarrow i:  \phi \vee  \psi, \Delta}
+        \end{prooftree}
+        \qquad 
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow i:  \psi, \Delta}
+        \infer1[\((R_\vee^2)\)]{\Gamma \Rightarrow i:  \phi \vee  \psi, \Delta}
+        \end{prooftree}
+        \bigskip
+
+        \begin{prooftree}
+        \hypo {\Gamma, i: \phi \Rightarrow \Delta}
+        \infer1 [\((L_\wedge^1)\)]{\Gamma, i: \phi \wedge  \psi \Rightarrow \Delta}
+        \end{prooftree}
+       \qquad
+    	\begin{prooftree}
+        \hypo {\Gamma, i: \psi \Rightarrow \Delta}
+        \infer1 [\((L_\wedge^2)\)]{\Gamma, i: \phi \wedge  \psi \Rightarrow \Delta}
+        \end{prooftree}
+       \qquad
+       \begin{prooftree}
+        \hypo {\Gamma \Rightarrow i:  \phi, \Delta}
+        \hypo {\Gamma \Rightarrow i:  \psi, \Delta}
+        \infer2[\((R_\wedge)\)]{\Gamma \Rightarrow i:  \phi \wedge  \psi, \Delta}
+        \end{prooftree}
+                
+    \end{center}
+\headline{\sc Modal Rules}
+\begin{center}
+         \begin{prooftree}
+        \hypo {\Gamma, R^\pm(i,j) \Rightarrow \Delta}
+        \infer1 [\((L_{\Diamond^\pm})_1\)]{\Gamma, i: \Diamond^\pm \phi\Rightarrow \Delta}
+        \end{prooftree}
+       \qquad
+       \begin{prooftree}
+        \hypo {\Gamma, j:\phi \Rightarrow \Delta}  
+        \infer1 [\((L_{\Diamond^\pm})_2\)]{\Gamma, i: \Diamond^\pm \phi\Rightarrow \Delta}
+        \end{prooftree}
+      \bigskip
+      
+      \begin{prooftree}
+        \hypo {\Gamma \Rightarrow R^\pm(i,j), \Delta}
+        \hypo {\Gamma \Rightarrow j: \phi, \Delta}
+        \infer2 [\((R_{\Diamond^\pm})\)]{\Gamma\Rightarrow i: \Diamond^\pm \phi,\Delta}
+        \end{prooftree}
+        \quad
+        \begin{prooftree}
+        \hypo {\Gamma, j: \phi \Rightarrow \Delta}
+        \infer1 [$(L_{[A]})$]{\Gamma,  i:[A]\phi \Rightarrow \Delta}
+        \end{prooftree}
+        \quad
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow  j: \phi, \Delta}
+        \infer1 [$(R_{[A]})$]{\Gamma\Rightarrow  i:[A]\phi, \Delta}
+        \end{prooftree}
+
+    \end{center}
+
+        
+\headline{\sc Relational Rules}
+\begin{center}
+         \begin{prooftree}
+        \hypo {\Gamma \Rightarrow  \Delta, R^{\pm}(j,i)}
+        \infer1 [$sym$]{\Gamma \Rightarrow  \Delta, R^{\pm}(i,j)}
+        \end{prooftree}
+        \qquad
+\begin{prooftree}
+        \hypo { }
+        \infer1 [$ref+$]{\Gamma\Rightarrow  \Delta, R^{+}(i,i)}
+        \end{prooftree}
+        \bigskip
+
+\begin{prooftree}
+        \hypo { }
+        \infer1 [$ref-$]{\Gamma, R^{-}(i,i)\Rightarrow  \Delta}
+        \end{prooftree}
+        \qquad
+        \begin{prooftree}
+        \hypo {\Gamma \Rightarrow  \Delta, R^+(i,j)}
+        \hypo {\Gamma \Rightarrow  \Delta, R^-(i,j)}
+        \infer2 [$no$]{\Gamma \Rightarrow  \Delta}
+        \end{prooftree}
+    \end{center}
+        
+\headline{\sc Collectively Connected (for $\DS^\cc$)}
+\begin{center}
+         \begin{prooftree}
+        \hypo {}
+        \infer1 [$cc$]{\Gamma \Rightarrow  \Delta, R^+(i,j), R^-(i,j) }
+        \end{prooftree}
+\end{center}
+\end{minipage}
+}
+\end{center}
+\caption{The proof system $\DS$
+In the rule init, $\phi_{el}$ denotes an
+elementary formula. In the rules   $(L_{\Diamond^\pm})_1$,
+$(L_{\Diamond^\pm})_2$, and $(R_{[A]})$,  the nominal $j$ is fresh (this
+condition corresponds to \emph{Your} optimal choice). The rule
+$R_{\meddiamondminus}$ has the proviso that $i\neq j$. The system $\DS^\cc$ also includes the rule $cc$ for reasoning about collectively connected systems. \label{fig:calculus} } 
+\end{figure}
+The next examples shows how $\DS^\cc$ elegantly captures collectively connectedness. 
+\begin{example}[Connectedness]\label{ex:corr}
+    The formula $(\bplus p \to [A]p) \vee (\bminus p \to [A]p)$,
+characterizing collective connectedness \cite{DBLP:journals/logcom/PedersenSA21},
+has the following proof in $\DS^\cc$:\\
+
+
+
+
+\noindent
+\resizebox{.9\textwidth}{!}{
+    $
+        \infer=[R_c,R_\vee,R_w,R_\neg]{ \Rightarrow i:(\bplus p \to [A]p) \vee (\bminus p \to [A]p)}{
+            \infer=[L_\neg]{i:\bplus p, i:\bminus p \Rightarrow i:[A]p}{
+                \infer=[R_{[A]}]{\Rightarrow i:[A]p, i:\dplus p, i:\dminus p}{
+                    \infer[R_\dplus]{\Rightarrow j:p,  i:\dplus \neg p, i:\dminus \neg p}{
+                        \infer[R_\dminus]{\Rightarrow j:p, i:\dminus \neg p, R^+(i,j)}{
+                            \infer[cc]{\Rightarrow j:p, R^+(i,j), R^-(i,j)}{}
+                            &
+                            \infer=[R_\neg, init]{\Rightarrow j:p, j:\neg p, R^+(i,j)}{}
+                        }
+                        &
+                        \infer=[\neg,init]{\Rightarrow j:p, j:\neg p,i:\dminus \neg p}{}
+                    }
+                }
+            }
+        }
+    $
+}
+\end{example}
+\noindent
+{\bf Cut-admissibility and its consequences.} Proving cut-admissibility of labeled systems can be cumbersome due to the presence of relational rules. Moreover, it is usually done in a case-by-case analysis, tailored for each system despite some common and pretty standard cases (see \eg\ \cite{Neg05,negri99aml}). 
+
+In~\cite{DBLP:journals/apal/MarinMPV22}, a systematic procedure for transforming axioms into rules was presented, based on {\em focusing} and {\em polarities}~\cite{andreoli92jlc}. Such procedure allowed not only for the generalization of different approaches for transforming axioms into sequent rules present in the literature, like the ones presented in~\cite{Sim94,Vigano:2000,Neg05}, but also a general, unified way of proving cut admissibility for the resulting systems.
+
+While it is out of the scope of this paper to introduce all this machinery just to prove cut-admissibility of $\DS/\DS^\cc$, we note that it is possible to directly transform the semantic description of (\cc-)\PNL~into a labeled sequent system equivalent to $\DS/\DS^\cc$, by using the methodology in~\cite{DBLP:journals/apal/MarinMPV22} and  adopting the {\em negative polarity} to atomic formulas. Hence the cut-admissibility result for $\DS/\DS^\cc$ is a particular instance of the general result in~\cite{DBLP:journals/apal/MarinMPV22}.
+\begin{theorem}\label{thm:cut}
+The following cut rule is admissible in $\DS/\DS^\cc$
+\[
+\infer[cut]{\Gamma\seq\Delta}{\Gamma\seq\Delta,i:\phi & i:\phi,\Gamma\seq\Delta}
+\]
+\end{theorem}
+For the reader interested in understanding focusing, polarities and the axioms-as-rules approach, we have added a gentle introduction in Appendix~\ref{app:focusing}. We refer to~\cite{DBLP:journals/apal/MarinMPV22} for further reading on the topic.
+
+As a consequence of Theorem~\ref{thm:cut}, $\DS/\DS^\cc$ are consistent, since the only rules that can be applied in an empty sequent is $no$ and it is routine to show that it does not trivialize derivations. Moreover, cut admissibility also serves as a tool for proving further meta-theoretical properties, such as the fact that the formula $(\bplus p \to [A]p) \vee (\bminus p \to [A]p)$ in Example~\ref{ex:corr} is not provable in $\DS$, that is, it is provable if and only if the rule $cc$ is present.
+
+ 
+
+\section{Dynamic operators and extensions}
+\label{sec:extensions}
+
+Social learning and opinion dynamic models aim at understanding the role of
+specific social factors on the acceptance/rejection of opinions. They can be
+useful to explain alternative scenarios, such as opinion consensus,
+polarization and fragmentation. In this context, the positive and negative
+relations are not permanent. Instead, they can vary in time when
+\emph{enemies} reconcile, new \emph{friendships}/agreements are established, or
+some agents start to disagree with others. In this section we show how the
+global adding and local link change  modalities from
+\cite{DBLP:journals/logcom/PedersenSA21} can be defined in our framework.
+Adding such modalities require the underlying model $\M$ to be part of the game
+state, and calls for a different presentation of the sequent calculus for the
+extended logic. 
+
+The logic \dPNL~extends the syntax in Section \ref{sec:pnl} with the new cases below: 
+
+\[
+    \phi ::=\cdots \mid  \pnlP \phi\mid  \pnlN \phi\mid  \pnlPN \phi \mid  \pnlOP \phi \mid  \pnlON \phi
+\]
+
+In the following, if $\bbM = \langle \A,\R^+,\R^-,\V,\g\rangle$,
+with $\bbM \cup \{\ag \Rinv^+ \b\}$ we denote the model 
+$ \langle \A,\R^+ \cup \{\ag \R^+ \b, \b \R^+ \ag\},\R^-,\V,\g\rangle$.
+Similarly for $\bbM \cup \{\ag \Rinv^- \b\}$. With 
+$\bbM \setminus \{\ag \Rinv^{+} \b\}$ we denote the model where 
+both $(\ag,\b)$ and $(\b,\ag)$ are removed from $\R^+$. Similarly 
+for $\bbM \setminus \{\ag \Rinv^{-}\b\}$. 
+
+The semantics of these operators is the following:\\
+
+
+\noindent
+$
+\small
+\begin{array}{lll}
+    \bbM,\ag \Vdash \pnlP\phi &\text{ iff } \text{  there are } \b,\c\in \A \text{ s.t. }   (\b,\c)\not\in \R^- \text{ and }  \bbM\cup\{\b \Rinv^+ \c\},\ag \Vdash  \phi\\
+    \bbM,\ag \Vdash \pnlN\phi &\text{ iff } \text{  there are } \b,\c\in \A \text{ s.t. }   (\b,\c)\not\in \R^+ \text{ and }  \bbM\cup\{\b \Rinv^- \c\},\ag \Vdash  \phi\\
+    \bbM,\ag \Vdash \pnlPN\phi &\text{ iff } \text{ there are } \b,\c\in \A \text{ s.t. }   (\b,\c)\not\in \R^- \text{ and }  \bbM\cup\{\b \Rinv^+ \c\},\ag \Vdash  \phi\\
+                               & \text{ or there are } \b,\c\in \A \text{ s.t. }   (\b,\c)\not\in \R^+ \text{ and }  \bbM\cup\{\b \Rinv^- \c\},\ag \Vdash  \phi\\
+    \bbM,\ag \Vdash \pnlOP\phi &\text{ iff } \text{ there is } \b \in \A \text{ s.t. }  (\ag,\b)\in \R^- \text{ and }  \bbM\cup\{\ag \Rinv^+ \b\} \setminus\{\ag \Rinv^- \b\},\ag \Vdash \phi\\
+    \bbM,\ag \Vdash \pnlON\phi &\text{ iff } \text{ there is } \b \in \A \text{ s.t. }  \ag \neq \b, (\ag,\b)\in \R^+ \text{ and }  \bbM\cup\{\ag \Rinv^- \b\} \setminus\{\ag \Rinv^+ \b\},\ag \Vdash \phi\\
+\end{array}
+$
+
+
+We consider game states of the form $\mathbf{P}, \bbM, \ag:\phi$ and
+$\mathbf{O}, \bbM, \ag:\phi$, where the model $\bbM$ over which the
+game is played is explicit. 
+The game semantics includes the rules presented in
+\Cref{sec:game-semantics} (once $\bbM$ is added in the game states of these rules), plus the
+following ones (the rules for $\pnlPN$, and the rules  $\bfP_{\pnlON}$ and $\bfO_{\pnlON}$ are similar and omitted):
+
+\begin{description}
+\item[$(\bfP_{\pnlN})$] At $\mathbf{P}, \bbM,  \ag: \pnlN \phi$, 
+     \I choose $\b,\c\in A$ s.t. $(\b,\c)\not\in \R^+$ and the game continues with 
+    $\bfP, (\bbM\cup\{\b \Rinv^- \c\}),\ag:  \phi$. \You win if there are no such $\b$ and $\c$. 
+\item[$(\bfO_{\pnlN})$] \vspace{-2mm}At $\bfO, \bbM,  \ag: \pnlN \phi$, 
+     \You choose $\b,\c\in A$ s.t. $(\b,\c)\not\in \R^+$ and the game continues with 
+    $\bfO, (\bbM\cup\{\b \Rinv^- \c\}),\ag:  \phi$. \I win if there are no such $\b$ and $\c$. 
+\item[$(\bfP_{\pnlP})$] At $\mathbf{P}, \bbM,  \ag: \pnlP \phi$, \I choose 
+     $\b,\c\in A$ s.t. $(\b,\c)\not\in \R^-$  and the game continues with 
+    $\bfP, (\bbM\cup\{\b \Rinv^+ \c\}),\ag:  \phi$. \footnote{The global addition modalities do not necessarily add a \emph{new} relation in the model. In
+    this rule, \I (and \You in $\bfO_{\pnlP}$) always have a choice for $\b$ and $\c$, say $(\ag,\ag)\notin \R^{-}$.}
+\item[$(\bfO_{\pnlP})$] \vspace{-2mm}At $\bfO, \bbM,  \ag: \pnlP \phi$, 
+    \You choose $\b,\c\in A$ s.t. $(\b,\c)\not\in \R^-$ and the game continues with 
+    $\bfO, (\bbM\cup\{\b \Rinv^+ \c\}),\ag:  \phi$. \item[$(\bfP_{\pnlOP})$] 
+    At $\bfP, \bbM,  \ag: \pnlOP \phi$, 
+    \I choose $\b\in A$ s.t. $(\ag,\b)\in \R^{-}$ and the game continues with 
+    $\bfP, (\bbM\cup\{\ag \Rinv^+ \b\} \setminus\{\ag \Rinv^- \b\}),\ag:  \phi$. 
+    \You win if there is no such a $\b$. 
+\item[$(\bfO_{\pnlOP})$] 
+    \vspace{-2mm}At $\bfO, \bbM,  \ag: \pnlOP \phi$, 
+     \You choose $\b\in A$ s.t. $(\ag,\b)\in \R^{-}$ and the game continues with 
+    $\bfO, (\bbM\cup\{\ag \Rinv^+ \b\} \setminus\{\ag \Rinv^- \b\}),\ag: \phi$. 
+    \I win if there is no such a $\b$. 
+
+\end{description}
+
+\begin{theorem}\label{th:adequacy2}
+Let $\M$ be a \PNL-model, $\ag$ an agent, and $\phi$ a \dPNL~formula.
+Then: (1)
+ \I have a winning strategy for $\mathbf{G}_\M(\mathbf{P}, \M, \ag: \phi)$ iff $\M,\ag \models \phi$; and (2)
+ \You have a winning strategy for $\mathbf{G}_{\M}(\mathbf{P}, \M, \ag: \phi)$ iff $\M,\ag\not \models \phi$.
+\end{theorem}
+\begin{example}\label{ex:consensus}
+    Let $\M_2$ be as in \Cref{ex:balance}. 
+    \I have a winning strategy for the game state $\bfP,\bbM_2,\ag : \pnlON (4B)$:
+    \I just need to change the relation  $\ag \R^+ \c$ to obtain 
+    the model $\M_1$ (where \I have a winning strategy for the formula $4B$). 
+    However, \You do not have a winning strategy for $\bfO,\bbM_2,\ag : \pnlON \pnlON (4B)$
+    (and \I win $\bfP,\bbM_2,\ag : \neg(\pnlON \pnlON (4B))$). In words, 
+    \You cannot enforce \emph{balance} by making $\ag$ disagree with her two friends. 
+    Finally, the formula $[A]\bminus \bot$ characterizes ``reconciliation'' in a network \cite{DBLP:journals/logcom/PedersenSA21}, 
+    where there are no disagreements between agents. \I have a winning strategy in the game 
+    $\bfP, \bbM_2,\ag : \dplus \pnlOP [A] \bminus\bot$. (See the outputs of the tool in  \Cref{ap:examples} and \cite{tool}). 
+\end{example}
+
+
+
+ 
+
+\paragraph{Sequent system for  link adding and changing.}
+\label{sec:extended_sequents}
+
+ In order to handle the new global link-adding and local link-changing modalities, we need a way of
+updating the relational values, that is, a {\em linear context}, where
+information can be updated. 
+A {\em relational context} $\mathcal{R}$ is a \emph{set} (and ``$\mathcal{R}, R^\pm(i,j)$'' must be 
+understood as $\mathcal{R} \cup \{R^\pm(i,j)\}$) containing only relational predicates. A {\em relational sequent} has the form
+$
+\rs{\rc}{\Gamma}{\Delta}
+$. 
+
+\Cref{fig:dDS} introduces the rules for the label sequent system $\dDS$~for
+\dPNL. Note that rule $L_{\Diamond^\pm}$ introduces the relational predicate
+$R(i,j)$, for a fresh $j$, into the relational context $\mathcal{R}$. The
+proviso of the global adding-link modalities forbid adding into $\mathcal{R}$
+the atom  $R^\pm(i,j)$ when  $R^\mp(i,j)\in \mathcal{R}$. Similarly, the rules
+for $\pnlOP$ forbid adding into $\mathcal{R}$ the atom $R^-(i,i)$. Moreover, in
+a sequent $\mathcal{R} ; \Gamma \Rightarrow \Delta$, if both $\Gamma$ and
+$\Delta$ do not have relational symbols, the only way of adding new elements
+into $\mathcal{R}$ is using the rules $L_{\Diamond^\pm}$ and those for $\pnlP$,
+$\pnlN$ and $\pnlPN$. This explains the additional hypothesis in the theorem
+below. Without this assumption, it is not possible to guarantee that relational
+symbols will not appear in the context $\Gamma$ (nor contracted in that
+context) in uncontrolled ways. 
+
+\begin{figure}
+\noindent\resizebox{.83\textwidth}{!}{
+\begin{minipage}[t]{\textwidth}
+ \begin{tabular}{l l l}
+	{
+         \begin{prooftree}
+        \hypo {\rs{\rc,R^+(i,j)}{\Gamma,k:\phi}{\Delta}}
+        \infer1 [$(L_{\pnlP})$]{\rs{\rc}{\Gamma,k:\pnlP \phi}{\Delta}}
+        \end{prooftree}
+        }
+        & 
+         {\begin{prooftree}
+        \hypo {\rs{\rc,R^+(i,j)}{\Gamma}{\Delta,k:\phi}}
+        \infer1 [$(R_{\pnlP})$]{\rs{\rc}{\Gamma}{\Delta,k:\pnlP \phi}}
+        \end{prooftree}
+        }
+&
+        {
+        \begin{prooftree}
+        \hypo {\rs{\rc,R^-(i,j)}{\Gamma,k:\phi}{\Delta}}
+        \infer1 [$(L_{\pnlN})$]{\rs{\rc}{\Gamma,k:\pnlN k:\phi}{\Delta}}
+        \end{prooftree}
+        }
+    \\\\
+        {  \begin{prooftree}
+        \hypo {\rs{\rc,R^-(i,j)}{\Gamma}{\Delta,k:\phi}}
+        \infer1 [$(R_{\pnlN})$]{\rs{\rc}{\Gamma}{\Delta,k:\pnlN \phi}}
+        \end{prooftree}
+        }
+&
+	{
+         \begin{prooftree}
+        \hypo {\rs{\rc,R^+(i,j)}{\Gamma,k:\phi}{\Delta}}
+        \infer1 [$(L_{\pnlOP})$]{\rs{\rc,R^-(i,j)}{\Gamma,k:\pnlOP \phi}{\Delta}}
+        \end{prooftree}
+        }
+        & 
+        {\begin{prooftree}
+        \hypo {\rs{\rc,R^+(i,j)}{\Gamma}{\Delta,k:\phi}}
+        \infer1 [$(R_{\pnlOP})$]{\rs{\rc,R^-(i,j)}{\Gamma}{\Delta,k:\pnlOP \phi}}
+        \end{prooftree}
+        }
+\\\\        
+        {
+        \begin{prooftree}
+        \hypo {\rs{\rc,R^-(i,j)}{\Gamma,k:\phi}{\Delta}}
+        \infer1 [$(L_{\pnlON})$]{\rs{\rc,R^+(i,j)}{\Gamma,k:\pnlON \phi}{\Delta}}
+        \end{prooftree}
+        \medskip
+        }
+        &
+        {\begin{prooftree}
+        \hypo {\rs{\rc,R^-(i,j)}{\Gamma}{\Delta,k:\phi}}
+        \infer1 [$(R_{\pnlON})$]{\rs{\rc,R^+(i,j)}{\Gamma}{\Delta,k:\pnlON \phi}}
+        \end{prooftree}
+        \bigskip
+        }
+        &
+        {
+         \begin{prooftree}
+         \hypo {\rs{\rc, R^\pm(i,j) }{\Gamma, j:\phi}{\Delta}}
+             \infer1 [\((L_{\Diamond^\pm})\)]{\rs{\rc}{\Gamma, i: \Diamond^\pm \phi}{ \Delta}}
+        \end{prooftree}
+	}
+\end{tabular}
+\end{minipage}
+}
+\caption{System $\dDS$. Rules $L/R_{\pnlP}$  (resp. $L/R_{\pnlN}$) have the proviso that $R^-(i,j)\not\in\mathcal{R}$ (resp.
+$R^+(i,j)\not\in\mathcal{R}$), modulo symmetry (\Cref{foot:sym}). In rules $L/R_{\pnlON}$, $i\neq j$. 
+Rules for $\pnlPN$ are similar and omitted. In $L_{\Diamond^\pm}$, $j$ is fresh. 
+The rules for the other connectives
+are obtained by adapting those in  \Cref{fig:calculus} with relational contexts. 
+\label{fig:dDS}}
+\end{figure}
+
+
+\begin{theorem}\label{thm:adequacy-sequent-dyn}
+Let  $\Gamma$ and $\Delta$ be multisets of \dPNL~formulas
+not containing  relational predicates.
+\I have a winning strategy in the disjunctive game $\mathbf{DG}(\Gamma\seq\Delta)$ iff $\Gamma\seq\Delta$ is provable in $\dDS$.
+\end{theorem}
+ 
+\section{Concluding Remarks}\label{sec:conc}
+We have introduced two new techniques for \PNL, with the aim of
+formally reasoning about positive and negative relations among agents
+and group polarization. Firstly, a satisfiability game allows for the
+verification of properties within concrete models (networks of agents).
+Secondly, a validity game  and cut-free sequent calculus. Unlike the
+Hilbert-style axiom systems  in \cite{DBLP:journals/logcom/PedersenSA21}, our
+contributions offer promising avenues for automated reasoning, as demonstrated
+by our prototypical tool \cite{tool}. Furthermore, by showing that reasoning about frame
+properties of the underlying model (symmetry, non-overlapping, etc.) can be
+delayed until reaching elementary games/formulas, we can modularly adapt to
+different contexts. Currently, we are exploring extensions that relax
+symmetry assumptions, allowing for representing situations where agent $a$ may
+influence the opinion of $b$ but not the other way around. Additionally, we are
+investigating the concept of ``budget'' as in the game proposed in
+\cite{DBLP:conf/tableaux/LangOPF19} to characterize scenarios where proponents
+and opponents operate within a limited \emph{political capital}, where
+adding/changing relations can potentially decrease such a capital. 
+To this end, the preference of spending as little capital as possible could be expressed in a combination of $\PNL$ with a suitable \emph{choice logic}, i.e., a logic where preferences are definable at the object level. Semantic games for choice logics have been investigated in \cite{Freiman2023} and the lifting of game-induced choice logic, \textbf{GCL}, to a provability game and proof system was demonstrated in \cite{Freiman2023}.
+Finally, following
+the techniques developed in \cite{DBLP:journals/jlap/OlartePR23} 
+for analyzing sequent systems in rewrite logic, we are extending 
+our tool \cite{tool} to also support the sequent calculi proposed here. 
+
+We point out that our work can be seen as a continuation of a program of lifting semantic games to analytic calculi \cite{DBLP:journals/sLogica/FermullerM09,Pavlova2021}. Our approach is a refinement of previous work on modal logic \cite{DBLP:conf/wollic/Freiman21,HybrJour}  as it replaces model checking at the level of axioms with explicit rules for the classes of $\PNL$ and $\cc$-$\PNL$ models thus providing hand-tailored systems for reasoning about group polarization and opens up the aforementioned routes to mechanization.
+
+
+
+
+Different modal logics  have been proposed to reason about social networks and
+changes in agents' beliefs. Unlike \PNL, these logics were not designed to
+reason about positive and negative relations among agents, a key aspect for
+defining and measuring polarization \cite{Bramson2017}. Among these logics, we
+could mention the Facebook logic  \cite{DBLP:conf/tark/SeligmanLG13} (an
+epistemic logic endowed with a symmetric ``friendship'' relation and dynamic
+operators to express model transformations); the Tweeting logic
+\cite{DBLP:conf/lori/XiongASZ17} (formalizing announcements in a network); and
+the logic for reasoning about social belief and change propagation
+\cite{DBLP:journals/synthese/LiuSG14}. Logics specifying changes in the
+structure of the network include global bridge modalities
+\cite{DBLP:journals/igpl/ArecesFH15} and  sabotage logic
+\cite{DBLP:journals/logcom/AucherBG18, DBLP:journals/logcom/BenthemLSY23}.
+
+ \newpage
+\bibliographystyle{alpha}
+\bibliography{references}
+\newpage
+\appendix
+
+
+\section{Some selected proofs}\label{app:proofs}
+
+{\bf Theorem~\ref{th:adequacy}.}
+\textit{Let $\M$ be a \PNL-model, $\ag$ an agent, and $\phi$ a formula.
+\begin{enumerate}
+\item \I have a winning strategy for $\mathbf{G}_\M(\mathbf{P}, \ag: \phi)$ iff $\M,\ag \models \phi$. 
+\item \You have a winning strategy for $\mathbf{G}_{\M}(\mathbf{P}, \ag: \phi)$ iff $\M,\ag\not \models \phi$.
+\end{enumerate}
+}
+\begin{proof}
+%\todo{EP. will do that tomorrow}
+\end{proof}
+
+\bigskip
+
+\noindent
+{\bf Lemma~\ref{lem:closure}.}
+\textit{Let $\pi$ be as above. Then:\\
+1) Let $g\in \pi$ be a non-elementary game state labelled ``Y'' in the semantic game. Then at least one successor of $g$ appears along $\pi$.\\
+2) Let $g\in \pi$ be a non-elementary game state labeled ``I'' in the semantic game. Then all successors of $g$ appear along $\pi$.
+}
+
+\begin{proof}
+First, note that since \You play according to \Your winning strategy,
+$\pi$ does not end in a winning disjunctive state whose elementary party is winning for \Me. This means that case (C1) in the definition of $\sigma$ is never reached.
+
+
+\begin{enumerate}
+    \item Suppose $g$ appeared in $\pi$ at stage $n\geq 0$ in the above construction. Since every pair appears in the enumeration infinitely often, there is some minimal $m \geq n$ such that $m=\#(g,h)$, for some $h$. At step $m$ in the execution of $\sigma$ against \Your winning strategy, the current disjunctive state is of the form $D'\bigvee g$. According to $\sigma$, \I underline $g$ and \You move to some successor $h'$, according to \Your winning strategy. This means the new game state is of the form $D' \bigvee h'$, hence $h'$ is the successor of $g$ appearing along $\mathfrak{h}$.
+    \item Suppose $g$ appeared in $\pi$ at stage $n\geq 0$. Now we additionally fix an arbitrary successor $h$ of $g$ in the evaluation game. By the properties of $\#$, there is a minimal $m\geq n$ such that $m=\#(g,h)$. Since \I always first duplicate game states labeled ``I'', before \I make a move into them, $g$ does not disappear. Hence, at step $m$ in the execution of $\sigma$, the current disjunctive state is of the form $D'\bigvee g$. According to $\sigma$, \I duplicate $g$ and go to $h$ in one copy, i.e. the new disjunctive state is $D'\bigvee g \bigvee h$, which shows that $h$ appears along $\pi$. 
+\end{enumerate} 
+\end{proof}
+
+\noindent
+{\bf Lemma \ref{lem:techicalnom}.}
+\textit{Let $\mathbb{M}_1=(\A,\R^+,\R^-,\V,\g_1)$ and $\mathbb{M}_2=(\A,\R^+,\R^-,\V,\g_2)$ be named and $\g_2(i[b/a])=\g_1(i)$ for all nominals $i$. Then for all game states $g$, $\mathbf{G}_{\mathbf{M}_1}(g)\cong \mathbf{G}_{\mathbb{M}_2}(g[b/a])$.
+}
+
+\begin{proof}
+By the assumption, $\g_2$ is surjective, even if restricted to
+$N[b/a]=\{i[b/a]:i\in N\}$. By Proposition~\ref{prop:surjg}, it is therefore
+enough to prove $\mathbf{G}_{\mathbb{M}_1}(g)\cong
+\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}(g[b/a])$. We proceed by  
+induction on the degree of $g$.
+
+If $g$ is elementary and of the form $\mathbf{P}, i: j$ then it is winning for \Me over $\mathbb{M}_1$ if and only if $\g_1(i) = \g_1(j)$. By assumption, this is equivalent to $\g_2(i[b/a])=g_2(i[b/a])$, which means that $\mathbf{O},i[b/a]:j[b/a]$ is winning for me over $\mathbb{M}_2$. The other elementary cases are similar.
+
+As an example of a simple induction step, we consider $\mathbf{P},i:\phi_1 \vee
+\phi_2$. If \I have a winning strategy for this game state over
+$\mathbb{M}_1$, then there is some $k\in \{1,2\}$ such that \I have a winning
+strategy in $\mathbf{P},i:\phi_k$. By the inductive hypothesis, \I have a
+winning strategy in $\mathbf{P},i[b/a]:\phi_k[b/a]$ over $\mathbb{M}_2$. Hence,
+\I have a winning strategy in $(\mathbf{P},i:\phi_1 \vee \phi_2)[b/a])$ over
+that model. The other direction is similar.
+
+The most interesting induction step is for the modal rules, so let us consider
+$\mathbf{O},i:\dplus \psi$. Suppose, \I have a winning strategy in
+$\mathbf{G}_{\mathbb{M}_1}(\mathbf{O},i:\dplus \psi)$. Then, for every nominal
+$j$, \I have winning strategies in
+$\mathbf{G}_{\mathbb{M}_1}(\mathbf{P},j:R(i,j))$ and
+$\mathbf{G}_{\mathbb{M}_1}(\mathbf{O},j: \psi)$. By the inductive hypothesis, \I
+have winning strategies in
+$\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}(\mathbf{P},j[b/a]:R(i[b/a],j[b/a]))$ and
+$\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}(\mathbf{O},j[b/a]: \psi[b/a])$. In other
+words, \I have winning strategies in
+$\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}(\mathbf{P},k:R(i[b/a],k)$ and
+$\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}(\psi[b/a])$, for every $k\in N[b/a]$. Since
+branching in this game is restricted over $N[b/a]$, we conclude that \I have a
+winning strategy in
+$\mathbf{G}^{N[b/a]}_{\mathbb{M}_2}((\mathbf{P},i:\dplus \psi)[b/a])$. The other
+direction, as well as the other cases of induction steps, are similar.
+\end{proof}
+
+\bigskip
+
+\noindent
+{\bf Lemma \ref{lem:samename}.}
+\textit{If $\g(k) = \g(l)$, then $\mathbf{G}_\mathbb{M}(g)\cong\mathbf{G}_\mathbb{M}(g[k/l])$.
+}
+
+\begin{proof}
+We show that $\g(i[k/l])=\g(i)$ for all nominals $i$. If $i\ne k$, then $\g(i[k/l])=\g(i)$. If $i=k$, then by the assumption, $\g(i[k/l])=\g(l)=\g(k)=\g(i)$. The statement of the lemma follows from this fact and Lemma~\ref{lem:techicalnom}.
+\end{proof}
+
+For a model $\mathbb{M}$, and two sequences of nominals $a,b$, let $\mathbb{M}[a/b]$ be the same as $\mathbb{M}$, except for the denotation function: $\g_{[a/b]}(i) = \g(i[a/b])$.
+
+
+\bigskip
+
+ \noindent
+{\bf Lemma \ref{lem:substsurj}.}
+\textit{Let $\mathbb{M}$ be named and $a,b$ two sequences of nominals with $\mathrm{range}(a)\subseteq\mathrm{range}(b)$. Then $\mathbb{M}_{[a/b]}$ is $N[b/a]$-named. Furthermore, $\mathbf{G}_\mathbb{M}(g)\cong \mathbf{G}_{\mathbb{M}[a/b]}(g[b/a])$.
+}
+
+\begin{proof}
+We have to show that $\g_{[a/b]}$ is surjective when restricted to $N[b/a]=\{i[b/a]:i\in N\}$. Let $\ag$ be an agent and $i$ its name under $\g$. If $i\notin \mathrm{range}(b)$, then $i\notin \mathrm{range}(b)$ and we have
+$i[b/a][a/b]=i[a/b]=i$. 
+If $i \in \mathrm{b}$, then $i=b_m$ for some $m$. Then
+$i[b/a][a/b]=b_m[b/a][a/b]=a_m[a/b]=b_m=i$. 
+This shows that $\g_{[a/b]}(i[b/a])=\g(i[b/a][a/b])=\g(i)$, i.e. $\ag$ has a
+name in $N[b/a]$ under $g_{[a/b]}$. This identity together with
+Lemma~\ref{lem:techicalnom} also implies the strategic equivalence of the game
+$\mathbf{G}_\mathbb{M}(g)$ and $\mathbf{G}_{\mathbb{M}[a/b]}(g[b/a])$.
+\end{proof}
+
+
+\bigskip
+
+\noindent
+{\bf Lemma~\ref{lemma:init}.}
+\textit{ Let $\Gamma\seq \Delta$ be composed of elementary game states only. \I win the disjunctive game in $\Gamma \seq \Delta$ iff one of the following holds\footnote{\label{foot:sym}Since relations are symmetric, we will identify $R^\pm(i,j)$ with  $R^\pm(j,i)$.} 
+\begin{itemize}
+\item[i.] $R^-(i,i)\in\Gamma$ or $R^+(i,i)\in\Delta$ for some $i$;
+\item[ii.] $\{R^+(i,j),R^-(i,j)\}\subseteq\Gamma$ for some $i\not=j$;
+\item[iii.] $\Gamma\cap\Delta\not=\emptyset$.
+\end{itemize}
+In the case of collectively connected models, additionally, 
+\begin{itemize}
+\item[iv.]  $\{R^+(i,j),R^-(i,j)\}\subseteq\Delta$ for some $i\not=j$  \end{itemize}}
+
+\begin{proof}
+By definition of the disjunctive game, it is immediate that \I win the game if (iii) holds. Moreover,
+\I clearly win the game if either (i) or (ii) hold since only $R^+$ is
+reflexive and relations are non-overlapping. Finally, if the model is collectively connected, \I clearly win the game if (iv) holds.
+
+Suppose that (i), (ii), and (iii) do not hold. Then the model $\M_{\Gamma \Rightarrow \Delta}$ from Definition~\ref{emepsilon} does the job. If additionally, (iv) holds, we choose the model $\M_{\Gamma \Rightarrow \Delta}^\cc$.
+
+By definition, $R^+$ is reflexive and $R^\pm$ is symmetric. 
+
+
+$\M_{\Gamma \Rightarrow \Delta}$ is non-overlapping: this follows by (ii). $\M_{\Gamma\Rightarrow \Delta}^\cc$ is collectively connected, since  $(iii)^+$ in the definition of $\R^+$ equivalent to $\neg((i)^+\vee (ii)^+\vee (i)^-\vee (ii)^-)$. $\M^\cc_{\Gamma \Rightarrow \Delta}$ is non-overlapping:  Suppose, $(\ag_i,\ag_j)\in \R^+\cap \R^-$. This is impossible since all possible cases in the definitions, in which $\ag_i$ and $\ag_j$ are connected by both relations, are excluded by our assumptions:
+ 
+\begin{itemize}
+    \item   $(i)^+$ and $(i)^-$: Excluded by $\neg(ii)$.
+    \item $(i)^+$ and $(ii)^-$: Excluded by $\neg (iii)$.
+    \item $(ii)^-$ and $(i)^-$: Excluded by $\neg (iii)$.
+    \item $(ii)^-$ and $(ii)^-$: Excluded by $\neg (iv)$.
+    \item $(iii)^+$, excludes $(i)^-$ and $(ii)^-$, hence $(\ag_i,\ag_j)\notin \R^-$.
+\end{itemize}
+
+By definition of the models, $\ag_i\in \V(p)$, whenever $i:p\in \Gamma$, $\ag_i\notin \V(p)$, whenever $i:p\in \Delta$, $(\ag_i, \ag_j)\in \R^\pm$, whenever $R^\pm(i,j)\in \Gamma$. If $R^\pm(i,j)\in \Delta$, then $(\ag_i,\ag_j)\in \R^\mp$. Since both models are non-overlapping, $(\ag_i,\ag_j)\notin \R^\pm$. Hence, all game states in $\Gamma \Rightarrow \Delta$ are winning for \You.
+\end{proof}
+
+
+\bigskip
+
+\noindent
+{\bf Lemma~\ref{lemma:norm}.}
+\textit{  
+The following weakening rules are admissible in $\DS$
+\[
+\infer[L_w]{\Gamma,i:\phi\seq\Delta}{\Gamma\seq\Delta} \qquad \infer[R_w]{\Gamma\seq\Delta,i:\phi}{\Gamma\seq\Delta}
+\]
+Moreover, in a bottom-up reading of derivations, the relational rules permutes up w.r.t. any other logical rule in $\DS$.
+}
+
+\begin{proof} The proof of weakening is standard. The
+proof of permutability is by straightforward case analysis. For example, 
+\[
+\infer[no]{\Gamma, i: \dminus \phi\Rightarrow \Delta}
+{\infer[(L_{\dminus})_2]{\Gamma, i: \dminus \phi\Rightarrow \Delta,R^+(k,l)}{\deduce{\Gamma, j: \phi\Rightarrow \Delta,R^+(k,l)}{\pi_1}}&\deduce{\Gamma, i: \dminus \phi\Rightarrow \Delta,R^-(k,l)}{\pi_2}}
+\]
+with $j$ free, can be transformed to
+\[
+\infer[L_c]{\Gamma, i: \dminus  \phi\Rightarrow \Delta}
+{\infer[(L_{\dminus})_2]{\Gamma, i: \dminus\phi, i: \dminus \phi\Rightarrow \Delta}
+{\infer[no]{\Gamma, j:\phi, i: \dminus\phi \Rightarrow \Delta}
+{\deduce{\Gamma, j:\phi, i: \dminus\phi \Rightarrow  \Delta, R^+(k,l)}{\pi_1^w}&\deduce{\Gamma, j:\phi, i: \dminus\phi \Rightarrow  \Delta, R^-(k,l)}{\pi_2^w}}}}\]
+where $\pi_1^w, \pi_2^w$ are the weakened versions of $\pi_1,\pi_2$ respectively.
+\end{proof}
+ \section{Examples}\label{ap:examples}
+
+Below we present  \My strategy for winning the game on  model $\M_1$ in \Cref{ex:balance}
+\footnote{The notation $[\checkmark,\texttt{Q}]$ means that \I have a winning strategy starting in that state
+where $Q\in \{\I, \You\}$ moves. 
+The notation $[\times,\texttt{Q}]$ means that \You have a winning strategy
+where $Q\in \{\I, \You\}$ moves. 
+}.
+
+
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M1.maude a "lb(p)"
+
+[✔,Y] : P @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+├── [✔,I] : P @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p
+│   └── [✔,I] : P @ a : ◆ p
+│       └── [✔,I] : P @ b : p
+└── [✔,I] : P @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+    └── [✔,I] : P @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p)
+        └── [✔,Y] : O @ a : ◆ ◇ p ∨ ◇ ◆ p
+            ├── [✔,Y] : O @ a : ◆ ◇ p
+            │   ├── [✔,Y] : O @ a : ◇ p
+            │   │   └── [✔,Y] : O @ c : p
+            │   └── [✔,Y] : O @ b : ◇ p
+            │       └── [✔,Y] : O @ c : p
+            └── [✔,Y] : O @ a : ◇ ◆ p
+                └── [✔,Y] : O @ c : ◆ p
+                    └── [✔,Y] : O @ c : p
+\end{Verbatim}
+
+\I do not have a winning strategy for the game on the model 
+$\M_2$ in \Cref{ex:balance}: 
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M2.maude a "lb(p)" --tree
+
+[❌,Y] : P @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+├── [❌,I] : P @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+│   ├── [❌,I] : P @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p)
+│   │   └── [❌,Y] : O @ a : ◆ ◇ p ∨ ◇ ◆ p
+│   │       ├── [❌,Y] : O @ a : ◆ ◇ p
+│   │       │   ├── [❌,Y] : O @ c : ◇ p
+│   │       │   │   └── [❌,Y] : O @ b : p
+│   │       │   ├── [✔,Y] : O @ a : ◇ p
+│   │       │   └── [✔,Y] : O @ b : ◇ p
+│   │       │       └── [✔,Y] : O @ c : p
+│   │       └── [✔,Y] : O @ a : ◇ ◆ p
+│   └── [❌,I] : P @ a : ◇ p
+└── [✔,I] : P @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p
+    ├── [❌,I] : P @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p)
+    │   └── [❌,Y] : O @ a : ◆ ◆ p ∨ ◇ ◇ p
+    │       ├── [❌,Y] : O @ a : ◆ ◆ p
+    │       │   ├── [❌,Y] : O @ a : ◆ p
+    │       │   │   ├── [❌,Y] : O @ b : p
+    │       │   │   ├── [✔,Y] : O @ a : p
+    │       │   │   └── [✔,Y] : O @ c : p
+    │       │   ├── [❌,Y] : O @ b : ◆ p
+    │       │   │   ├── [❌,Y] : O @ b : p
+    │       │   │   └── [✔,Y] : O @ a : p
+    │       │   └── [✔,Y] : O @ c : ◆ p
+    │       │       ├── [✔,Y] : O @ a : p
+    │       │       └── [✔,Y] : O @ c : p
+    │       └── [✔,Y] : O @ a : ◇ ◇ p
+    └── [✔,I] : P @ a : ◆ p
+        ├── [❌,I] : P @ a : p
+        ├── [❌,I] : P @ c : p
+        └── [✔,I] : P @ b : p
+\end{Verbatim}
+
+And \I certainly win in the negated formula: 
+
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M2.maude a "~ lb(p)"
+[✔,I] : P @ a : ¬ ((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p)
+└── [✔,I] : O @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+    └── [✔,Y] : O @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+        ├── [✔,I] : O @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p)
+        │   └── [✔,I] : P @ a : ◆ ◇ p ∨ ◇ ◆ p
+        │       └── [✔,I] : P @ a : ◆ ◇ p
+        │           └── [✔,I] : P @ c : ◇ p
+        │               └── [✔,I] : P @ b : p
+        └── [✔,Y] : O @ a : ◇ p
+\end{Verbatim}
+
+The winning strategy for the game 
+$\bfP,\bbM_2,\ag : \pnlON (4B)$
+is the following: 
+
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M2.maude a " (-) lb(p)"
+[✔,I] : P @ a : (-)((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p)
+└── [✔,Y] : P @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+    ├── [✔,I] : P @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p
+    │   └── [✔,I] : P @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p)
+    │       └── [✔,Y] : O @ a : ◆ ◆ p ∨ ◇ ◇ p
+    │           ├── [✔,Y] : O @ a : ◆ ◆ p
+    │           │   ├── [✔,Y] : O @ a : ◆ p
+    │           │   │   ├── [✔,Y] : O @ a : p
+    │           │   │   └── [✔,Y] : O @ c : p
+    │           │   └── [✔,Y] : O @ c : ◆ p
+    │           │       ├── [✔,Y] : O @ a : p
+    │           │       └── [✔,Y] : O @ c : p
+    │           └── [✔,Y] : O @ a : ◇ ◇ p
+    │               └── [✔,Y] : O @ b : ◇ p
+    │                   ├── [✔,Y] : O @ a : p
+    │                   └── [✔,Y] : O @ c : p
+    └── [✔,I] : P @ a : ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+        └── [✔,I] : P @ a : ◇ p
+            └── [✔,I] : P @ b : p
+\end{Verbatim}
+
+and \I can win the following game in \Cref{ex:consensus}. 
+
+
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M2.maude a " ~ ( (-) (-) lb(p))"
+[✔,I] : P @ a : ¬ ((-)(-)((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p))
+└── [✔,Y] : O @ a : (-)(-)((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p)
+    ├── [✔,Y] : O @ a : (-)((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p)
+    │   └── [✔,I] : O @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+    │       └── [✔,Y] : O @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p
+    │           ├── [✔,I] : O @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p)
+    │           │   └── [✔,I] : P @ a : ◆ ◆ p ∨ ◇ ◇ p
+    │           │       └── [✔,I] : P @ a : ◇ ◇ p
+    │           │           └── [✔,I] : P @ c : ◇ p
+    │           │               └── [✔,I] : P @ b : p
+    │           └── [✔,Y] : O @ a : ◆ p
+    │               └── [✔,Y] : O @ a : p
+    └── [✔,Y] : O @ a : (-)((¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p)
+        └── [✔,I] : O @ a : (¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p) ∧ ¬ (◆ ◇ p ∨ ◇ ◆ p) ∨ ◇ p
+            └── [✔,Y] : O @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p) ∨ ◆ p
+                ├── [✔,I] : O @ a : ¬ (◆ ◆ p ∨ ◇ ◇ p)
+                │   └── [✔,I] : P @ a : ◆ ◆ p ∨ ◇ ◇ p
+                │       └── [✔,I] : P @ a : ◇ ◇ p
+                │           └── [✔,I] : P @ c : ◇ p
+                │               └── [✔,I] : P @ b : p
+                └── [✔,Y] : O @ a : ◆ p
+                    └── [✔,Y] : O @ a : p
+\end{Verbatim}
+
+In the same example, this is \My winning strategy for 
+    $\bfP, \bbM_2,\ag : \dplus \pnlOP [A] \bminus\bot$:
+
+\begin{Verbatim}[fontsize=\scriptsize]
+python main.py examples/model-M2.maude a "<+> (+) [A] [-] (p /\ ~ p)"
+[✔,I] : P @ a : ◆ (+)[A]¬ (◇ ¬ (p ∧ ¬ p))
+└── [✔,I] : P @ b : (+)[A]¬ (◇ ¬ (p ∧ ¬ p))
+    └── [✔,Y] : P @ b : [A]¬ (◇ ¬ (p ∧ ¬ p))
+        ├── [✔,I] : P @ a : ¬ (◇ ¬ (p ∧ ¬ p))
+        │   └── [✔,Y] : O @ a : ◇ ¬ (p ∧ ¬ p)
+        ├── [✔,I] : P @ b : ¬ (◇ ¬ (p ∧ ¬ p))
+        │   └── [✔,Y] : O @ b : ◇ ¬ (p ∧ ¬ p)
+        └── [✔,I] : P @ c : ¬ (◇ ¬ (p ∧ ¬ p))
+            └── [✔,Y] : O @ c : ◇ ¬ (p ∧ ¬ p)
+\end{Verbatim}
+ 
+
+\section{Axioms as rules}\label{app:focusing}
+
+In what follows, we will briefly present some ideas behind focusing and polarities, and how they can be used for systematically transforming axioms into rules.
+
+\subsection{What is focusing?}
+Suppose that, in intuitionistic logic, we would like to try to prove the following sequent in intuitionistic logic
+\[
+A\iimp B, C\wedge D\seq p
+\]
+where $p$ is an atomic formula. There are two ways of proceeding with proof search (hence in a bottom-up reading of rules): either apply the conjunction left rule or the implication left rule.
+
+
+If we decide for the first, assuming (the multiplicative version of) the conjunction left rule, the derivation would look like
+\[
+\infer[\wedge_{l_M}]{A\iimp B, C\wedge D\seq p}
+{\deduce{A\iimp B, C, D\seq p}{
+\deduce{}{\vdots}}}
+\] 
+Since $(\wedge_{l_M})$ is an invertible rule~\cite{troelstra00book}, its application does not affect provability in the sense that, if the conclusion is provable, so is the premise.
+
+Now, if instead we decide to apply the left rule for implication\footnote{We will avoid the discussion on copying the  implication to the left premise here. See~\cite{DBLP:journals/jsyml/Dyckhoff92}.}
+\[
+\infer[\iimp_{l}]{A\iimp B, C\wedge D\seq p}{C\wedge D\seq A & B, C\wedge D\seq p}
+\] 
+then provability may be lost, since $(\iimp_{l})$ is not invertible w.r.t. the left premise, that is, it may be the case that the conclusion sequent is provable but the left premise sequent is not.
+
+Hence, when  searching for a proof of $A\iimp B, C\wedge D\seq p$ we can {\em always} start by applying the $(\wedge_{l_M})$ --  {\em don't care non-determinism} -- postponing making decisions, like applying $(\iimp_{l})$, until there are no more invertible options left. At that point, a decision has to be made: which non-invertible step should be taken --  {\em don't know non-determinism}. 
+
+This is the essence of focusing~\cite{andreoli92jlc}: separate the proof steps into unfocused (no changes in provability) and focused (decisions must be made). In the focused step, once we decide to {\em focus on} (or work on) a formula, this focus is maintained, bottom-up, after the application of the rule. We mark the focused formulas with the downarrow symbol $\Downarrow$. The focused left rule for the implication is
+\[
+\infer[\iimp_{l}]{\jLf{\Gamma}{A\iimp B}{C}}{\jRf{\Gamma}{A}{} & \jLf{\Gamma}{B}{C}}
+\] 
+We read this as: if we decide to decompose $A\iimp B$ on the left, we should continue the proof search by maintaining the focus  on $A$ on the right and $B$ on the left.
+
+But what about {\em atomic formulas}? Suppose that $A,B$ are atomic formulas in the focused derivation above. It is
+        possible to impose two different ``protocols'' for dealing with the atomic case.  The $Q$-protocol insists that the left premise above is trivial, meaning that it is proved by
+        the initial rule.  On the other hand, focusing should be lost (represented by the uparrow $\Uparrow$) in the right premise
+\[
+\infer[\iimp_{l}]{\jLf{\Gamma}{A\iimp B}{C}}
+{\infer[\kinit]{\jRf{\Gamma}{A}{}}{} & 
+\infer{\jLf{\Gamma}{B}{C}}{\jUnf{\Gamma}{B}{C}{}}}
+\]  
+        Following that protocol, we have that it should be the case that
+        $A\in\Gamma$.  Thus, if we set $\Gamma'$
+        to be the result of removing all occurrences of $A$
+        from $\Gamma$, then the (unfocused) derived inference rule from the derivation above becomes
+\[
+  \infer[\iimp_{l_Q}]
+        {\Gamma', A, A\iimp B \seq C}
+        {\Gamma' , B\seq C}
+\]
+        The second protocol, the $T$-protocol, insists that the right-most
+        premise is trivial and focus should be lost in the left premise
+\[
+\infer[\iimp_{l}]{\jLf{\Gamma}{A\iimp B}{C}}
+{\infer{\jRf{\Gamma}{A}{}}{\jUnf{\Gamma}{}{A}{}} & 
+\infer[\kinit]{\jLf{\Gamma}{B}{C}}{}}
+\]   
+That is,
+        $B$ and $C$ are the same atomic formula.       
+Thus,  the (unfocused) derived inference rule from the derivation above becomes
+\[
+  \infer[\iimp_{l_T}]
+        {\Gamma, A\iimp B \seq B}
+        {\Gamma \seq A}
+\]
+The names for the $Q$ and $T$ protocols comes from Danos, Joinet, and
+Schellinx~\cite{danos93wll}: in the $Q$ protocol, the tail (``queue'')
+of an implication yields a trivial premise while in the $T$ protocol,
+the head (``t\^ete'') of an implication yields a trivial premise.
+
+A more modern and flexible presentation of the $Q$ and $T$ protocols
+speaks, instead, of the \emph{polarity} of formulas.
+In particular, if all atomic formulas have a {\em positive polarity}, the
+$Q$-protocol is enforced, while if all atomic formulas have a {\em negative
+polarity}, the $T$-protocol is enforced.
+
+Now that focusing is understood for implication and atoms, what can be said about the other connectives? For example, in the case of conjunction, we adopted the (invertible) {\em multiplicative version} of the left rule, that is
+\[
+\infer[\wedge_{l_M}]{\Gamma, A\wedge B\seq C}{\Gamma, A, B\seq C}
+\] 
+This rule incorporates the left contraction rule. Gentzen's original rules correspond to the (non-invertible) {\em additive version}, where a choice has to be made during proof search
+\[
+ \infer[\wedge_{l_{i}}]{A_1\wedge A_2, \Gamma \seq C}{A_i, \Gamma \seq C}
+\]
+Such multiplicative/additive, invertible/non-invertible flavors can be captured in a single proof system by splitting the conjunction into two connectives: 
+$\wedgep$ and $\wedgen$, with {\em unfocused/focused} left rules 
+\[
+  \infer[\wedgep_{l}]{\jUnf{\Gamma}{A\wedgep B,\Theta}{}{C}}{\jUnf{\Gamma}{A , B, \Theta}{}{C}}
+  \qquad
+ \infer[\wedgen_{l_i}]{\jLf{\Gamma}{A_1 \wedgen A_2}{C}}{\jLf{\Gamma}{A_i}{C}}
+ \]
+
+
+In \cite{liang07csl,LiaMil09} Miller and Liang proposed the  \LKF and \LJF focused proof
+systems for classical and intuitionistic logics, respectively.
+Those systems 
+extend both the notion of focusing and polarity to
+all formulas. 
+
+In such systems, {\em focused rule applications} imply that focus is transferred from conclusion to premises in derivations. This process goes on until either the focused phase ends (depending on the {\em polarity} of the focused formula), or the derivation ends.
+Once the focus is \emph{released}, the formula is eagerly decomposed into subformulas, which are ultimately {\em stored} in the context. 
+We will describe this in detail in the next section.
+
+{\em Some historical remarks.} The focusing discipline is based on the notion of {\em uniform proofs}~\cite{miller91apal} and it was discovered by Andreoli in~\cite{andreoli92jlc}, who showed that it is complete for linear logic~\cite{DBLP:journals/tcs/Girard87}, which naturally contains the multiplicative and additive versions of disjunction and conjunction. In intuitionistic logic focusing gives rise to  call-by-value~\cite{dyckhoff06cie}  and call-by-name~\cite{herbelin94csl} calculi, since using the $Q$-protocol the proof-search semantics of the
+implication is given by 
+\emph{forward-chaining}, while using the $T$-protocol, the proof-search semantics of the
+ implication is given by
+\emph{back-chaining}.
+
+\subsection{Polarization}
+\LKF and \LJF ~\cite{LiaMil09}can accommodate both the $Q$ and $T$ protocols as well
+as a mix of those protocols.
+The proof system \LKF, for first-order classical logic, and the
+proof system \LJF, for first-order intuitionistic logic, are
+presented in Figures~\ref{fig:lkf} and~\ref{fig:ljf}, respectively.
+
+In order to obtain their flexibility in capturing various focusing
+regimes, the \LKF and \LJF proof systems use \emph{polarized}
+formulas.
+A \emph{polarized classical (first-order) formula} is a formula built
+using atomic formulas, 
+the usual first-order quantifiers $\forall$ and $\exists$, the implication
+$\impl$, and polarized versions of the logical connectives and
+constants, i.e., $\ntrue$, $\ptrue$,$\nfalse$, $\pfalse$, $\veen$,
+$\veep$, $\wedgen$, $\wedgep$.
+A \emph{polarized intuitionistic (first-order) formula} is a polarized
+classical formula in which the logical connectives $\nfalse$ and
+$\veen$ do not occur.
+The positive and negative versions of connectives and constants
+have identical truth conditions but different inference rules
+inside the polarized proof systems.
+For example, the left introduction rule for $\wedgep$ is invertible
+while the left introduction rule for $\wedgen$ is not invertible.
+
+
+
+If a formula's top-level connective is $\ptrue$,
+$\pfalse$, $\veep$, $\wedgep$, or $\exists$, then that formula is
+\emph{positive}.
+If a formula's top-level connective is $\ntrue$, $\nfalse$,
+$\veen$, $\wedgen$, $\impl$, or $\forall$, then it is \emph{negative}.
+Note that in the intuitionistic system \LJF, we have only one
+disjunction and one falsum, both of which exist only with positive
+polarity.
+The way to form the negation of the polarized formula $B$ is with the
+formula $B\impl\pfalse$: this formula has negative polarity no matter
+the polarity of $B$.
+
+
+
+In both \LKF and \LJF, every polarized formula is classified as
+positive or negative.
+This means that we must also provide a polarity to atomic formulas.
+As it turns out, this assignment of polarity to atomic formulas can,
+in principle, be arbitrary.
+
+
+Note that we use $\impl$, $\forall$, and $\exists$ in both unpolarized
+as well as polarized formulas: we can do this since the polarity of
+these connectives is not ambiguous.
+In classical logic, the polarity of $\true$, $\wedge$, $\false$, and
+$\vee$ is ambiguous and all of these can be positive or negative.
+In intuitionistic logic, only the polarity of $\true$ and $\wedge$
+is ambiguous.
+In both of these logics, however, the polarity of atoms is equally
+ambiguous.
+
+
+
+\subsubsection{Focused proof systems}
+\label{sec:focused ps}
+
+
+\begin{figure}
+	{\sc Asynchronous Rules}
+\[
+  \infer[\kern-2pt\veen_r]{\jUnf{\Gamma}{\Sigma}{A \veen\kern-3pt B, \Omega}{\Delta}}
+                 {\jUnf{\Gamma}{\Sigma}{A,B, \Omega}{\Delta}}   
+  \qquad 
+  \infer[\kern-2pt\wedgen_r]{\jUnf{\Gamma}{\Sigma}{A \wedgen B, \Omega}{\Delta}}
+                   {\jUnf{\Gamma}{\Sigma}{A, \Omega}{\Delta}
+                    & 
+                    \jUnf{\Gamma}{\Sigma}{B, \Omega}{\Delta}}
+\]
+\[
+  \infer[\wedgep_l]{\jUnf{\Gamma}{A\wedgep B,\Sigma}{\Omega}{\Delta}}
+                   {\jUnf{\Gamma}{A , B, \Sigma}{\Omega}{\Delta}}
+  \qquad
+  \infer[\veep_l]{\jUnf{\Gamma}{A\veep B,\Sigma}{\Omega}{\Delta}}
+                 {\jUnf{\Gamma}{A,\Sigma}{\Omega}{\Delta}
+                  & 
+                  \jUnf{\Gamma}{B,\Sigma}{\Omega}{\Delta}}
+\]
+\[
+  \infer[\forall_r]{\jUnf{\Gamma}{}{\forall x.B, \Omega}{\Delta}}
+                   {\jUnf{\Gamma}{}{[y/x]B, \Omega}{\Delta}}	
+  \qquad
+  \infer[\exists_l]{\jUnf{\Gamma}{\exists x.B, \Sigma}{\Omega}{\Delta}}
+                   {\jUnf{\Gamma}{[y/x]B,\Sigma}{\Omega}{\Delta}}
+\]
+\[
+  \infer[\kern-2pt\impl_r]{\jUnf{\Gamma}{\Sigma}{A \impl B, \Omega}{\Delta}}
+                 {\jUnf{\Gamma}{\Sigma,A}{B,\Omega}{\Delta}}
+  \qquad
+  \infer[\kern-2pt\ptrue_l]{\jUnf{\Gamma}{\ptrue\kern-2pt, \Sigma}{\Omega}{\Delta}}
+                  {\jUnf{\Gamma}{\Sigma}{\Omega}{\Delta}}
+  \qquad
+  \infer[\kern-2pt\nfalse_r]{\jUnf{\Gamma}{\Sigma}{\nfalse\kern-2pt,\Omega}{\Delta}}
+                            {\jUnf{\Gamma}{\Sigma}{\Omega}{\Delta}}
+\]
+\[
+  \infer[\ntrue_r]{\jUnf{\Gamma}{\Sigma}{\ntrue\kern-3pt,\Omega}{\Delta}}{}
+  \qquad
+  \infer[\kern-2pt\pfalse_l]{\jUnf{\Gamma}{\pfalse\kern-2pt,\Sigma}{\Omega}{\Delta}}{}
+\]
+	
+\medskip{\sc Synchronous Rules}	
+
+\[ 
+  \infer[\impl_l]{\jLf{\Gamma}{A\impl B}{\Delta}}
+                 {\jRf{\Gamma}{A}{\Delta} &  \jLf{\Gamma}{B}{\Delta}}
+  \quad	
+  \infer[\veen_l]{\jLf{\Gamma}{A \veen\kern-3pt B}{\Delta}}
+                 {\jLf{\Gamma}{A}{\Delta}
+                  & 
+                  \jLf{\Gamma}{B}{\Delta}}
+  \quad
+  \infer[\kern -2pt\wedgen_l]{\jLf{\Gamma}{A_1 \wedgen\kern-3pt A_2}{\Delta}}
+                   {\jLf{\Gamma}{A_i}{\Delta}}
+\]
+\[
+  \infer[\wedgep_r]{\jRf{\Gamma}{A \wedgep B}{\Delta}}
+                   {\jRf{\Gamma}{A}{\Delta}
+                    & 
+                    \jRf{\Gamma}{B}{\Delta}}
+  \qquad
+  \infer[\veep_r]{\jRf{\Gamma}{A_1 \veep A_2}{\Delta}}
+                 {\jRf{\Gamma}{A_i}{\Delta}}
+\]
+\[
+  \infer[\forall_l]{\jLf{\Gamma}{\forall x.B}{\Delta}}
+                   {\jLf{\Gamma}{[t/x]B}{\Delta}}
+  \quad
+  \infer[\exists_r]{\jRf{\Gamma}{\exists x.B}{\Delta}}
+                   {\jRf{\Gamma}{[t/x]B}{\Delta}}
+  \quad
+  \infer[\ptrue_r]{\jRf{\Gamma}{\ptrue}{\Delta}}{}
+  \quad
+  \infer[\nfalse_l]{\jLf{\Gamma}{\nfalse}{\Delta}}{}
+\]
+
+\medskip{\sc Identity rules}
+	
+\[
+  \infer[\kinit_l]{\jLf{\Gamma}{N_a}{N_a, \Delta}}{}
+  \qquad
+  \infer[\kinit_r]{\jRf{\Gamma,P_a}{P_a}{\Delta}}{}
+\]
+	
+\medskip{\sc Structural rules}
+	
+\[
+  \infer[\kdecide_l]{\jUnf{\Gamma,N}{}{}{\Delta}}
+                    {\jLf{\Gamma,N}{N}{\Delta}}
+  \quad
+  \infer[\kdecide_r]{\jUnf{\Gamma}{}{}{P, \Delta}}
+                    {\jRf{\Gamma}{P}{P, \Delta}}
+  \quad
+  \infer[\krelease_l]{\jLf{\Gamma}{P}{\Delta}}
+                     {\jUnf{\Gamma}{P}{}{\Delta}}
+  \quad
+  \infer[\krelease_r]{\jRf{\Gamma}{N}{\Delta}}
+                     {\jUnf{\Gamma}{}{N}{\Delta}}
+\]
+\[
+  \infer[\kstore_l]{\jUnf{\Gamma}{C,\Sigma}{\Omega}{\Delta}}
+                   {\jUnf{C,\Gamma}{\Sigma}{\Omega}{\Delta}}
+  \qquad
+  \infer[\kstore_r]{\jUnf{\Gamma}{}{D, \Omega}{\Delta}}
+                   {\jUnf{\Gamma}{}{\Omega}{D, \Delta}}
+\]
+	
+Here, $P$ is positive, $N$ is negative, $C$ is a negative formula or
+positive atom, $D$ a positive formula or negative atom, $N_a$ is
+a negative atom, and $P_a$ is a positive atom.  Other formulas
+are arbitrary. In the rules $\forall_r$  and $\exists_l$ the
+eigenvariable $y$ does not occur free in any formula of the
+conclusion.
+\caption{The focused classical sequent calculus \LKF.}
+\label{fig:lkf}
+\end{figure}	
+
+\begin{figure}
+{\sc Asynchronous Rules}
+
+\[
+  \infer[\impl_r]{\jUnfG{\Sigma}{A \supset B}}{\jUnfG{A,\Sigma}{B}}   
+  \qquad
+  \infer[\wedgen_r]{\jUnfG{\Sigma}{A \wedgen B}}
+                   {\jUnfG{\Sigma}{A} \quad \jUnfG{\Sigma}{B}}
+\]
+\[
+  \infer[\wedgep_l]{\jUnfGamb{A\wedgep B,\Sigma}}{\jUnfGamb{A , B, \Sigma}}
+  \qquad
+  \infer[\veep_l]{\jUnfGamb{A\veep B,\Sigma}}
+        {\jUnfGamb{A,\Sigma}\quad \jUnfGamb{B,\Sigma}}
+\]
+\[
+  \infer[\forall_r]{\jUnfG{\Sigma}{\forall x.B}}{\jUnfG{\Sigma}{[y/x]B}}
+  \qquad
+  \infer[\exists_l]{\jUnfGamb{\exists x.B, \Sigma}}{\jUnfGamb{[y/x]B,\Sigma}}
+ \]
+\[
+  \infer[\ntrue_r]{\jUnfG{\Sigma}{\ntrue}}{}\qquad
+  \infer[\ptrue_l]{\jUnfGamb{\ptrue, \Sigma}}{\jUnfGamb{\Sigma}}
+   \qquad
+  \infer[\pfalse_l]{\jUnfGamb{\pfalse, \Sigma}}{}
+\]
+
+\medskip{\sc Synchronous Rules}
+
+\[ 
+  \infer[\impl_l]{\jLfG{A \impl B}}{  \jRfG{A}\quad \jLfG{B}}
+  \qquad
+  \infer[\veep_r]{ \jRfG{A_1 \veep A_2}}{\jRfG{A_i}}
+  \qquad
+  \infer[\wedgen_l]{\jLfG {A_1 \wedgen A_2}}{\jLfG{A_i}}
+\]
+\[
+  \infer[\wedgep_r]{\jRfG{A \wedgep B}}{\jRfG{A} \quad \jRfG{B}}
+  \quad
+  \infer[\forall_l]{\jLfG{\forall x.B}}{\jLfG{[t/x]B}}
+  \quad
+  \infer[\exists_r]{\jRfG{\exists x.B}}{\jRfG{[t/x]B}}
+  \quad
+  \infer[\ptrue_r]{\jRfG{\ptrue}}{}
+\]
+
+\medskip{\sc Identity rules}
+
+\[
+  \infer[\kinit_l]{\jLf{\Gamma}{N_a}{N_a}}{}
+  \qquad
+  \infer[\kinit_r]{\jRf{\Gamma,P_a}{P_a}}{}
+  \qquad
+\]
+
+\medskip{\sc Structural rules}
+
+\[
+  \infer[\kern -2pt \kdecide_l]{\jUnf{\Gamma,N}{}{}{R}}{\jLf{\Gamma,N}{N}{R}}
+  \quad
+  \infer[\kern -2 pt \kdecide_r]{\jUnf{\Gamma}{}{}{P}}{\jRf{\Gamma}{P}}
+  \quad
+  \infer[\krelease_l]{\jLf{\Gamma}{P}{R}}{\jUnf{\Gamma}{P}{}{R}}
+  \quad
+  \infer[\krelease_r]{\jRf{\Gamma}{N}}{ \jUnf{\Gamma}{}{N}{}}
+\]
+\[
+\infer[\kstore_l]{\jUnfamb{\Gamma}{C,\Sigma}{}}
+                 {\jUnfamb{C,\Gamma}{\Sigma}{}}
+  \qquad
+  \infer[\kstore_r]{\jUnf{\Gamma}{}{D}{}}{\jUnf{\Gamma}{}{}{D}}
+\]
+
+Here, $P$ is positive, $N$ is negative, $C$ is a negative formula or
+positive atom, $D$ a positive formula or negative atom, $N_a$ is a
+negative atom, and $P_a$ is a positive atom.  Other formulas are
+arbitrary. $\Rscr$ denotes $\Delta_1 \Uparrow \Delta_2$ where the
+union of $\Delta_1$ and $\Delta_2$ contains at most one formula.  
+In the rules $\forall_r$  and $\exists_l$ the
+eigenvariable $y$ does not occur free in any formula of the
+conclusion.
+\caption{The focused intuitionistic sequent calculus \LJF.}
+\label{fig:ljf}
+\end{figure}	
+
+The inference rules of \LKF and \LJF presented in Figures~\ref{fig:lkf} and~\ref{fig:ljf}, respectively, involve three kinds of sequents 
+\begin{itemize}
+\item $\jUnf{\Gamma}{\Sigma}{\Omega}{\Delta}$ belongs to the {\em asynchronous phase}. During this phase, all negative (resp. positive) formulas in  $\Omega$ (resp. $\Sigma$) are introduced and all atoms and positive (resp. negative) formulas  are stored in the context $\Delta$ (resp. $\Gamma$);
+\item $\jLf{\Gamma}{B}{\Delta},\quad\hbox{and}\quad
+  \jRf{\Gamma}{B}{\Delta}$ belongs to the {\em synchronous phase}, where all positive connectives at the root of $B$ are introduced. 
+\end{itemize}
+Here $\Gamma$, $\Sigma$, $\Omega$ and $\Delta$ are
+multisets of polarized formulas and $B$ is a polarized formula.
+The formula occurrence $B$ in a $\Downarrow$-sequent is called the
+\emph{focus} of that sequent.
+
+The dynamics of the different phases is detailed below.
+
+\noindent
+{\bf Asynchronous Phase.} Asunchronous rules can be applied eagerly, in any order.
+This process includes storing formulas: note that the rules $\kstore_r, \kstore_l$ move, to the 
+contexts $\Gamma/\Delta$, atomic or negative/positive formulas since they cannot be decomposed during the asynchronous phase.
+
+The asynchronous phase ends when $\Sigma,\Omega$ in unfocused sequents are empty. A decision rule $\mathsf{D_l}$ or  $\mathsf{D_r}$ is then applied,  and
+a synchronous phase starts by {\em focusing} on a non-atomic formula, either negative on the left or positive on the right.
+
+\noindent
+{\bf Synchronous Phase.} Once we focus on a formula, the proof  follows by applying synchronous rules, where  the focus persists on the decomposed subformulas until either: the proof ends with an instance of an axiom;
+a negative (resp. positive) formula  on the right (resp. left) is reached, and the synchronous phase  ends with the application of one of the release rules $\krelease_r,\krelease_l$.
+
+There are two initial rules, $\kinit_r,\kinit_l$, acting on right positive atoms and left negative atoms, respectively, meaning that derivations should necessarily end when focusing on such formulas.
+
+
+The system  \LJF is depicted in a separate figure for the sake of clarity.
+However, one can notice that, similarly to what we have for \LJ and
+\LK in the original Gentzen formulations, \LJF can be seen as a
+restriction of \LKF, where the rules for $\nfalse$ and $\veen$ are
+omitted and only one formula is admitted in the succedent of sequents.  In
+particular, this implies that $(i)$ in the left rule for $\impl$, the
+right context of the conclusion is not present in the left premise;
+$(ii)$ in the rule $\kdecide_r$, the formula placed under focus is
+not subjected to contraction; and $(iii)$ a sequent of the form $\jRf{\Gamma}{B}{\Delta}$, when used in an
+\LJF proof, is such that $\Delta$ is empty.
+In that case, we write that sequent as simply $\jRf{\Gamma}{B}{}$.
+
+
+
+\subsection{Axioms to rules: bipoles}
+In~\cite{DBLP:journals/apal/MarinMPV22} we have presented a process of transforming (polarized) bipolar axioms into rules in the
+classical/intuitionistic settings. 
+The idea is that bipolars force a unique {\em shape} in focused derivations (called {\em bipoles}), where only atoms are stored in the leaves.
+Bipoles then {\em justifies} a synthetic inference rule for the respective bipolar.\footnote{While it should be noted that a bipolar can give rise to different bipoles, they do not differ in their {\em shape}.}
+
+We will illustrate the process with an example.
+\begin{example}\label{ex:bipole}
+Let $p(x)$, $q(x)$, and $r(x)$ be {\em negative} atomic
+formulas and assume that the polarized formula $\forall x. (p(x)
+ \wedgep q(x))\impl r(x)$ is a member of
+$\Gamma$.
+Consider the following \LKF derivation 
+\[
+  \infer[\kdecide_l]{\jUnf{\Gamma}{}{}{\Delta}}{
+  \infer[\forall_l]{\jLf{\Gamma}{\forall x. (p(x)
+                    \wedgep q(x))\impl r(x)}{\Delta}}
+ {\infer[\impl_l]{\jLf{\Gamma}{(p(t)
+                    \wedgep q(t))\impl r(t)}{\Delta}}
+   {\infer[\wedgep_r]{\jRf{\Gamma}{p(t)\wedgep q(t)}{\Delta}}
+   {\infer[\krelease_r]{\jRf{\Gamma}{p(t)}{\Delta}}
+    {\infer[\kstore_r]{\jUnf{\Gamma}{}{p(t)}{\Delta}}
+   {\deduce{\jUnf{\Gamma}{}{}{\Delta,p(t)}}{}}}
+   &
+   \infer[\krelease_r]{\jRf{\Gamma}{q(t)}{\Delta}}
+   {\infer[\kstore_r]{\jUnf{\Gamma}{}{q(t)}{\Delta}}
+   {\deduce{\jUnf{\Gamma}{}{}{\Delta,q(t)}}{}}}}
+   & 
+   \infer[\kinit_l]{\jLf{\Gamma}{ r(t)}{\Delta}}
+  {}}}}
+\]	
+In order to apply the rule $\kinit_l$ in this derivation, it must be
+the case that $r(t) \in\Delta$, that is, $r(t)$ is in the conclusion sequent. The atomic predicates $p(t), q(t)$ appear stored in the leaves, so they are in the premises. 
+This derivation justifies the following (unfocused) synthetic inference rule in \LK,
+on unpolarized formulas \[
+  \infer{\Gamma\seq \Delta, r(t)}
+        {\Gamma\seq \Delta, p(t) \qquad 
+         \Gamma\seq \Delta, q(t)}	
+\]
+\end{example}
+In this note, we intend to define the idea of axioms-as-rules in a context, so that rules can be applied deep inside (special kinds of) formulas.
+
+Although this has a very close inspiration in {\em deep inference}~\cite{guglielmi07tocl} and rule discharging~\cite{DBLP:journals/sLogica/Schroeder-Heister14}, we will maintain the tree structure of proofs, in a sequent style setting.
+
+\begin{lemma}\label{lemma:adm} The following rules are admissible in $\DS$
+\[
+\infer[(L_{\Diamond^\pm}')]{\Gamma, i: \Diamond^\pm \phi\Rightarrow \Delta}{\Gamma, R^\pm(i,j), j:\phi  \Rightarrow \Delta}  
+\qquad
+\infer[(R_{\Diamond^\pm}')]{\Gamma, R^\pm(i,j)\Rightarrow i: \Diamond^\pm \phi,\Delta}{\Gamma, R^\pm(i,j) \Rightarrow j: \phi, \Delta}
+\]
+where in the rules   $(L_{\Diamond^\pm}')_1$, $(L_{\Diamond^\pm}')_2$  the nominal $j$ is fresh, and the rule $R_{\meddiamondminus}$ has the proviso that $i\neq j$
+\end{lemma}
+
+ 
+\end{document}
