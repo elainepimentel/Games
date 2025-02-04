@@ -1,0 +1,56 @@
+\documentclass{beamer}
+
+\usepackage[applemac]{inputenc}
+\usepackage[french]{babel}
+\usepackage{tikz}
+\usepackage{colortbl}
+
+\newcommand\limp{\mathbin{-\hspace{-0.70mm}\circ}}
+
+\definecolor{darkgreen}{rgb}{0,.3,0}
+\definecolor{darkred}{rgb}{.5,0,0}
+\definecolor{darkblue}{rgb}{0,0,.7}
+\definecolor{darkvio}{rgb}{.5,0,.5}
+\definecolor{darkorange}{rgb}{.8,0,.4}
+\definecolor{lightgreen}{rgb}{0,.9,0}
+\definecolor{itemblue}{rgb}{0,0,.4}
+\definecolor{lightblue}{rgb}{0,0,.3}
+\definecolor{bananamania}{rgb}{0.98, 0.91, 0.71}
+\definecolor{black}{rgb}{0.0, 0.0, 0.0}
+
+\renewcommand{\emph}[1]{{\color{blue} #1}}
+\newcommand{\emphdb}[1]{{\color{darkblue} #1}}
+\newcommand{\empha}[1]{{\color{darkgreen} #1}}
+\newcommand{\emphb}[1]{{\color{darkvio} #1}}
+\newcommand{\emphdr}[1]{{\color{darkred} #1}}
+\newcommand{\emphdo}[1]{{\color{darkorange} #1}}
+\newcommand{\emphbl}[1]{{\color{black} #1}}
+
+\begin{document}
+
+\vspace{0.5cm}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Flowchart: Process [id:dp9677097126038059] 
+\draw   (330.5,42) -- (473.5,42) -- (473.5,85) -- (330.5,85) -- cycle ;
+%Flowchart: Punched Tape [id:dp9713829911301375] 
+\draw   (344.3,140.2) .. controls (342.65,143.07) and (355,145.4) .. (371.87,145.4) .. controls (388.75,145.4) and (403.76,143.07) .. (405.41,140.2) .. controls (407.05,137.33) and (422.06,135) .. (438.94,135) .. controls (455.82,135) and (468.16,137.33) .. (466.52,140.2) -- (442.7,181.8) .. controls (444.35,178.93) and (432,176.6) .. (415.13,176.6) .. controls (398.25,176.6) and (383.24,178.93) .. (381.59,181.8) .. controls (379.95,184.67) and (364.94,187) .. (348.06,187) .. controls (331.18,187) and (318.84,184.67) .. (320.48,181.8) -- cycle ;
+%Right Arrow [id:dp1821578898065852] 
+\draw   (241.77,103.93) -- (283.77,104.01) -- (283.54,94.01) -- (312,114.07) -- (284.46,134.02) -- (284.23,124.02) -- (242.23,123.93) -- cycle ;
+%Up Down Arrow [id:dp5390839574972759] 
+\draw   (377.5,102.75) -- (399.25,92) -- (421,102.75) -- (410.13,102.75) -- (410.13,124.25) -- (421,124.25) -- (399.25,135) -- (377.5,124.25) -- (388.38,124.25) -- (388.38,102.75) -- cycle ;
+
+% Text Node
+\draw (342,55) node [anchor=north west][inner sep=0.75pt]   [align=left] {processus en \textit{CCP}};
+% Text Node
+\draw (344,153) node [anchor=north west][inner sep=0.75pt]   [align=left] {formules en \textit{FLL}};
+
+
+\end{tikzpicture}
+
+\end{document}

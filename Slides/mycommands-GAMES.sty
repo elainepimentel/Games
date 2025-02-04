@@ -1,0 +1,381 @@
+% !TEX root = sell-games.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Basic Definitions and Macros 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Presentation
+\newcommand{\xitem}{\pause\item}
+
+\newcommand{\leqvn}[1]{\leq \vnbang{#1}{}}
+\newcommand{\leqpn}[1]{\leq \pnbang{#1}{}}
+
+
+%% Chris's
+\newcommand{\IG}{\ensuremath{\mathcal{G}}\xspace}
+\newcommand{\CC}{{\color{darkgreen}\ensuremath{\textbf C}}\xspace}
+\newcommand{\SE}{{\color{darkred}\ensuremath{\textbf S}}\xspace}
+\newcommand{\gcon}{\triangleright}
+\newcommand{\PP}{\ensuremath{\color{darkgreen}{\mathbf P}}}
+\newcommand{\OO}{\ensuremath{\color{darkred}{\mathbf O}}}
+\newcommand{\XX}{\ensuremath{\mathbf X}}
+\newcommand{\YY}{\ensuremath{\mathbf Y}}
+\newcommand{\llll}{\ensuremath{\mathop{\sf l}}}
+\newcommand{\rrr}{\ensuremath{\mathop{\sf r}}}
+\newcommand{\xxx}{\ensuremath{\mathop{\sf x}}}
+\newcommand{\inte}{{\cal I}}
+
+% basic logical alphabet
+\newcommand{\A}{\forall}
+\newcommand{\E}{\exists}
+\renewcommand{\And}{\wedge}
+\newcommand{\Or}{\vee}
+\newcommand{\Impl}{\supset}
+\newcommand{\f}{\bot}
+%\newcommand{\pgets}{\stackrel{+}{\gets}}
+\newcommand{\pgets}{\stackrel{+}{\hookleftarrow}}
+%\newcommand{\pgets}{\hookleftarrow}
+
+
+
+%%Timo's
+\newcommand{\FLew}{\ensuremath{\textsf{FLew}}\xspace}
+\newcommand{\aSELL}{\ensuremath{\textsf{aSELL}}\xspace}
+\newcommand{\I}{\ensuremath{\mathbf{I}}\xspace}
+\newcommand{\II}{\ensuremath{\mathbf{II}}\xspace}
+%\newcommand{\ts}[1][]{\rightarrow_{#1}}
+%\newcommand{\SG}{\mathcal{G}_{SELLS}}
+\newcommand{\GAILL}{\ensuremath{\mathcal{G}_{\aILL}}\xspace}
+\newcommand{\GAIMALL}{\ensuremath{\mathcal{G}_{\aIMALL}}\xspace}
+\newcommand{\GAIMALLA}{\ensuremath{\mathcal{G}_{\aIMALLA}}\xspace}
+\newcommand{\SG}{\ensuremath{\mathcal{G}_{\aSELL}}\xspace}
+\newcommand{\SGM}{\ensuremath{\mathcal{G}_{\aSELL}^-}\xspace}
+\newcommand{\SGKpv}{\ensuremath{\mathcal{G}_{\aSELL-\Kpv}}\xspace}
+\newcommand{\SGMKpv}{\ensuremath{\mathcal{G}{\aSELL_\Kpv}}\xspace}
+
+\newcommand{\SGA}{\mathcal{G}_{\sellsC}}
+\newcommand{\cCost}{\mathcal{L}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\sellsC}{\ensuremath{SELLS^{\cCost}}\xspace}
+\newcommand{\asellC}{\ensuremath{\aSELL_{\cRp}^{\cCost}}\xspace}
+\newcommand{\asellCz}{\ensuremath{\aSELL_{\cRp}^{\cCost_0}}\xspace}
+\newcommand{\asellCKpv}{\ensuremath{\aSELL_{\Kpv}^{\cCost}}\xspace}
+\newcommand{ \asellCzKpv}{\ensuremath{\aSELL_{\Kpv}^{\cCost_0}}\xspace}
+\newcommand{\asellCK}{\ensuremath{\aSELL_{\Kpv}}\xspace}
+\newcommand{\costs}[1]{\ensuremath{\texttt{cost}(#1)}\xspace}
+%\newcommand{\vnbang}[1]{\ensuremath{\underset{\tilde{}}{!}^{#1}}}
+%\newcommand{\pnbang}[1]{\ensuremath{\underset{\bar{}}{!}^{#1}}}
+%\newcommand{\vnbang}[1]{\ensuremath{\ominus^{#1}}}
+%\newcommand{\pnbang}[1]{\ensuremath{\oplus^{#1}}}
+
+\newcommand{\vnbang}[1]{\ensuremath{\triangledown^{#1}}}
+\newcommand{\pnbang}[1]{\ensuremath{\blacktriangledown^{#1}}}
+
+\newcommand{\wins}[2]{\ensuremath{\models^{#1}_{#2}}}
+\newcommand{\asell}{\ensuremath{\aSELL_{\cRp}}\xspace}
+\newcommand{\spec}[1]{\ensuremath{\text{spec}(#1)}\xspace}
+\newcommand{\aILL}{\ensuremath{\textsf{aILL}}\xspace}
+\newcommand{\aIMALL}{\ensuremath{\textsf{aIMALL}}\xspace}
+\newcommand{\ILL}{\ensuremath{\textsf{ILL}}\xspace}
+\newcommand{\Tree}[1]{\ensuremath{\mathcal{T}(#1)}\xspace}
+\newcommand{\trans}[1]{\circ(#1)}
+\newcommand{\mfU}{\mathfrak{u}}
+\newcommand{\mfB}{\mathfrak{b}}
+\newcommand{\mfUB}{\mfU \mfB}
+\newcommand{\Kpv}{\cK^{\mfUB}}
+
+
+%%%%%%%%
+
+%\newtheorem{example}{Example}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{notation}{Notation}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{remark}{Remark}
+%\newtheorem{corollary}{Corollary}
+\renewenvironment{proof}{\noindent\textit{Proof:}\quad}{\qed}
+
+
+%Andreoli's focusing system
+
+\newcommand{\Up}[3]{#1;#2\Uparrow #3}
+\newcommand{\Down}[3]{#1;#2\Downarrow #3}
+\newcommand{\nng}[1]{#1^\perp}
+
+\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl}
+
+\newcommand\eg{\hbox{\textit{e.g.}}}
+\newcommand\ie{\hbox{\textit{i.e.}}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\cf}{{\em cf.}}
+
+\newcommand{\false}{\texttt{false}}
+\newcommand{\true}{\texttt{true}}
+
+\newcommand{\SELL}{\ensuremath{\textsf{SELL}}\xspace}
+\newcommand{\pr}{\Xi}
+\newcommand{\prQ}{\Pi}
+
+\newcommand\lra{\longrightarrow}
+\newcommand\lraA{\longrightarrow_{\alpha}}
+\newcommand\lraS[1]{\longrightarrow_{#1}}
+\newcommand\rla{\longleftarrow}
+\newcommand\uda{\downarrow}
+\newcommand\dua{\uparrow}
+\newcommand{\tup}[1]{\langle#1\rangle}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\realP}{\real^{+}}
+
+%Sequent systems
+\newcommand\LJ{\textbf{LJ}}
+\newcommand\LK{\textbf{LK}}
+\newcommand\LL{\textsf{LL}}
+\newcommand\LU{\textbf{LU}}
+\newcommand\LM{\textbf{LM}}
+\newcommand\NM{\textbf{NM}}
+\newcommand\ILU{\textbf{ILU}}
+\newcommand\FLL{\textbf{FLL}}
+\newcommand\IIL{\textbf{IIL}}
+\newcommand\IILs{\textbf{IIL*}}
+\newcommand\LJp{\textbf{LJ'}}
+\newcommand\LKQ{\textbf{LKQ}}
+\newcommand\LKT{\textbf{LKT}}
+\newcommand\LJK{\textbf{LJK}}
+\newcommand\LMone{\textbf{LM1}}
+\newcommand\LC{\textbf{LC}}
+\newcommand\LI{\textbf{LI}}
+\newcommand\LMC{\textbf{LMC}}
+\newcommand\LJN{\textbf{LJN}}
+\newcommand\Gtc{\textbf{G3c}}
+
+
+%Named clauses
+\newcommand\cut{\hbox{\sl cut}}
+\newcommand\init{\hbox{\sl init}}
+
+%Special arrows
+\newcommand\ra\rightarrow
+\newcommand\Ra\Rightarrow
+\newcommand\rimp{\Leftarrow}
+
+%Linear constants
+\newcommand\zero{{\bf 0}}
+\newcommand\one{{\bf 1}}
+\newcommand\bottom{\perp}
+\newcommand\bang{\mathop{!}}
+\newcommand\quest{\mathord{?}}
+%\newcommand\quest{\mathop{?}}
+\newcommand\limp{\mathbin{-\hspace{-0.70mm}\circ}}
+\newcommand\lolli{\mathbin{-\hspace{-0.70mm}\circ}}
+\newcommand\tensor\otimes
+\newcommand\bla{\mathrel{\mbox{$\circ\!-$}}}
+
+\def\Ascr{{\cal A}}
+\def\Bscr{{\cal B}}
+\def\Cscr{{\cal C}}
+\def\Dscr{{\cal D}}
+\def\Escr{{\cal E}}
+\def\Fscr{{\cal F}}
+\def\Gscr{{\cal G}}
+\def\Hscr{{\cal H}}
+\def\Iscr{{\cal I}}
+\def\Jscr{{\cal J}}
+\def\Kscr{{\cal K}}
+\def\Lscr{{\mathcal L}}
+\def\Mscr{{\cal M}}
+\def\Nscr{{\cal N}}
+\def\Oscr{{\cal O}}
+\def\Pscr{{\cal P}}
+\def\Qscr{{\cal Q}}
+\def\Rscr{{\cal R}}
+\def\Sscr{{\cal S}}
+\def\Tscr{{\cal T}}
+\def\Uscr{{\cal U}}
+\def\Vscr{{\cal V}}
+\def\Wscr{{\cal W}}
+\def\Xscr{{\cal X}}
+\def\Yscr{{\cal Y}}
+\def\Zscr{{\cal Z}}
+
+
+%  \draw package.  Vaughan Pratt  (C) 1993
+%
+%	*+,-|.|/012	Table of 81 vectors in [-4,4]x[-4,4]
+%	3456|7|89:;	Use as parameters to tell \draw how to step along
+%	<=>?|@|ABCD	\draw zzzzzzz\end draws a straight line 7 steps
+%	EFGH|I|JKLM	   down and to the right
+%       ----+-+----
+%	NOPQ|R|STUV	R = (0,0), C = (3,2), * = (-4,-4), r = (-4,4)
+%       ----+-+----
+%	WXYZ|[|\]^_	\draw -./9:CMV_gpowvukjaWNE=45\end
+%	`abc|d|efgh	   draws a reasonable circle
+%	ijkl|m|nopq
+%	rstu|v|wxyz
+%
+\newcount\PLv\newcount\PLw\newcount\PLx\newcount\PLy\newdimen\PLyy\newdimen\PLX
+\newbox\PLdot \setbox\PLdot\hbox{\tiny.} \def\scl{.08} % resettable scale
+\def\PLot#1{\PLx`#1\advance\PLx-42\PLy\PLx\PLv\PLx\divide\PLy9\PLw\PLy\multiply
+\PLw9\advance\PLx-\PLw\advance\PLx-4\PLy-\PLy\advance\PLy4\PLX=\the\PLx pt
+\advance\PLyy\the\PLy pt\wd\PLdot=\scl\PLX\raise\scl\PLyy\copy\PLdot}
+\def\draw#1{\ifx#1\end\let\next=\relax\else\PLot#1\let\next=\draw\fi\next}
+
+%  Girard's inverted ampersand.  Usage: \invamp. Draw time @ 10 Mips: .33 sec
+\def\invamp{\hbox{\PLyy=70pt\draw :::;DMV_gqppyyyyyooooxxxnnwvlutkjaWNE=5-./9%
+9:::CCCC:::99/..--544=EENWWaajjjkktttttttNNNVVVVVVVV\end \hskip4pt}}
+%  \Invamp = Boxed \invamp.  Draw time < .02 sec, but max ~300 chars/page
+\newbox\iabox\setbox\iabox\invamp \def\Invamp{\copy\iabox}
+
+\newcommand\lpar{\mathrel{\Invamp}}
+%\newcommand\lpar{\mathbin{\wp}}  % Looks ugly
+%\newcommand\lpar{\bindnasrepma}  % Needs stmaryrd.sty, not on all machines
+
+\long\def\hide#1\endhide{}
+
+
+\newcommand{\rUp}{R\mathord{\Uparrow}}
+\newcommand{\rDown}{R\mathord{\Downarrow}}
+
+
+ \newcommand{\ndots}[1]{\stackrel{\vcenter{\hbox{$\scriptstyle :$}
+ \vskip-.35ex}}{\hbox {$ \scriptstyle \mathsl{#1}$}}}
+
+\newcommand{\nbang}[1]{\hbox{$\bang^{#1}$}}
+\newcommand{\nquest}[1]{\hbox{$\quest^{#1}$}}
+
+\newcommand{\sell}{\text{SELL}}
+\newcommand{\sellf}{\hbox{\sl SELLF}}
+\newcommand{\sells}{\hbox{\sl SELLS}}
+
+\newcommand\cost[1]{\tsl{C}_{#1}}
+
+\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl}
+\newcommand\tsl[1]{\hbox{$\mathsl{#1}$}}
+
+
+%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\def\ok{\texttt{ok}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Calligraphic 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cAB{\mathcal{AB}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cK{\mathcal{K}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cN{\mathcal{N}}
+\def\cV{\mathcal{V}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cR{\mathbb{R}}
+\def\cRp{\mathbb{R_+}}
+\def\cRpi{\mathbb{R}_+^\infty}
+\def\cS{\mathcal{S}}
+\def\cT{\mathcal{T}}
+\def\cU{\mathcal{U}}
+\def\cX{\mathcal{X}}
+
+
+\renewcommand{\iff}{\mbox{iff}}
+\newcommand{\os}{[\![}
+\newcommand{\cs}{]\!]}
+\newcommand{\C}{\mathcal{C}}
+
+%%%%%%%%%%%%%%%%
+% LATTICE
+%%%%%%%%%%%%%%%%
+\newcommand{\lub}{\it lub}
+\newcommand{\glb}{\it glb}
+\newcommand{\lubA}{\it lub_{\cA}}
+\newcommand{\glbA}{\it glb_{\cA}}
+
+\newcommand{\equivC}{\cong}
+\DeclareMathOperator{\Exists}{\exists\hspace{-.23cm}\exists\ \!}
+
+%%%%%%%%%%%%%%%%
+% SOFT CONSTRAINTS
+%%%%%%%%%%%%%%%%
+\newcommand{\soft}[2]{[#1]_{#2}}
+\newcommand{\botA}{\bot_{\cA}}
+\newcommand{\divA}{\div_{\cA}}
+\newcommand{\topA}{\top_{\cA}}
+\newcommand{\leqA}{\preceq_{\cA}}
+\newcommand{\geqA}{\succeq_{\cA}}
+\newcommand{\plusA}{+_{\!\cA}}
+\newcommand{\oplusA}{\oplus_{\!\cA}}
+\newcommand{\timesA}{\times_{\!\cA}}
+\newcommand{\softC}[2]{!^{#2} #1}
+\newcommand{\softCT}[1]{[#1]}
+
+\newcommand{\botB}{\bot_{\cB}}
+\newcommand{\topB}{\top_{\cB}}
+\newcommand{\leqB}{\preceq_{\cB}}
+\newcommand{\geqB}{\succeq_{\cB}}
+\newcommand{\plusB}{+_{\!\cB}}
+\newcommand{\oplusB}{\oplus_{\!\cB}}
+\newcommand{\timesB}{\times_{\!\cB}}
+
+\newcommand{\botAB}{\bot_{\cAB}}
+\newcommand{\topAB}{\top_{\cAB}}
+\newcommand{\leqAB}{\preceq_{\cAB}}
+\newcommand{\geqAB}{\succeq_{\cAB}}
+\newcommand{\plusAB}{+_{\!\cAB}}
+\newcommand{\oplusAB}{\oplus_{\!\cAB}}
+\newcommand{\timesAB}{\times_{\!\cAB}}
+
+
+\newcommand{\public}{\texttt{pub}}
+\newcommand{\confidential}{\texttt{conf}}
+
+\newcommand{\productA}{\texttt{prod}}
+\newcommand{\copyA}{\texttt{c}}
+\newcommand{\menuA}{\texttt{m}}
+\newcommand{\dishA}{\texttt{d}}
+
+\newcommand{\nab}{\mathsf{n}^\beta_{a}}
+\newcommand{\naba}{\mathsf{n}^{\beta\times a}_{a}}
+
+%test
+\renewcommand{\aIMALL}{\ensuremath{\mathcal{C}}\xspace}
+\renewcommand{\I}{\ensuremath{\mathbf{P}}\xspace}
+\renewcommand{\II}{\ensuremath{\mathbf{O}}\xspace}
+
+\newcommand{\aIMALLR}{\aIMALL(\real^+)}
+\newcommand{\laIMALLR}{\ensuremath{\aIMALL^\ell(\real^+)}}
+\newcommand{\laIMALLA}{\ensuremath{\aIMALL^\ell(\mathcal{K})}}
+\newcommand{\laIMALLAP}{\ensuremath{\aIMALL^\ell(\mathcal{K}_p)}}
+\newcommand{\aIMALLA}{\ensuremath{\aIMALL(\mathcal{A})}}
+\newcommand{\aIMALLK}{\ensuremath{\aIMALL(\mathcal{K})}}
+\newcommand{\GAIMALLR}{\GAIMALL(\real^+)}
+\newcommand{\aSELLR}{\ensuremath{\mathbf{aSELL}(\real^{\mathfrak{u}}_{\mathfrak{b}})}\xspace}
+\newcommand{\aSELLA}{\ensuremath{\mathbf{aSELL}(\mathcal{K}^{\mathfrak{u}}_{\mathfrak{b}})}\xspace}
+%\newcommand{\aSELLR}{\ensuremath{\mathbf{aSELL}(\real^2)}\xspace}
+%\newcommand{\laSELLR}{\ensuremath{\mathbf{aSELL}^\ell(\real^2)}\xspace}
+\newcommand{\laSELLR}{\ensuremath{\mathbf{aSELL}^\ell(\real^{\mathfrak{u}}_{\mathfrak{b}})}\xspace}
+
+\newcommand{\realbu}{\real^+\times\{\mathfrak{b},\mathfrak{u}\}}
+
+%Transition system
+\newcommand{\rede}[1]{\stackrel{\,\,#1\,\,}{\,\,
+\hspace{-0.1cm}\Longrightarrow}}
+
+\newcommand{\cAub}{\cA^{\frak{ub}}}
